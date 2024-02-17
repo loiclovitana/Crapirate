@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dltsdrq8grbsc"]
+[gd_scene load_steps=6 format=3 uid="uid://dltsdrq8grbsc"]
 
 [ext_resource type="PackedScene" uid="uid://brgh15k8ufvrd" path="res://src/player/boat.tscn" id="1_7wmm0"]
 
@@ -21,17 +21,41 @@ ambient_light_source = 2
 ambient_light_color = Color(0.882353, 0.796078, 0.831373, 1)
 ambient_light_energy = 0.2
 
+[sub_resource type="BoxMesh" id="BoxMesh_rkai7"]
+size = Vector3(0.5, 1, 0.5)
+
 [node name="Map1" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 mesh = SubResource("BoxMesh_2rwjc")
 
-[node name="Boat" parent="." instance=ExtResource("1_7wmm0")]
-
-[node name="Camera3D" type="Camera3D" parent="Boat"]
-transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939693, 0.34202, 0.707107, -0.241845, 0.664463, -5, 3, 5)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939692, 0.34202, 0.707107, -0.241845, 0.664463, -5, 3, 5)
 environment = SubResource("Environment_gfh1n")
+
+[node name="Boat" parent="." instance=ExtResource("1_7wmm0")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89247, -1.62904, 1.94548)
+mesh = SubResource("BoxMesh_rkai7")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94623, -0.81452, 0)
+mesh = SubResource("BoxMesh_rkai7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00411, -0.81452, -2.73624)
+mesh = SubResource("BoxMesh_rkai7")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40876, -0.81452, 2.31236)
+mesh = SubResource("BoxMesh_rkai7")
+skeleton = NodePath("../..")
