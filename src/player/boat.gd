@@ -72,6 +72,7 @@ func _process(delta):
 	if next_display_update<0:
 		next_display_update = UPDATE_DELTA
 		if OS.is_debug_build():
+			statsDisplayText += "\n\tFPS :" + str(Engine.get_frames_per_second())
 			statsDisplayText += "\n\t_current_speed: "+str(_current_speed)
 			statsDisplayText += "\n\t_sail_haul: "+str(_sail_haul)
 			statsDisplayText += "\n\t_helm_direction: "+str(_helm_direction)
