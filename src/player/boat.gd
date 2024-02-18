@@ -1,19 +1,20 @@
 class_name Boat extends Area3D
 
 #Constants
-const TIME_TO_HAUL = 0.5
-const TIME_TO_HELM = 0.5
+const TIME_TO_HAUL = 3
+const TIME_TO_HELM = 1
 const TIME_FOR_MAX_SPEED = 5.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
-const TIME_TO_FULLTURN = 5.0
+const TIME_TO_FULLTURN = 2.0
+const SPEED_SCALE = 0.1
 
 # stats
 @export_range(1,10) var speed_stat = 5
 @export_range(0,1) var sail_influence = 1 #not used yet
 
 # env state variables
-var wind_direction : Vector2 = Vector2.DOWN;
-var wind_knot = 10;
+var wind_direction : Vector2 = Vector2.UP;
+var wind_knot = 2;
 
 # state variables
 var _current_speed = 0
@@ -33,7 +34,8 @@ var _helm_direction = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if OS.is_debug_build():
+		%StatsDisplay.set_visible(true)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,11 +70,15 @@ func _process(delta):
 	next_display_update-= delta
 	if next_display_update<0:
 		next_display_update = UPDATE_DELTA
-		statsDisplayText += "\n\t_current_speed: "+str(_current_speed)
-		statsDisplayText += "\n\t_sail_haul: "+str(_sail_haul)
-		statsDisplayText += "\n\t_helm_direction: "+str(_helm_direction)
-		statsDisplayText += "\n\tintended_max_speed: "+str(intended_max_speed)
-		%StatsDisplay.set_text(statsDisplayText)
+		if OS.is_debug_build():
+			statsDisplayText += "\n\t_current_speed: "+str(_current_speed)
+			statsDisplayText += "\n\t_sail_haul: "+str(_sail_haul)
+			statsDisplayText += "\n\t_helm_direction: "+str(_helm_direction)
+			statsDisplayText += "\n\tintended_max_speed: "+str(intended_max_speed)
+			%StatsDisplay.set_text(statsDisplayText)
+		
+	# Rendring
+	_render(delta)
 
 
 # ==========================================================================================
@@ -124,7 +130,7 @@ func _compute_max_possible_speed() -> float:
 	return wind_power*speed_stat*wind_knot/(2*PI)
 		
 func _compute_new_speed(delta,intended_max_speed):
-	if _current_speed==intended_max_speed:
+	if is_equal_approx(_current_speed,intended_max_speed):
 		return _current_speed
 	if _current_speed< intended_max_speed:
 		return _compute_new_speed_accelerating(delta,intended_max_speed)
@@ -134,20 +140,40 @@ func _compute_new_speed(delta,intended_max_speed):
 	
 	
 func _compute_new_speed_accelerating(delta,intended_max_speed) -> float:
+	if is_zero_approx(intended_max_speed):
+		return intended_max_speed
+	
 	var current_speed_time = pow(_current_speed/intended_max_speed,3) * TIME_FOR_MAX_SPEED
 	var new_speed_time = current_speed_time+delta
 	var new_speed = intended_max_speed * pow( new_speed_time/TIME_FOR_MAX_SPEED, 1.0/3.0)
-	
 	if intended_max_speed<new_speed:
 		return intended_max_speed
 	return new_speed
 	
 func _compute_new_speed_decelerating(delta,intended_max_speed):
-	var current_speed_time =  pow(2-_current_speed/intended_max_speed,3) * TIME_FOR_MAX_SPEED
-	var new_speed_time = current_speed_time+delta
-	var new_speed = intended_max_speed*(2 - pow(new_speed_time/TIME_FOR_MAX_SPEED,1.0/3.0))
+	var adjusted_intended_speed = intended_max_speed+1
+	var speed_relative = (_current_speed+1)/adjusted_intended_speed if adjusted_intended_speed>1 else _current_speed+1
+	
+	var current_speed_time =  pow(2-speed_relative,3) * TIME_FOR_MAX_SPEED 
+	if current_speed_time<=0:
+		current_speed_time=0
+	var new_speed_time = current_speed_time+delta 
+	var new_speed = adjusted_intended_speed*(2 - pow(new_speed_time/TIME_FOR_MAX_SPEED,1.0/3.0)) -1
 	
 	if new_speed<intended_max_speed:
 		return intended_max_speed
 	return new_speed
 	
+
+# ==========================================================================================
+#		Rendering methods
+# ==========================================================================================
+
+func _render(_delta):
+	_render_weathercock()
+
+func _render_weathercock():
+	var boat_direction3d = self.get_global_transform().basis.x
+	var boat_direction = Vector2(boat_direction3d.x,boat_direction3d.z)
+	var wind_angle = boat_direction.angle_to(wind_direction)
+	%windPivot.set_rotation(Vector3(0,-wind_angle,0))
