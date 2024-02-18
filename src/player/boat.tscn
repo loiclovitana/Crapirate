@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://brgh15k8ufvrd"]
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
-[ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/boat_rendering.tscn" id="2_4qo4p"]
-[ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/boat_canvas.tscn" id="4_qqy8j"]
+[ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/boat_rendering.tscn" id="2_4qo4p"]
+[ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/hud/boat_canvas.tscn" id="4_qqy8j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
 size = Vector3(1.69549, 1.74908, 0.4)

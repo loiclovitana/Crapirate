@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdd2vi53oum2w"]
 
-[ext_resource type="Script" path="res://src/player/boat_canvas.gd" id="1_3ssya"]
+[ext_resource type="Script" path="res://src/player/hud/boat_canvas.gd" id="1_3ssya"]
 
 [sub_resource type="Gradient" id="Gradient_nmc0n"]
 colors = PackedColorArray(0.792157, 0.584314, 0.0470588, 1, 0.792157, 0.584314, 0.0470588, 1)
@@ -69,12 +69,13 @@ layout_mode = 2
 size_flags_horizontal = 8
 alignment = 2
 
-[node name="HailLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
+[node name="HaulLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "Hail"
+text = "Haul"
 
-[node name="hailView" type="TextureProgressBar" parent="BoatHUD/MarginContainer/control"]
+[node name="haulView" type="TextureProgressBar" parent="BoatHUD/MarginContainer/control"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 texture_under = SubResource("GradientTexture2D_43ugg")
