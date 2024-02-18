@@ -2,10 +2,10 @@ class_name Boat extends Area3D
 
 #Constants
 const TIME_TO_HAUL = 3
-const TIME_TO_HELM = 1
+const TIME_TO_HELM = 1.5
 const TIME_FOR_MAX_SPEED = 5.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
-const TIME_TO_FULLTURN = 2.0
+const TIME_TO_FULLTURN = 1.0
 const SPEED_SCALE = 0.1
 
 # stats
@@ -18,6 +18,8 @@ var wind_knot = 2;
 
 # state variables
 var _current_speed = 0
+
+@onready var canvas :CanvasLayer = $BoatCanvas
 
 #TODO delete
 var statsDisplayText = "Stats:"
@@ -34,8 +36,7 @@ var _helm_direction = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if OS.is_debug_build():
-		%StatsDisplay.set_visible(true)
+	canvas.boat = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,7 +76,7 @@ func _process(delta):
 			statsDisplayText += "\n\t_sail_haul: "+str(_sail_haul)
 			statsDisplayText += "\n\t_helm_direction: "+str(_helm_direction)
 			statsDisplayText += "\n\tintended_max_speed: "+str(intended_max_speed)
-			%StatsDisplay.set_text(statsDisplayText)
+			canvas.debug_set_stats(statsDisplayText)
 		
 	# Rendring
 	_render(delta)

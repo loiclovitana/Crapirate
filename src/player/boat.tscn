@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://brgh15k8ufvrd"]
+[gd_scene load_steps=8 format=3 uid="uid://brgh15k8ufvrd"]
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_72un7"]
-size = Vector3(1, 0.3, 0.5)
-
-[sub_resource type="PrismMesh" id="PrismMesh_li4l6"]
-left_to_right = 0.0
-size = Vector3(1, 1, 0.01)
+[ext_resource type="ArrayMesh" uid="uid://brq2a4xqhdyyg" path="res://ressources/3D/boat/ship.obj" id="2_8ouhe"]
+[ext_resource type="ArrayMesh" uid="uid://dnojyu20br1mh" path="res://ressources/3D/boat/sail_left.obj" id="3_8es3d"]
+[ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/boat_canvas.tscn" id="4_qqy8j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3xde"]
 albedo_color = Color(1, 0, 0, 1)
@@ -17,7 +13,7 @@ material = SubResource("StandardMaterial3D_l3xde")
 size = Vector3(0.1, 0.5, 0.01)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
-size = Vector3(0.8, 1, 0.4)
+size = Vector3(1.69549, 1.74908, 0.4)
 
 [node name="Boat" type="Area3D"]
 script = ExtResource("1_qrajo")
@@ -25,58 +21,29 @@ script = ExtResource("1_qrajo")
 [node name="rendering" type="Node3D" parent="."]
 
 [node name="body" type="MeshInstance3D" parent="rendering"]
-mesh = SubResource("BoxMesh_72un7")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221561, 0, 0)
+mesh = ExtResource("2_8ouhe")
 skeleton = NodePath("../..")
 
 [node name="SailPivot" type="Node3D" parent="rendering"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26378, 0.72579, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172241, 1.17929, 0)
 
 [node name="sail" type="MeshInstance3D" parent="rendering/SailPivot"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.569, 0, 0)
-mesh = SubResource("PrismMesh_li4l6")
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0485303, -0.191933, 0)
+mesh = ExtResource("3_8es3d")
 skeleton = NodePath("../../body")
 
 [node name="windPivot" type="Node3D" parent="rendering"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.205201, 1.2257, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166822, 1.75815, 0.0089255)
 
 [node name="weathercock" type="MeshInstance3D" parent="rendering/windPivot"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.3, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.253114, -0.048789, 0)
 mesh = SubResource("PrismMesh_wx8c4")
 skeleton = NodePath("../../SailPivot")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254242, 0.573822, 0)
 shape = SubResource("BoxShape3D_nefth")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="StatsDisplay" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Stats:"
+[node name="BoatCanvas" parent="." instance=ExtResource("4_qqy8j")]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dnojyu20br1mh"
+path="res://.godot/imported/sail_left.obj-4b1b23508631f31014bec07dab7a9c1b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sail_left.obj-4b1b23508631f31014bec07dab7a9c1b.mesh"]
+
+source_file="res://ressources/3D/boat/sail_left.obj"
+dest_files=["res://.godot/imported/sail_left.obj-4b1b23508631f31014bec07dab7a9c1b.mesh", "res://.godot/imported/sail_left.obj-4b1b23508631f31014bec07dab7a9c1b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.3, 0.3, 0.3)
+offset_mesh=Vector3(0, 0, -0.02)
+optimize_mesh=true
+force_disable_mesh_compression=false

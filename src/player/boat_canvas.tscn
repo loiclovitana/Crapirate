@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdd2vi53oum2w"]
+
+[ext_resource type="Script" path="res://src/player/boat_canvas.gd" id="1_3ssya"]
+
+[sub_resource type="Gradient" id="Gradient_nmc0n"]
+colors = PackedColorArray(0.792157, 0.584314, 0.0470588, 1, 0.792157, 0.584314, 0.0470588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_43ugg"]
+gradient = SubResource("Gradient_nmc0n")
+width = 110
+height = 10
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_3xidf"]
+colors = PackedColorArray(0, 0, 0, 1, 0.084, 0.56, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vsvj5"]
+gradient = SubResource("Gradient_3xidf")
+width = 100
+height = 6
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_gjcbp"]
+colors = PackedColorArray(0, 0, 0, 1, 0.084, 0.56, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0jfm1"]
+gradient = SubResource("Gradient_gjcbp")
+width = 100
+height = 6
+
+[node name="BoatCanvas" type="CanvasLayer"]
+script = ExtResource("1_3ssya")
+
+[node name="BoatHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BoatHUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoatHUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="StatsDisplay" type="Label" parent="BoatHUD/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Stats:"
+
+[node name="control" type="VBoxContainer" parent="BoatHUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="HailLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Hail"
+
+[node name="hailView" type="TextureProgressBar" parent="BoatHUD/MarginContainer/control"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture_under = SubResource("GradientTexture2D_43ugg")
+texture_progress = SubResource("GradientTexture2D_vsvj5")
+texture_progress_offset = Vector2(5, 2)
+
+[node name="HelmLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Helm"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoatHUD/MarginContainer/control"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="helmLeftView" type="TextureProgressBar" parent="BoatHUD/MarginContainer/control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+allow_lesser = true
+fill_mode = 1
+texture_under = SubResource("GradientTexture2D_43ugg")
+texture_progress = SubResource("GradientTexture2D_vsvj5")
+texture_progress_offset = Vector2(10, 2)
+
+[node name="helmRightView" type="TextureProgressBar" parent="BoatHUD/MarginContainer/control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+allow_lesser = true
+texture_under = SubResource("GradientTexture2D_43ugg")
+texture_progress = SubResource("GradientTexture2D_0jfm1")
+texture_progress_offset = Vector2(0, 2)

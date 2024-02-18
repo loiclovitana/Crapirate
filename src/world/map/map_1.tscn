@@ -34,7 +34,7 @@ mesh = SubResource("BoxMesh_2rwjc")
 
 [node name="Camera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.707107, 0.241845, -0.664463, 0, 0.939692, 0.342021, 0.707107, -0.241845, 0.664463, -5, 3, 5)
+transform = Transform3D(0.958735, -0.229711, 0.167508, 0, 0.589196, 0.80799, -0.2843, -0.774649, 0.564883, 1.78517, 10, 6)
 environment = SubResource("Environment_gfh1n")
 
 [node name="Boat" parent="." instance=ExtResource("1_7wmm0")]
