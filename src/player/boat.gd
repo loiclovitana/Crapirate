@@ -19,7 +19,9 @@ var wind_knot = 2;
 # state variables
 var _current_speed = 0
 
+# childs
 @onready var canvas :CanvasLayer = $BoatCanvas
+@onready var renderer :BoatRendering = $BoatRendering
 
 #TODO delete
 var statsDisplayText = "Stats:"
@@ -37,6 +39,7 @@ var _helm_direction = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	canvas.boat = self
+	renderer.boat = self
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -79,8 +82,6 @@ func _process(delta):
 			statsDisplayText += "\n\tintended_max_speed: "+str(intended_max_speed)
 			canvas.debug_set_stats(statsDisplayText)
 		
-	# Rendring
-	_render(delta)
 
 
 # ==========================================================================================
@@ -171,11 +172,6 @@ func _compute_new_speed_decelerating(delta,intended_max_speed):
 #		Rendering methods
 # ==========================================================================================
 
-func _render(_delta):
-	_render_weathercock()
 
-func _render_weathercock():
-	var boat_direction3d = self.get_global_transform().basis.x
-	var boat_direction = Vector2(boat_direction3d.x,boat_direction3d.z)
-	var wind_angle = boat_direction.angle_to(wind_direction)
-	%windPivot.set_rotation(Vector3(0,-wind_angle,0))
+
+
