@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cqbgnb0mte42b"
+path="res://.godot/imported/bottle.obj-929ab13a92803542a41552b2a78e629f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bottle.obj-929ab13a92803542a41552b2a78e629f.mesh"]
+
+source_file="res://ressources/3D/terrain/misc/bottle.obj"
+dest_files=["res://.godot/imported/bottle.obj-929ab13a92803542a41552b2a78e629f.mesh", "res://.godot/imported/bottle.obj-929ab13a92803542a41552b2a78e629f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.01, 0.01, 0.01)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

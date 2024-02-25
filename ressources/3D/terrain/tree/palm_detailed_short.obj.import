@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5c06yr6tmkcx"
+path="res://.godot/imported/palm_detailed_short.obj-17e03d922aa67c07619d691eb5ae556f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/palm_detailed_short.obj-17e03d922aa67c07619d691eb5ae556f.mesh"]
+
+source_file="res://ressources/3D/terrain/tree/palm_detailed_short.obj"
+dest_files=["res://.godot/imported/palm_detailed_short.obj-17e03d922aa67c07619d691eb5ae556f.mesh", "res://.godot/imported/palm_detailed_short.obj-17e03d922aa67c07619d691eb5ae556f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.05, 0.05, 0.05)
+offset_mesh=Vector3(0.4, -0.1, -0.4)
+optimize_mesh=true
+force_disable_mesh_compression=false

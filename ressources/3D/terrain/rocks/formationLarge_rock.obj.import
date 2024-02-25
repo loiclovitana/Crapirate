@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ca0u4p67efou4"
+path="res://.godot/imported/formationLarge_rock.obj-96b8308df7d80bc01eec3f31a8a8a84e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/formationLarge_rock.obj-96b8308df7d80bc01eec3f31a8a8a84e.mesh"]
+
+source_file="res://ressources/3D/terrain/rocks/formationLarge_rock.obj"
+dest_files=["res://.godot/imported/formationLarge_rock.obj-96b8308df7d80bc01eec3f31a8a8a84e.mesh", "res://.godot/imported/formationLarge_rock.obj-96b8308df7d80bc01eec3f31a8a8a84e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.2, 0.2, 0.2)
+offset_mesh=Vector3(1.5, -0.3, -1)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmcxpijlswdr5"
+path="res://.godot/imported/toolShovel.obj-9b39d323eaa9cf56bc8de907bf769fb6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/toolShovel.obj-9b39d323eaa9cf56bc8de907bf769fb6.mesh"]
+
+source_file="res://ressources/3D/terrain/misc/toolShovel.obj"
+dest_files=["res://.godot/imported/toolShovel.obj-9b39d323eaa9cf56bc8de907bf769fb6.mesh", "res://.godot/imported/toolShovel.obj-9b39d323eaa9cf56bc8de907bf769fb6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

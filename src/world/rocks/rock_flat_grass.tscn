@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fhc827u24ov5"]
+
+[ext_resource type="ArrayMesh" uid="uid://dkde227t3g11p" path="res://ressources/3D/terrain/rocks/rockFlatGrass.obj" id="1_f0k36"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fhl5s"]
+size = Vector3(2.98669, 1, 1.96442)
+
+[node name="RockFlatGrass" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.30605, 0, 0)
+
+[node name="RockFlatGrass" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_f0k36")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0432739, 0, 0.188446)
+shape = SubResource("BoxShape3D_fhl5s")

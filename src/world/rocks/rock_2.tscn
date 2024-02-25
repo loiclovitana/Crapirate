@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://yom4ha3i084y"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqk36kstcfejo" path="res://ressources/3D/terrain/rocks/formation_rock.obj" id="1_g7088"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aabmv"]
+size = Vector3(1.98157, 2.43726, 1.85638)
+
+[node name="Rock3" type="StaticBody3D"]
+
+[node name="FormationRock" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_g7088")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0266266, 0.727112, -0.00436401)
+shape = SubResource("BoxShape3D_aabmv")

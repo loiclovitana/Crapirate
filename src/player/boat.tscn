@@ -29,3 +29,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.18, 
 
 [node name="Canon2" type="Marker3D" parent="Shooter"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.18, 0.43, -0.4)
+
+[node name="Bullets" type="Node" parent="Shooter"]
+unique_name_in_owner = true

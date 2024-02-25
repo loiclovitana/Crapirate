@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://5mykagb8o4t2"]
+
+[ext_resource type="ArrayMesh" uid="uid://7egg8f306mqj" path="res://ressources/3D/terrain/rocks/rockB.obj" id="1_iraxm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v6olo"]
+radius = 0.720018
+
+[node name="mediumRock" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.00429)
+
+[node name="RockB" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_iraxm")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_v6olo")

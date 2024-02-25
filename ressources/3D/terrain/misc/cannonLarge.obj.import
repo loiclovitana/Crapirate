@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cq886bk50jr3t"
+path="res://.godot/imported/cannonLarge.obj-60826b8f15a4ba95affafc57b11a517a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cannonLarge.obj-60826b8f15a4ba95affafc57b11a517a.mesh"]
+
+source_file="res://ressources/3D/terrain/misc/cannonLarge.obj"
+dest_files=["res://.godot/imported/cannonLarge.obj-60826b8f15a4ba95affafc57b11a517a.mesh", "res://.godot/imported/cannonLarge.obj-60826b8f15a4ba95affafc57b11a517a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(0.03, 0.03, 0.03)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

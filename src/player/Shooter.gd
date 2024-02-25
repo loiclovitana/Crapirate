@@ -14,7 +14,7 @@ class_name Shooter extends Node3D
 # Attributes
 var shooters :Array[Marker3D] = []
 @onready var boat : Boat = get_parent()
-
+@onready var bullets = %Bullets
 
 
 # variables
@@ -55,7 +55,7 @@ func _get_bullet() -> Bullet:
 	
 	bullet =  bullet_type.instantiate()
 	bullet.set_origin_shooter(self)
-	get_tree().root.add_child(bullet)
+	bullets.add_child(bullet)
 	return bullet
 	
 

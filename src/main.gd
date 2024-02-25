@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 
 
 var camera_rel_position: Vector3 
