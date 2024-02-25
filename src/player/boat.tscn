@@ -17,3 +17,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254242, 0.573822, 0)
 shape = SubResource("BoxShape3D_nefth")
 
 [node name="BoatCanvas" parent="." instance=ExtResource("4_qqy8j")]
+
+[node name="Canon" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.18, 0.43, 0.4)
+
+[node name="Canon2" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.18, 0.43, -0.4)

@@ -61,7 +61,7 @@ func _process(delta):
 	var new_speed = _compute_new_speed(delta,intended_max_speed)
 	
 	
-	
+	var rotation_speed = _rotation_speed()*delta
 	
 	# update position
 	set_global_position(self.get_global_position() 
@@ -69,7 +69,7 @@ func _process(delta):
 		)
 	set_global_rotation(
 		self.get_global_rotation()
-		+ Vector3(0,_helm_direction*delta/TIME_TO_FULLTURN,0)
+		+ rotation_speed
 	)
 	set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
 	
@@ -104,6 +104,8 @@ func _update_control(delta):
 				_update_helm(delta,1)
 			BoatController.CONTROL_ACTION.HELM_RIGHT:
 				_update_helm(delta,-1)
+			BoatController.CONTROL_ACTION.HELM_STRAIGHT:
+				_update_helm_straight(delta)
 	
 
 func _update_haul(delta,haul_direction):
@@ -113,7 +115,18 @@ func _update_haul(delta,haul_direction):
 		_sail_haul = 1
 	elif _sail_haul<0 : 
 		_sail_haul= 0
-	
+
+func _update_helm_straight(delta):
+	var update_helm = (delta / TIME_TO_HELM)
+	if abs(_helm_direction)<= update_helm:
+		_helm_direction=0
+	if _helm_direction<0:
+		_helm_direction+= update_helm
+	elif _helm_direction>0:
+		_helm_direction-= update_helm
+		
+		
+
 func _update_helm(delta,direction):
 	_helm_direction += direction * (delta / TIME_TO_HELM)
 	if _helm_direction>1:
@@ -173,6 +186,10 @@ func _compute_new_speed_decelerating(delta,intended_max_speed):
 	return new_speed
 	
 
+func _rotation_speed():
+	var r_speed = _helm_direction*max(1,_current_speed*0.5)
+	
+	return Vector3(0,r_speed/TIME_TO_FULLTURN,0)
 
 
 
