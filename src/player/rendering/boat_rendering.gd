@@ -11,7 +11,6 @@ var sails : Array[SailRendering]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var sails_to_render = $Sails.get_children()
-	print(sails_to_render)
 	for s in sails_to_render:
 		sails.append(s)
 	

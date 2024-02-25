@@ -45,6 +45,11 @@ transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.55
 
 [node name="Objects" type="Node" parent="."]
 
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89246, 0.098375, -5.29901)
+mesh = SubResource("BoxMesh_rkai7")
+skeleton = NodePath("../MeshInstance3D")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89247, 0.0884898, 1.94548)
 mesh = SubResource("BoxMesh_rkai7")
@@ -52,10 +57,6 @@ skeleton = NodePath("../MeshInstance3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94623, 0.254274, 0)
-mesh = SubResource("BoxMesh_rkai7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.94623, -0.155899, -5.29901)
 mesh = SubResource("BoxMesh_rkai7")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Objects"]
