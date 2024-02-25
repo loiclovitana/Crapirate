@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://brgh15k8ufvrd"]
+[gd_scene load_steps=7 format=3 uid="uid://brgh15k8ufvrd"]
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
 [ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/boat_rendering.tscn" id="2_4qo4p"]
-[ext_resource type="Script" path="res://src/player/Shooter.gd" id="4_0ymc3"]
+[ext_resource type="Script" path="res://src/player/shooter.gd" id="4_0ymc3"]
 [ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/hud/boat_canvas.tscn" id="4_qqy8j"]
+[ext_resource type="PackedScene" uid="uid://dqs7ybxxgn4lf" path="res://src/bullets/base_bullet.tscn" id="5_rjarl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
 size = Vector3(1.69549, 1.74908, 0.4)
@@ -21,6 +22,7 @@ shape = SubResource("BoxShape3D_nefth")
 
 [node name="Shooter" type="Node3D" parent="."]
 script = ExtResource("4_0ymc3")
+bullet_type = ExtResource("5_rjarl")
 
 [node name="Canon" type="Marker3D" parent="Shooter"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.18, 0.43, 0.4)

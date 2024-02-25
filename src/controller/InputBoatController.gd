@@ -5,7 +5,8 @@ var control_event = {
 	"haul":CONTROL_ACTION.HAUL,
 	"unhaul":CONTROL_ACTION.UNHAUL,
 	"helm_right":CONTROL_ACTION.HELM_RIGHT,
-	"helm_left":CONTROL_ACTION.HELM_LEFT
+	"helm_left":CONTROL_ACTION.HELM_LEFT,
+	"shoot" : CONTROL_ACTION.SHOOT
 }
 
 @export var _player_name :String=""
