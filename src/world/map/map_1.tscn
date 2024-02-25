@@ -37,11 +37,23 @@ size = Vector3(100, 20, 100)
 
 [node name="Sea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+layers = 2
+cast_shadow = 0
 mesh = SubResource("BoxMesh_2rwjc")
 metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)
+light_cull_mask = 4294967293
+shadow_enabled = true
+shadow_opacity = 0.9
+metadata/_edit_lock_ = true
+
+[node name="No Shadow" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)
+layers = 2
+light_cull_mask = 4294966274
+shadow_opacity = 0.9
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node" parent="."]
@@ -286,6 +298,7 @@ mesh = ExtResource("18_qufs6")
 skeleton = NodePath("../../../../..")
 
 [node name="Rocks" type="Node3D" parent="Objects/MainIsland"]
+metadata/_edit_lock_ = true
 
 [node name="RockFlat" parent="Objects/MainIsland/Rocks" instance=ExtResource("7_tx78j")]
 transform = Transform3D(9.24646, 0, -3.80828, 0, 5, 0, 3.80828, 0, 9.24646, 0, 0, 6.07679)
@@ -318,6 +331,7 @@ transform = Transform3D(5.72763, 0, -1.78725, 0, 6, 0, 1.78725, 0, 5.72763, -7.3
 transform = Transform3D(4.49946, 0, -2.18055, 0, 5, 0, 2.18055, 0, 4.49946, -10.7064, 0, -3.79928)
 
 [node name="palms" type="Node3D" parent="Objects/MainIsland"]
+metadata/_edit_lock_ = true
 
 [node name="palms3" type="Node3D" parent="Objects/MainIsland/palms"]
 transform = Transform3D(-0.616734, 0, -0.787172, 0, 1, 0, 0.787172, 0, -0.616734, 8.68577, 0.998627, 13.3761)
@@ -365,7 +379,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms6" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.831741, 0, -0.555164, 0, 1, 0, 0.555164, 0, -0.831741, 3.12577, 0.998626, 16.7014)
+transform = Transform3D(-0.831741, 0, -0.555164, 0, 1, 0, 0.555164, 0, -0.831741, 3.12577, 0.692127, 16.7014)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms6"]
 mesh = ExtResource("10_ptkv4")
@@ -387,7 +401,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms7" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(0.703047, 0, -0.711143, 0, 1, 0, 0.711143, 0, 0.703047, 5.90738, 0.998626, 16.3969)
+transform = Transform3D(0.703047, 0, -0.711143, 0, 1, 0, 0.711143, 0, 0.703047, 5.90738, 0.692127, 16.3969)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms7"]
 mesh = ExtResource("10_ptkv4")
@@ -409,7 +423,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms12" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(0.703047, 0, -0.711143, 0, 1, 0, 0.711143, 0, 0.703047, -1.336, 0.998626, 8.06175)
+transform = Transform3D(0.703047, 0, -0.711143, 0, 1, 0, 0.711143, 0, 0.703047, -1.336, 0.692127, 8.06175)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms12"]
 mesh = ExtResource("10_ptkv4")
@@ -431,7 +445,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms15" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(0.886898, 0, -0.461965, 0, 1, 0, 0.461965, 0, 0.886898, -1.76557, 0.998626, 9.65475)
+transform = Transform3D(0.886898, 0, -0.461965, 0, 1, 0, 0.461965, 0, 0.886898, -1.76557, 0.692127, 9.65475)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms15"]
 mesh = ExtResource("10_ptkv4")
@@ -453,7 +467,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms13" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.862514, 0, -0.506034, 0, 1, 0, 0.506034, 0, -0.862514, -1.93566, 0.642509, 12.0482)
+transform = Transform3D(-0.862514, 0, -0.506034, 0, 1, 0, 0.506034, 0, -0.862514, -1.93566, 0.33601, 12.0482)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms13"]
 mesh = ExtResource("10_ptkv4")
@@ -475,7 +489,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms14" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.944399, 0, 0.328801, 0, 1, 0, -0.328801, 0, -0.944399, -2.0909, 0.642509, 10.1335)
+transform = Transform3D(-0.944399, 0, 0.328801, 0, 1, 0, -0.328801, 0, -0.944399, -2.0909, 0.33601, 10.1335)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms14"]
 mesh = ExtResource("10_ptkv4")
@@ -497,7 +511,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms8" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(0.255766, 0, 0.966739, 0, 1, 0, -0.966739, 0, 0.255766, -3.9042, 0.998626, 13.2755)
+transform = Transform3D(0.255766, 0, 0.966739, 0, 1, 0, -0.966739, 0, 0.255766, -3.9042, 0.692127, 13.2755)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms8"]
 mesh = ExtResource("10_ptkv4")
@@ -519,7 +533,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms9" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.138707, 0, 0.990334, 0, 1, 0, -0.990334, 0, -0.138707, -6.96845, 0.998626, 13.6192)
+transform = Transform3D(-0.138707, 0, 0.990334, 0, 1, 0, -0.990334, 0, -0.138707, -6.96845, 0.692127, 13.6192)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms9"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.4524, -9.53674e-07, -2.56625)
@@ -542,7 +556,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms10" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.138707, 0, 0.990334, 0, 1, 0, -0.990334, 0, -0.138707, -9.42763, 0.998628, 4.37399)
+transform = Transform3D(-0.138707, 0, 0.990334, 0, 1, 0, -0.990334, 0, -0.138707, -9.42763, 0.692129, 4.37399)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms10"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.4524, -9.53674e-07, -2.56625)
@@ -565,7 +579,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms11" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.99994, 0, -0.0109431, 0, 1, 0, 0.0109431, 0, -0.99994, -10.2413, 0.998624, 2.5222)
+transform = Transform3D(-0.99994, 0, -0.0109431, 0, 1, 0, 0.0109431, 0, -0.99994, -10.2413, 0.692125, 2.5222)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms11"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.4524, -9.53674e-07, -2.56625)
@@ -588,7 +602,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms5" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(0.619313, 0, 0.785144, 0, 1, 0, -0.785144, 0, 0.619313, 9.77749, 0.998626, 16.0394)
+transform = Transform3D(0.619313, 0, 0.785144, 0, 1, 0, -0.785144, 0, 0.619313, 9.77749, 0.692127, 16.0394)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms5"]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.855541, 0, -0.0333958)
@@ -619,9 +633,10 @@ transform = Transform3D(5.03761, 0, 3.25922, 0, 2, 0, -3.25922, 0, 5.03761, -4.3
 [node name="Bottom" type="Node3D" parent="Objects"]
 
 [node name="RockFlat" type="MeshInstance3D" parent="Objects/Bottom"]
-transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 20, -2.40563, -1.81272, 16.1187)
+transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 20, -2.40563, -1.59533, 16.1187)
 mesh = ExtResource("20_sbwjt")
 skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
 
 [node name="RockFlat2" type="MeshInstance3D" parent="Objects/Bottom/RockFlat"]
 transform = Transform3D(-1.96911, 0, 0.350115, 0, 2, 0, -0.350115, 0, -1.96912, 0, -0.458071, 0.255147)
