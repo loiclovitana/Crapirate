@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dltsdrq8grbsc"]
+[gd_scene load_steps=23 format=3 uid="uid://dltsdrq8grbsc"]
 
 [ext_resource type="PackedScene" uid="uid://bb7tva3djhjvu" path="res://src/world/rocks/rock_1.tscn" id="1_1jnq6"]
 [ext_resource type="PackedScene" uid="uid://yom4ha3i084y" path="res://src/world/rocks/rock_2.tscn" id="2_p07ra"]
@@ -19,6 +19,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d0otgc3xl7ndm" path="res://ressources/3D/terrain/misc/fishingStand.obj" id="16_lv8ug"]
 [ext_resource type="ArrayMesh" uid="uid://dju01bbehwlts" path="res://ressources/3D/terrain/misc/fish.obj" id="17_ntnne"]
 [ext_resource type="ArrayMesh" uid="uid://sigyhip3xywo" path="res://ressources/3D/terrain/misc/tentClosed.obj" id="18_qufs6"]
+[ext_resource type="ArrayMesh" uid="uid://daehrk8qett4g" path="res://ressources/3D/terrain/rocks/rockFlat.obj" id="20_sbwjt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yaqkr"]
 transparency = 1
@@ -30,12 +31,12 @@ clearcoat_roughness = 0.16
 
 [sub_resource type="BoxMesh" id="BoxMesh_2rwjc"]
 material = SubResource("StandardMaterial3D_yaqkr")
-size = Vector3(100, 0.5, 100)
+size = Vector3(100, 20, 100)
 
 [node name="Map1" type="Node3D"]
 
 [node name="Sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 mesh = SubResource("BoxMesh_2rwjc")
 metadata/_edit_lock_ = true
 
@@ -69,6 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70947, 0, -0.920824)
 
 [node name="MainIsland" type="Node3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.0781)
+metadata/_edit_lock_ = true
 
 [node name="HoleRock" parent="Objects/MainIsland" instance=ExtResource("8_5bqjb")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.71024, 0.864941, 1.33557)
@@ -613,3 +615,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2862, 0, 0)
 
 [node name="RockFlatGrass" parent="Objects/IslandGreen" instance=ExtResource("6_w6sjr")]
 transform = Transform3D(5.03761, 0, 3.25922, 0, 2, 0, -3.25922, 0, 5.03761, -4.36378, 0.219074, -27.5561)
+
+[node name="Bottom" type="Node3D" parent="Objects"]
+
+[node name="RockFlat" type="MeshInstance3D" parent="Objects/Bottom"]
+transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 20, -2.40563, -1.81272, 16.1187)
+mesh = ExtResource("20_sbwjt")
+skeleton = NodePath("../../..")
+
+[node name="RockFlat2" type="MeshInstance3D" parent="Objects/Bottom/RockFlat"]
+transform = Transform3D(-1.96911, 0, 0.350115, 0, 2, 0, -0.350115, 0, -1.96912, 0, -0.458071, 0.255147)
+mesh = ExtResource("20_sbwjt")
+skeleton = NodePath("../../../..")
+
+[node name="bottombottom" type="MeshInstance3D" parent="Objects/Bottom"]
+transform = Transform3D(-97.303, 0, 23.0677, 0, 20, 0, -23.0677, 0, -97.303, -8.69169, -8.23745, 9.76187)
+mesh = ExtResource("20_sbwjt")
+skeleton = NodePath("../../..")
+metadata/_edit_lock_ = true
