@@ -26,7 +26,7 @@ var _current_speed = 0
 # childs
 @onready var canvas :CanvasLayer = $BoatCanvas
 @onready var renderer :BoatRendering = $BoatRendering
-@onready var shooter :Shooter = $Shooter
+@onready var shooter :BulletShooter = $Shooter
 
 #TODO delete
 var statsDisplayText = "Stats:"

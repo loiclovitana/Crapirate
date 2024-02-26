@@ -4,7 +4,7 @@ class_name Bullet extends Area3D
 @export var base_speed = 5.0
 @export var base_range = 15.0
 
-var _shooter :Shooter = null
+var _shooter :BulletShooter = null
 
 var keep_when_inactive = true
 
@@ -17,7 +17,7 @@ var range_left = 0
 func _ready():
 	active = false
 
-func set_origin_shooter(shooter:Shooter):
+func set_origin_shooter(shooter:BulletShooter):
 	self._shooter = shooter
 
 
@@ -36,11 +36,12 @@ func _process(delta):
 ## ========================================
 #			Lauch process
 ## ========================================
-func launch(position: Vector3,direction:Vector3,shoot_speed :float=1,range :float=1, relative_speed : Vector3 = Vector3(0,0,0) ):
+func launch(position: Vector3,direction:Vector3,shoot_speed :float=1,range :float=1
+			, relative_speed : Vector3 = Vector3(0,0,0) ):
 	self.visible = true
 	self.active = true
 	self.set_global_position(position)
-	self.velocity = shoot_speed*base_speed*direction.normalized() 
+	self.velocity = shoot_speed*base_speed*direction.normalized() +relative_speed
 	self.range_left = (base_range+range)
 
 ## =========================================

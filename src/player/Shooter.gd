@@ -1,4 +1,4 @@
-class_name Shooter extends Node3D
+class_name BulletShooter extends Node3D
 
 ##
 ##	Shooter Class
