@@ -3,7 +3,7 @@ class_name Boat extends Area3D
 #Constants
 const TIME_TO_HAUL = 3
 const TIME_TO_HELM = 1.5
-const TIME_FOR_MAX_SPEED = 5.0
+const TIME_FOR_MAX_SPEED = 10.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
 const TIME_TO_FULLTURN = 1.0
 const SPEED_SCALE = 0.1

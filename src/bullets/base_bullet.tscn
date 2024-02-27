@@ -15,7 +15,10 @@ radius = 0.05
 height = 0.1
 
 [node name="BaseBullet" type="Area3D"]
+collision_mask = 0
 script = ExtResource("1_gtp4h")
+base_speed = 8.0
+base_range = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_qtirg")

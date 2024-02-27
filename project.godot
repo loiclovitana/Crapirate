@@ -78,3 +78,6 @@ p2_unhaul={
 [layer_names]
 
 3d_render/layer_2="noShadow"
+3d_physics/layer_1="Bullets"
+3d_physics/layer_2="Boats"
+3d_physics/layer_3="Rocks"
