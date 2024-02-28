@@ -11,9 +11,9 @@ var keep_when_inactive = true
 
 var active = false
 var velocity :Vector3 = Vector3(0,0,0) 
-var range_left = 0
-var starting_range = 0
-var starting_height = 0
+var range_left : float = 0.0
+var starting_range : float = 0.0
+var starting_height : float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,11 +27,11 @@ func set_origin_shooter(shooter:BulletShooter):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if active:
-		var rel_position_y = sqrt(range_left/starting_range)
+		var rel_position_y = sqrt(max(range_left,0)/starting_range)
 		var movement = velocity*delta
 		range_left -= movement.length()
 		
-		var down_movement = starting_height*(rel_position_y-sqrt(range_left/starting_range))*Vector3.DOWN
+		var down_movement = starting_height*(rel_position_y-sqrt(max(range_left,0)/starting_range))*Vector3.DOWN
 		
 		
 		self.set_global_position(get_global_position()+movement+down_movement)
@@ -44,15 +44,18 @@ func _process(delta):
 ## ========================================
 #			Lauch process
 ## ========================================
-func launch(position: Vector3,direction:Vector3,shoot_speed :float=1,range :float=1
+func launch(shot_position: Vector3,direction:Vector3,shoot_speed :float=1,additionnal_range :float=0
 			, relative_speed : Vector3 = Vector3(0,0,0) ):
+	
+	self.set_global_position(shot_position)
+	self.velocity = shoot_speed*base_speed*direction.normalized() +relative_speed
+	self.starting_height = shot_position.y
+	self.starting_range = (base_range+additionnal_range)
+	self.range_left =self.starting_range
+	self.set_monitorable( true) 
+	self.set_monitoring( true) 
 	self.visible = true
 	self.active = true
-	self.set_global_position(position)
-	self.velocity = shoot_speed*base_speed*direction.normalized() +relative_speed
-	self.starting_height = position.y
-	self.starting_range = (base_range+range)
-	self.range_left =self.starting_range
 	
 
 ## =========================================
@@ -61,7 +64,8 @@ func launch(position: Vector3,direction:Vector3,shoot_speed :float=1,range :floa
 func set_inactive():
 	_shooter.signal_bullet_ready(self)
 	self.active=false
-	# TODO disable collision
 	self.visible=false
+	self.set_monitorable( false) 
+	self.set_monitoring( false) 
 	if not keep_when_inactive:
 		self.queue_free()

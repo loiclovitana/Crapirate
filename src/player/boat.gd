@@ -28,6 +28,7 @@ var _current_speed = 0
 @onready var canvas :CanvasLayer = $BoatCanvas
 @onready var renderer :BoatRendering = $BoatRendering
 @onready var shooter :BulletShooter = $Shooter
+@onready var boatCollisionDetector :BoatCollisionDetector = $BoatCollisionDetections
 
 #TODO delete
 var statsDisplayText = "Stats:"
@@ -61,27 +62,29 @@ func _process(delta):
 	var intended_max_speed = _sail_haul*max_possible_speed
 	
 	var new_speed = _compute_new_speed(delta,intended_max_speed)
+	var rotation_speed = _rotation_speed()
 	
+	var s_r= _speed_with_collision(new_speed,rotation_speed)
+	new_speed = s_r[0]
+	rotation_speed = s_r[1]
 	
-	var rotation_speed = _rotation_speed()*delta
 	
 	# update position
 	set_global_position(self.get_global_position() 
 					+( self.global_transform.basis.x * _current_speed * delta)*0.5
 		)
-	set_global_rotation(
-		self.get_global_rotation()
-		+ rotation_speed
+	rotate_y (
+		rotation_speed*delta
 	)
 	set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
 	
 	_current_speed=new_speed
 	
 	# update display 
-	next_display_update-= delta
-	if next_display_update<0:
-		next_display_update = UPDATE_DELTA
-		if OS.is_debug_build():
+	if OS.is_debug_build():
+		next_display_update-= delta
+		if next_display_update<0:
+			next_display_update = UPDATE_DELTA
 			statsDisplayText += "\n\tFPS :" + str(Engine.get_frames_per_second())
 			statsDisplayText += "\n\t_current_speed: "+str(_current_speed)
 			statsDisplayText += "\n\t_sail_haul: "+str(_sail_haul)
@@ -137,12 +140,15 @@ func _update_helm(delta,direction):
 		_helm_direction = 1
 	elif _helm_direction<-1 : 
 		_helm_direction= -1
-	
 
+
+# ==========================================================================================
+#		Compute Speed methods
+# ==========================================================================================
 
 func _compute_max_possible_speed() -> float:
 	var boat_direction3d = self.get_global_transform().basis.x
-	statsDisplayText += "\n\tBoat direction "+str(boat_direction3d)
+	
 	
 	var boat_direction = Vector2(boat_direction3d.x,boat_direction3d.z)
 	var wind_angle = abs(boat_direction.angle_to(wind_direction))
@@ -151,10 +157,12 @@ func _compute_max_possible_speed() -> float:
 		wind_angle = LIMIT_ANGLE_FULL_BACK_WIND
 		
 	var wind_power =  wind_angle*sin(wind_angle)
-	statsDisplayText+= "\n\twind angle: "+str(wind_angle)
+	if OS.is_debug_build():
+		statsDisplayText += "\n\tBoat direction "+str(boat_direction3d)
+		statsDisplayText+= "\n\twind angle: "+str(wind_angle)
 	return wind_power*speed_stat*wind_knot/(2*PI)
 		
-func _compute_new_speed(delta,intended_max_speed):
+func _compute_new_speed(delta,intended_max_speed) -> float:
 	if is_equal_approx(_current_speed,intended_max_speed):
 		return intended_max_speed
 	if _current_speed< intended_max_speed:
@@ -176,7 +184,7 @@ func _compute_new_speed_accelerating(delta,intended_max_speed) -> float:
 	return new_speed
 
 
-func _compute_new_speed_decelerating(delta,intended_max_speed):
+func _compute_new_speed_decelerating(delta,intended_max_speed) -> float:
 	const TIME_FROM_1_TO_0 =4
 	
 	var current_speed_time =  - sqrt(_current_speed)*TIME_FROM_1_TO_0
@@ -189,10 +197,31 @@ func _compute_new_speed_decelerating(delta,intended_max_speed):
 		return intended_max_speed
 	return new_speed
 
-func _rotation_speed():
+func _rotation_speed() -> float:
 	var r_speed = _helm_direction*max(1,_current_speed*0.5)
 	
-	return Vector3(0,r_speed/TIME_TO_FULLTURN,0)
+	return r_speed/TIME_TO_FULLTURN
 
+# ==========================================================================================
+#		Compute collision
+# ==========================================================================================
 
-
+func _speed_with_collision(speed,rotation_speed) -> Array[float]:
+	if not boatCollisionDetector or boatCollisionDetector.collisions_point.is_empty():
+		return [speed,rotation_speed]
+	var collision_speed = speed
+	var collision_rotation = rotation_speed
+	
+	var front_collision : Vector3 = Vector3.ZERO
+	var back_collision : Vector3 = Vector3.ZERO
+	for collision in boatCollisionDetector.collisions_point:
+		if collision.x<0.1:
+			back_collision+=collision
+		if collision.x>0.1:
+			front_collision+=collision
+			
+	#set rotation_speed if collision isn't centered
+	if  ( not is_zero_approx(back_collision.z) ) or not is_zero_approx(front_collision.z):
+		collision_rotation=max(2,_current_speed*2)*(front_collision.z - back_collision.z )
+	
+	return [collision_speed,collision_rotation]

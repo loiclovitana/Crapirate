@@ -7,12 +7,12 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func set_observer(node : Node):
 	assert(%playerView.get_child_count()==0)
-	if node.owner:
+	if node.get_parent():
 		node.reparent(%playerView)
 	else:
 		%playerView.add_child(node)

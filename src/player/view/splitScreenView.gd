@@ -4,7 +4,6 @@ const sub_view_player_container : PackedScene = preload("res://src/player/view/s
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var players = []
 	for player in get_children():
 		var playerView = sub_view_player_container.instantiate()
 		self.add_child(playerView)
@@ -12,5 +11,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass

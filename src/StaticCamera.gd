@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	self.look_at_from_position(
 		parent.get_global_position()+relative_parent_position
 		,parent.get_global_position()+Vector3.UP*2

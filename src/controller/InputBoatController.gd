@@ -9,7 +9,7 @@ var control_event = {
 	"shoot" : CONTROL_ACTION.SHOOT
 }
 
-@export var _player_name :String=""
+@export var _player_name :String="p1"
 
 func _init(player_name) -> void:
 	self._player_name=player_name
