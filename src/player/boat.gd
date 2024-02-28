@@ -156,7 +156,7 @@ func _compute_max_possible_speed() -> float:
 		
 func _compute_new_speed(delta,intended_max_speed):
 	if is_equal_approx(_current_speed,intended_max_speed):
-		return _current_speed
+		return intended_max_speed
 	if _current_speed< intended_max_speed:
 		return _compute_new_speed_accelerating(delta,intended_max_speed)
 	else :
@@ -166,7 +166,7 @@ func _compute_new_speed(delta,intended_max_speed):
 	
 func _compute_new_speed_accelerating(delta,intended_max_speed) -> float:
 	if is_zero_approx(intended_max_speed):
-		return intended_max_speed
+		return 0
 	
 	var current_speed_time = pow(_current_speed/intended_max_speed,3) * TIME_FOR_MAX_SPEED
 	var new_speed_time = current_speed_time+delta

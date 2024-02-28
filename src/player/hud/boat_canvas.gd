@@ -17,6 +17,9 @@ func _process(_delta):
 	if boat._helm_direction<0:
 		%helmLeftView.value = 0
 		%helmRightView.value =  abs(boat._helm_direction)*100
+	if is_zero_approx(boat._helm_direction):
+		%helmLeftView.value = 0
+		%helmRightView.value =0
 	
 	%haulView.value = boat._sail_haul*100
 
