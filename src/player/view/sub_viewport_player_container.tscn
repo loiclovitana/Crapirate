@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnp55uf33h5w7"]
+
+[ext_resource type="Script" path="res://src/player/view/player_view.gd" id="1_m461a"]
+
+[node name="PlayerViewContainer" type="SubViewportContainer"]
+size_flags_horizontal = 3
+stretch = true
+script = ExtResource("1_m461a")
+
+[node name="playerView" type="SubViewport" parent="."]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
