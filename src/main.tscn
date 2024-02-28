@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmesiygxqdgyi"]
+[gd_scene load_steps=5 format=3 uid="uid://bq4wyds1k7lgo"]
 
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="1_b6ytr"]
-[ext_resource type="Script" path="res://src/main.gd" id="1_q8dep"]
+[ext_resource type="Script" path="res://src/gamemode/race.gd" id="1_hhrd6"]
 [ext_resource type="PackedScene" uid="uid://brgh15k8ufvrd" path="res://src/player/boat.tscn" id="2_qxrrm"]
 [ext_resource type="Script" path="res://src/StaticCamera.gd" id="4_c1qx7"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_q8dep")
+script = ExtResource("1_hhrd6")
 
 [node name="Map1" parent="." instance=ExtResource("1_b6ytr")]
 

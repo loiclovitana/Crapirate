@@ -11,15 +11,13 @@ config_version=5
 [application]
 
 config/name="Crapirate"
-run/main_scene="res://src/main.tscn"
+run/main_scene="res://src/gamemode/race.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=2304
-window/size/viewport_height=1296
-window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [file_customization]
 
