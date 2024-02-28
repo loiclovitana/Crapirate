@@ -7,6 +7,8 @@ size = Vector3(1, 1.11804, 0.648926)
 
 [node name="smallRock" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.002)
+collision_layer = 4
+collision_mask = 0
 
 [node name="RockA" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_hxo8m")

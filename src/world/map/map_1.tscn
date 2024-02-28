@@ -1,9 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dltsdrq8grbsc"]
+[gd_scene load_steps=33 format=3 uid="uid://dltsdrq8grbsc"]
 
 [ext_resource type="PackedScene" uid="uid://bb7tva3djhjvu" path="res://src/world/rocks/rock_1.tscn" id="1_1jnq6"]
 [ext_resource type="PackedScene" uid="uid://yom4ha3i084y" path="res://src/world/rocks/rock_2.tscn" id="2_p07ra"]
+[ext_resource type="ArrayMesh" uid="uid://ca0u4p67efou4" path="res://ressources/3D/terrain/rocks/formationLarge_rock.obj" id="3_6ftw7"]
 [ext_resource type="PackedScene" uid="uid://poi1nxpyltxa" path="res://src/world/rocks/small_rock.tscn" id="3_ystak"]
 [ext_resource type="PackedScene" uid="uid://5mykagb8o4t2" path="res://src/world/rocks/medium_rock.tscn" id="4_5jhin"]
+[ext_resource type="ArrayMesh" uid="uid://bqk36kstcfejo" path="res://ressources/3D/terrain/rocks/formation_rock.obj" id="4_hxpyt"]
 [ext_resource type="PackedScene" uid="uid://c034nvs0ya4mm" path="res://src/world/rocks/small_rock_2.tscn" id="5_xsvye"]
 [ext_resource type="PackedScene" uid="uid://fhc827u24ov5" path="res://src/world/rocks/rock_flat_grass.tscn" id="6_w6sjr"]
 [ext_resource type="PackedScene" uid="uid://bdjn0ndf6y4bb" path="res://src/world/rocks/rock_flat.tscn" id="7_tx78j"]
@@ -20,6 +22,14 @@
 [ext_resource type="ArrayMesh" uid="uid://dju01bbehwlts" path="res://ressources/3D/terrain/misc/fish.obj" id="17_ntnne"]
 [ext_resource type="ArrayMesh" uid="uid://sigyhip3xywo" path="res://ressources/3D/terrain/misc/tentClosed.obj" id="18_qufs6"]
 [ext_resource type="ArrayMesh" uid="uid://daehrk8qett4g" path="res://ressources/3D/terrain/rocks/rockFlat.obj" id="20_sbwjt"]
+[ext_resource type="ArrayMesh" uid="uid://dx4eyfhbu8tn4" path="res://ressources/3D/terrain/misc/boat_small.obj" id="22_phjt8"]
+[ext_resource type="ArrayMesh" uid="uid://d03yetvkhcfpd" path="res://ressources/3D/terrain/misc/workbench.obj" id="23_jwcec"]
+[ext_resource type="ArrayMesh" uid="uid://cmcxpijlswdr5" path="res://ressources/3D/terrain/misc/toolShovel.obj" id="24_ueke0"]
+[ext_resource type="ArrayMesh" uid="uid://b0rv1bwuyidm6" path="res://ressources/3D/terrain/misc/chest.obj" id="25_f7qck"]
+[ext_resource type="ArrayMesh" uid="uid://ddc3rt66jjwmw" path="res://ressources/3D/terrain/misc/grass.obj" id="26_jen86"]
+[ext_resource type="ArrayMesh" uid="uid://cx7krnp0n5qs8" path="res://ressources/3D/terrain/misc/fence.obj" id="27_48am2"]
+[ext_resource type="ArrayMesh" uid="uid://c8l5merdh30do" path="res://ressources/3D/terrain/tree/tree.obj" id="28_5id55"]
+[ext_resource type="ArrayMesh" uid="uid://dlheknlvvd5vo" path="res://ressources/3D/terrain/tree/treeLarge.obj" id="29_fn7dy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yaqkr"]
 transparency = 1
@@ -62,23 +72,57 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1933, 0, -26.5673)
 metadata/_edit_group_ = true
 
-[node name="Rock1" parent="Objects/IslandRock" instance=ExtResource("1_1jnq6")]
+[node name="island" type="Node3D" parent="Objects/IslandRock"]
+
+[node name="Rock1" parent="Objects/IslandRock/island" instance=ExtResource("1_1jnq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735836, 0, 1.07553)
 
-[node name="Rock3" parent="Objects/IslandRock" instance=ExtResource("1_1jnq6")]
+[node name="Rock3" parent="Objects/IslandRock/island" instance=ExtResource("1_1jnq6")]
 transform = Transform3D(0.623811, 0, 0.781575, 0, 1, 0, -0.781575, 0, 0.623811, -0.735836, 0, -0.643679)
 
-[node name="Rock4" parent="Objects/IslandRock" instance=ExtResource("1_1jnq6")]
+[node name="Rock4" parent="Objects/IslandRock/island" instance=ExtResource("1_1jnq6")]
 transform = Transform3D(0.623811, 0, 0.781575, 0, 1, 0, -0.781575, 0, 0.623811, -0.310879, 0, 0.616171)
 
-[node name="Rock5" parent="Objects/IslandRock" instance=ExtResource("1_1jnq6")]
+[node name="Rock5" parent="Objects/IslandRock/island" instance=ExtResource("1_1jnq6")]
 transform = Transform3D(-0.517997, 0, -0.855383, 0, 1, 0, 0.855383, 0, -0.517997, 1.87423, 0, 0.616171)
 
-[node name="Rock6" parent="Objects/IslandRock" instance=ExtResource("1_1jnq6")]
+[node name="Rock6" parent="Objects/IslandRock/island" instance=ExtResource("1_1jnq6")]
 transform = Transform3D(-0.601843, 0, 0.798615, 0, 1, 0, -0.798615, 0, -0.601843, 1.87423, 0, -0.708553)
 
-[node name="Rock2" parent="Objects/IslandRock" instance=ExtResource("2_p07ra")]
+[node name="Rock2" parent="Objects/IslandRock/island" instance=ExtResource("2_p07ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70947, 0, -0.920824)
+
+[node name="bottom" type="Node3D" parent="Objects/IslandRock"]
+
+[node name="FormationLargeRock" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.02587, -7.47509, 2.23275)
+mesh = ExtResource("3_6ftw7")
+skeleton = NodePath("../../../..")
+
+[node name="FormationLargeRock2" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(-1.47064, 0, 2.14412, 0, 2.6, 0, -2.14412, 0, -1.47064, 2.51735, -6.35489, -1.35278)
+mesh = ExtResource("3_6ftw7")
+skeleton = NodePath("../../../..")
+
+[node name="FormationLargeRock3" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(-2.8077, 0, 1.31409, 0, 3.1, 0, -1.31409, 0, -2.8077, -1.95647, -7.84628, -2.72365)
+mesh = ExtResource("3_6ftw7")
+skeleton = NodePath("../../../..")
+
+[node name="FormationRock" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(1.59242, 0, -2.54248, 0, 3, 0, 2.54248, 0, 1.59242, -1.04195, -6.80139, 1.57993)
+mesh = ExtResource("4_hxpyt")
+skeleton = NodePath("../../../..")
+
+[node name="FormationRock2" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(0.417355, 0, -1.44077, 0, 1.5, 0, 1.44077, 0, 0.417355, 0.152411, -2.06798, 1.13001)
+mesh = ExtResource("4_hxpyt")
+skeleton = NodePath("../../../..")
+
+[node name="FormationRock3" type="MeshInstance3D" parent="Objects/IslandRock/bottom"]
+transform = Transform3D(1.4816, 0, 0.234238, 0, 1.5, 0, -0.234238, 0, 1.4816, 2.49004, -2.49352, 0.63163)
+mesh = ExtResource("4_hxpyt")
+skeleton = NodePath("../../../..")
 
 [node name="MainIsland" type="Node3D" parent="Objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.0781)
@@ -628,7 +672,3049 @@ skeleton = NodePath("../../../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2862, 0, 0)
 
 [node name="RockFlatGrass" parent="Objects/IslandGreen" instance=ExtResource("6_w6sjr")]
-transform = Transform3D(5.03761, 0, 3.25922, 0, 2, 0, -3.25922, 0, 5.03761, -4.36378, 0.219074, -27.5561)
+transform = Transform3D(5.03761, 0, 3.25922, 0, 6, 0, -3.25922, 0, 5.03761, -4.36378, 0.219074, -27.5561)
+
+[node name="BoatSmall" type="MeshInstance3D" parent="Objects/IslandGreen"]
+transform = Transform3D(0.937197, 0, -0.348801, 0, 1, 0, 0.348801, 0, 0.937197, -0.583044, -0.0910022, -22.5441)
+mesh = ExtResource("22_phjt8")
+skeleton = NodePath("../../..")
+
+[node name="BoatSmall2" type="MeshInstance3D" parent="Objects/IslandGreen"]
+transform = Transform3D(-0.0973571, 0, -0.99525, 0, 1, 0, 0.99525, 0, -0.0973571, -7.3661, -0.16245, -31.2832)
+mesh = ExtResource("22_phjt8")
+skeleton = NodePath("../../..")
+
+[node name="BoatSmall3" type="MeshInstance3D" parent="Objects/IslandGreen"]
+transform = Transform3D(-0.873901, -0.0493877, 0.483588, -0.0413958, 0.998773, 0.0271951, -0.484337, 0.00374729, -0.874873, -5.73557, -0.16245, -32.5962)
+mesh = ExtResource("22_phjt8")
+skeleton = NodePath("../../..")
+
+[node name="Campfire" type="MeshInstance3D" parent="Objects/IslandGreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24143, 1.00548, -23.5157)
+mesh = ExtResource("14_4675d")
+skeleton = NodePath("../../..")
+
+[node name="Workbench" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(0.969757, 0, -0.244072, 0, 1, 0, 0.244072, 0, 0.969757, -0.807938, -0.0446681, 0.564903)
+mesh = ExtResource("23_jwcec")
+skeleton = NodePath("../../../..")
+
+[node name="Workbench2" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(0.678391, 0, 0.734702, 0, 1, 0, -0.734702, 0, 0.678391, -0.207775, -0.0446681, 0.594131)
+mesh = ExtResource("23_jwcec")
+skeleton = NodePath("../../../..")
+
+[node name="ToolShovel" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(1, 0, 0, 0, -0.941176, 0.337917, 0, -0.337917, -0.941176, -2.45424, 0.218243, 0.583019)
+mesh = ExtResource("24_ueke0")
+skeleton = NodePath("../../../..")
+
+[node name="ToolShovel2" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(0.555207, -0.281049, -0.782787, 0.101548, -0.911228, 0.399189, -0.825489, -0.301123, -0.477381, -2.04911, 0.218243, 0.345711)
+mesh = ExtResource("24_ueke0")
+skeleton = NodePath("../../../..")
+
+[node name="ToolShovel3" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(-0.884713, 0.27962, -0.372955, -0.385259, -0.889041, 0.24735, -0.262408, 0.362518, 0.894272, -2.57938, 0.228388, -0.0207405)
+mesh = ExtResource("24_ueke0")
+skeleton = NodePath("../../../..")
+
+[node name="TentClosed" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.178787, -0.0400498, -1.00286)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../..")
+metadata/_edit_group_ = true
+
+[node name="TentClosed2" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68174, 0, 0)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed3" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.746391, 0, 0)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed4" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45819, 0, 0)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed5" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45819, 0, -0.840313)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed6" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.710594, 0, -0.840313)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed7" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0633392, 0, -0.840313)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="TentClosed8" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire/TentClosed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735107, 0, -0.840313)
+mesh = ExtResource("18_qufs6")
+skeleton = NodePath("../../../../..")
+
+[node name="Chest" type="MeshInstance3D" parent="Objects/IslandGreen/Campfire"]
+transform = Transform3D(-0.115929, 0.656923, 0.744992, 0.243084, 0.746005, -0.619989, -0.963053, 0.109221, -0.246171, -2.52562, -0.123923, 0.178968)
+mesh = ExtResource("25_f7qck")
+skeleton = NodePath("../../../..")
+
+[node name="Grass" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.01336, 0.774021, -26.0359)
+metadata/_edit_group_ = true
+
+[node name="Grass" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.854898, 0.210065, 0.546797)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.928577, 0, 0.371141, 0, 1, 0, -0.371141, 0, 0.928577, -1.03244, 0.210065, 0.485588)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.838918, 0, -0.544258, 0, 1, 0, 0.544258, 0, 0.838918, -0.750654, 0.210065, 0.445677)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.951905, 0, -0.306393, 0, 1, 0, 0.306393, 0, 0.951905, -0.92745, 0.210064, 0.313778)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.893003, 0, -0.450052, 0, 1, 0, 0.450052, 0, 0.893003, -0.693342, 0.210065, 0.875523)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass6" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.996254, 0, -0.0864776, 0, 1, 0, 0.0864776, 0, 0.996254, -0.824339, 0.210065, 0.740961)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass7" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.504211, 0, -0.86358, 0, 1, 0, 0.86358, 0, 0.504211, -0.554739, 0.210065, 0.832138)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass8" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -0.653261, 0.210064, 0.634783)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass9" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.393974, 0, -0.919122, 0, 1, 0, 0.919122, 0, 0.393974, -0.614996, 0.210065, 0.436762)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass10" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.706959, 0, -0.707255, 0, 1, 0, 0.707255, 0, 0.706959, -0.628683, 0.210065, 0.249468)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass11" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.169728, 0, -0.985491, 0, 1, 0, 0.985491, 0, -0.169728, -0.480978, 0.210065, 0.492739)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass12" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.0934132, 0, -0.995627, 0, 1, 0, 0.995627, 0, 0.0934132, -0.429403, 0.210064, 0.278275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass13" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.851269, 0, 0.524729, 0, 1, 0, -0.524729, 0, 0.851269, -0.265942, 0.210065, 1.11038)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass14" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.59572, 0, 0.803192, 0, 1, 0, -0.803192, 0, 0.59572, -0.449194, 0.210065, 1.15144)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass15" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.999733, 0, -0.023106, 0, 1, 0, 0.023106, 0, 0.999733, -0.230263, 0.210065, 0.969604)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass16" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.971101, 0, 0.238669, 0, 1, 0, -0.238669, 0, 0.971101, -0.449974, 0.210065, 0.950092)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass17" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.996341, 0, 0.0854691, 0, 1, 0, -0.0854691, 0, 0.996341, 0.0440788, 0.210065, 1.30544)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass18" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.893458, 0, 0.449148, 0, 1, 0, -0.449148, 0, 0.893458, -0.138044, 0.210065, 1.25963)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass19" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.882365, 0, -0.470565, 0, 1, 0, 0.470565, 0, 0.882365, 0.139301, 0.210065, 1.19578)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass20" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.974609, 0, -0.223914, 0, 1, 0, 0.223914, 0, 0.974609, -0.0481243, 0.210065, 1.07948)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass21" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.817668, 0, -0.575691, 0, 1, 0, 0.575691, 0, 0.817668, -0.119459, 0.210065, 0.890831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass22" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.972929, 0, -0.231103, 0, 1, 0, 0.231103, 0, 0.972929, -0.229389, 0.210065, 0.738575)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass23" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.372631, 0, -0.927979, 0, 1, 0, 0.927979, 0, 0.372631, 0.0240002, 0.210065, 0.86816)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass24" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.601954, 0, -0.798531, 0, 1, 0, 0.798531, 0, 0.601954, -0.044632, 0.210065, 0.658529)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass25" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.69774, 0, 0.716351, 0, 1, 0, -0.716351, 0, 0.69774, -0.597015, 0.210065, 1.70822)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass26" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.382038, 0, 0.924146, 0, 1, 0, -0.924146, 0, 0.382038, -0.76474, 0.210065, 1.79269)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass27" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.975227, 0, 0.221208, 0, 1, 0, -0.221208, 0, 0.975227, -0.596718, 0.210065, 1.56299)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass28" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.883668, 0, 0.468115, 0, 1, 0, -0.468115, 0, 0.883668, -0.814562, 0.210065, 1.5976)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass29" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.945479, 0, 0.325684, 0, 1, 0, -0.325684, 0, 0.945479, -0.248808, 0.210065, 1.82185)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass30" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.757075, 0, 0.653328, 0, 1, 0, -0.653328, 0, 0.757075, -0.436605, 0.210065, 1.8218)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass31" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.970435, 0, -0.241363, 0, 1, 0, 0.241363, 0, 0.970435, -0.183178, 0.210065, 1.69229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass32" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.999793, 0, 0.0203317, 0, 1, 0, -0.0203317, 0, 0.999793, -0.393295, 0.210065, 1.62517)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass33" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.933305, 0, -0.359085, 0, 1, 0, 0.359085, 0, 0.933305, -0.508451, 0.210065, 1.45959)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass34" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.999916, 0, 0.01295, 0, 1, 0, -0.01295, 0, 0.999916, -0.652168, 0.210065, 1.33871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass35" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.587531, 0, -0.809202, 0, 1, 0, 0.809202, 0, 0.587531, -0.37484, 0.210065, 1.40264)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass36" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.778397, 0, -0.627773, 0, 1, 0, 0.627773, 0, 0.778397, -0.492487, 0.210065, 1.21605)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass37" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.239245, 0, 0.970959, 0, 1, 0, -0.970959, 0, 0.239245, 0.067749, 0.210065, 0.34045)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass38" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.138205, 0, 0.990404, 0, 1, 0, -0.990404, 0, -0.138205, -0.0341568, 0.210065, 0.498192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass39" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.72916, 0, 0.684344, 0, 1, 0, -0.684344, 0, 0.72916, -0.00549316, 0.210065, 0.215042)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass40" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.525234, 0, 0.850958, 0, 1, 0, -0.850958, 0, 0.525234, -0.175859, 0.210065, 0.355148)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass41" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.650628, 0, 0.759396, 0, 1, 0, -0.759396, 0, 0.650628, 0.425581, 0.210065, 0.262232)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass42" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.322315, 0, 0.946633, 0, 1, 0, -0.946633, 0, 0.322315, 0.263584, 0.210065, 0.357231)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass43" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.959131, 0, 0.282961, 0, 1, 0, -0.282961, 0, 0.959131, 0.416616, 0.210065, 0.117275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass44" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.85201, 0, 0.523525, 0, 1, 0, -0.523525, 0, 0.85201, 0.201424, 0.210065, 0.16572)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass45" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.986686, 0, 0.162637, 0, 1, 0, -0.162637, 0, 0.986686, 0.0183048, 0.210065, 0.081192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass46" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.855852, 0, 0.517221, 0, 1, 0, -0.517221, 0, 0.855852, -0.166824, 0.210065, 0.0496712)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass47" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.916265, 0, -0.400573, 0, 1, 0, 0.400573, 0, 0.916265, 0.104723, 0.210065, -0.0355434)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass48" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.989062, 0, -0.147499, 0, 1, 0, 0.147499, 0, 0.989062, -0.091177, 0.210065, -0.13693)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass49" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.0381785, 0, 0.999271, 0, 1, 0, -0.999271, 0, 0.0381785, 0.542879, 0.210065, 0.997828)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass50" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.335419, 0, 0.942069, 0, 1, 0, -0.942069, 0, -0.335419, 0.474937, 0.210065, 1.1729)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass51" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.57589, 0, 0.817527, 0, 1, 0, -0.817527, 0, 0.57589, 0.445814, 0.210065, 0.889799)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass52" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.342512, 0, 0.939514, 0, 1, 0, -0.939514, 0, 0.342512, 0.307262, 0.210065, 1.06143)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass53" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.483817, 0, 0.875169, 0, 1, 0, -0.875169, 0, 0.483817, 0.877535, 0.210065, 0.84894)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass54" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.12445, 0, 0.992226, 0, 1, 0, -0.992226, 0, 0.12445, 0.738068, 0.210065, 0.974703)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass55" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.882201, 0, 0.470873, 0, 1, 0, -0.470873, 0, 0.882201, 0.839474, 0.210065, 0.708782)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass56" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.728694, 0, 0.68484, 0, 1, 0, -0.68484, 0, 0.728694, 0.638502, 0.210065, 0.799696)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass57" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.933493, 0, 0.358596, 0, 1, 0, -0.358596, 0, 0.933493, 0.442083, 0.210065, 0.753901)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass58" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.73373, 0, 0.679441, 0, 1, 0, -0.679441, 0, 0.73373, 0.254404, 0.210065, 0.760427)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass59" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.978292, 0, -0.207229, 0, 1, 0, 0.207229, 0, 0.978292, 0.503139, 0.210065, 0.622116)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass60" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.998468, 0, 0.0553335, 0, 1, 0, -0.0553335, 0, 0.998468, 0.290798, 0.210065, 0.562391)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass61" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.185529, 0, 0.982639, 0, 1, 0, -0.982639, 0, -0.185529, 1.06856, 0.210065, 0.415432)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass62" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.536976, 0, 0.843598, 0, 1, 0, -0.843598, 0, -0.536976, 1.04136, 0.210065, 0.601248)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass63" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.379165, 0, 0.925329, 0, 1, 0, -0.925329, 0, 0.379165, 0.94986, 0.210065, 0.331758)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass64" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.124467, 0, 0.992224, 0, 1, 0, -0.992224, 0, 0.124467, 0.853052, 0.210065, 0.529957)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass65" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.27656, 0, 0.960997, 0, 1, 0, -0.960997, 0, 0.27656, 1.36161, 0.210065, 0.195692)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass66" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.0998581, 0, 0.995002, 0, 1, 0, -0.995002, 0, -0.0998581, 1.25368, 0.210065, 0.34938)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass67" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.755042, 0, 0.655677, 0, 1, 0, -0.655677, 0, 0.755042, 1.29326, 0.210065, 0.0675449)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass68" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.557702, 0, 0.830042, 0, 1, 0, -0.830042, 0, 0.557702, 1.11761, 0.210065, 0.20097)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass69" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.830071, 0, 0.557658, 0, 1, 0, -0.557658, 0, 0.830071, 0.91593, 0.210065, 0.200111)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass70" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.563814, 0, 0.825902, 0, 1, 0, -0.825902, 0, 0.563814, 0.734426, 0.210065, 0.24831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass71" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.999871, 0, 0.0160564, 0, 1, 0, -0.0160564, 0, 0.999871, 0.946074, 0.210065, 0.058033)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass72" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.961011, 0, 0.27651, 0, 1, 0, -0.27651, 0, 0.961011, 0.725761, 0.210065, 0.0471439)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass73" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.319356, 0, 0.947635, 0, 1, 0, -0.947635, 0, -0.319356, 1.67327, 0.210065, 0.721437)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass74" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.648253, 0, 0.761425, 0, 1, 0, -0.761425, 0, -0.648253, 1.67196, 0.210065, 0.909229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass75" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.247845, 0, 0.9688, 0, 1, 0, -0.9688, 0, 0.247845, 1.54415, 0.210065, 0.654945)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass76" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, 1.47562, 0.210065, 0.864607)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass77" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.141299, 0, 0.989967, 0, 1, 0, -0.989967, 0, 0.141299, 1.93318, 0.210065, 0.46336)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass78" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.236211, 0, 0.971702, 0, 1, 0, -0.971702, 0, -0.236211, 1.8475, 0.210065, 0.630472)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass79" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.657336, 0, 0.753598, 0, 1, 0, -0.753598, 0, 0.657336, 1.84781, 0.210065, 0.345871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass80" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.437822, 0, 0.899062, 0, 1, 0, -0.899062, 0, 0.437822, 1.69225, 0.210065, 0.502258)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass81" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.745174, 0, 0.666871, 0, 1, 0, -0.666871, 0, 0.745174, 1.49238, 0.210065, 0.52924)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass82" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.444448, 0, 0.895805, 0, 1, 0, -0.895805, 0, 0.444448, 1.31926, 0.210065, 0.602024)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass83" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.988089, 0, 0.153883, 0, 1, 0, -0.153883, 0, 0.988089, 1.50263, 0.210065, 0.384361)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass84" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.913659, 0, 0.406482, 0, 1, 0, -0.406482, 0, 0.913659, 1.28292, 0.210065, 0.403978)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass85" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 0.580549, 0.210065, 1.8037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass86" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 0.603968, 0.210065, 1.99003)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass87" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 0.44381, 0.210065, 1.75478)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass88" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 0.403463, 0.210065, 1.97163)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass89" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 0.804249, 0.210065, 1.51367)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass90" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 0.741301, 0.210065, 1.6906)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass91" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 0.704157, 0.210065, 1.40843)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass92" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 0.570532, 0.210065, 1.58393)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass93" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 0.375948, 0.210065, 1.63698)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass94" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.213913, 0.210065, 1.73191)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass95" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 0.367043, 0.210065, 1.49201)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass96" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.151827, 0.210065, 1.54037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass97" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 1.29758, 0.210065, 1.48303)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass98" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 1.321, 0.210065, 1.66936)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass99" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 1.16084, 0.210065, 1.43411)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass100" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 1.12049, 0.210065, 1.65096)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass101" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 1.52128, 0.210065, 1.193)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass102" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 1.45833, 0.210065, 1.36993)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass103" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 1.42119, 0.210065, 1.08777)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass104" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 1.28756, 0.210065, 1.26326)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass105" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 1.09298, 0.210065, 1.31631)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass106" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.930944, 0.210065, 1.41124)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass107" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 1.08407, 0.210065, 1.17134)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass108" type="MeshInstance3D" parent="Objects/IslandGreen/Grass"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.868858, 0.210065, 1.2197)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(-0.18009, 0, -0.98365, 0, 1, 0, 0.98365, 0, -0.18009, -2.35516, 0.774021, -28.0003)
+metadata/_edit_group_ = true
+
+[node name="Grass" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.854898, 0.210065, 0.546797)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.928577, 0, 0.371141, 0, 1, 0, -0.371141, 0, 0.928577, -1.03244, 0.210065, 0.485588)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.838918, 0, -0.544258, 0, 1, 0, 0.544258, 0, 0.838918, -0.750654, 0.210065, 0.445677)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.951905, 0, -0.306393, 0, 1, 0, 0.306393, 0, 0.951905, -0.92745, 0.210064, 0.313778)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.893003, 0, -0.450052, 0, 1, 0, 0.450052, 0, 0.893003, -0.693342, 0.210065, 0.875523)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass6" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.996254, 0, -0.0864776, 0, 1, 0, 0.0864776, 0, 0.996254, -0.824339, 0.210065, 0.740961)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass7" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.504211, 0, -0.86358, 0, 1, 0, 0.86358, 0, 0.504211, -0.554739, 0.210065, 0.832138)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass8" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -0.653261, 0.210064, 0.634783)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass9" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.393974, 0, -0.919122, 0, 1, 0, 0.919122, 0, 0.393974, -0.614996, 0.210065, 0.436762)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass10" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.706959, 0, -0.707255, 0, 1, 0, 0.707255, 0, 0.706959, -0.628683, 0.210065, 0.249468)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass11" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.169728, 0, -0.985491, 0, 1, 0, 0.985491, 0, -0.169728, -0.480978, 0.210065, 0.492739)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass12" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.0934132, 0, -0.995627, 0, 1, 0, 0.995627, 0, 0.0934132, -0.429403, 0.210064, 0.278275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass13" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.851269, 0, 0.524729, 0, 1, 0, -0.524729, 0, 0.851269, -0.265942, 0.210065, 1.11038)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass14" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.59572, 0, 0.803192, 0, 1, 0, -0.803192, 0, 0.59572, -0.449194, 0.210065, 1.15144)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass15" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.999733, 0, -0.023106, 0, 1, 0, 0.023106, 0, 0.999733, -0.230263, 0.210065, 0.969604)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass16" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.971101, 0, 0.238669, 0, 1, 0, -0.238669, 0, 0.971101, -0.449974, 0.210065, 0.950092)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass17" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.996341, 0, 0.0854691, 0, 1, 0, -0.0854691, 0, 0.996341, 0.0440788, 0.210065, 1.30544)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass18" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.893458, 0, 0.449148, 0, 1, 0, -0.449148, 0, 0.893458, -0.138044, 0.210065, 1.25963)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass19" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.882365, 0, -0.470565, 0, 1, 0, 0.470565, 0, 0.882365, 0.139301, 0.210065, 1.19578)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass20" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.974609, 0, -0.223914, 0, 1, 0, 0.223914, 0, 0.974609, -0.0481243, 0.210065, 1.07948)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass21" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.817668, 0, -0.575691, 0, 1, 0, 0.575691, 0, 0.817668, -0.119459, 0.210065, 0.890831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass22" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.972929, 0, -0.231103, 0, 1, 0, 0.231103, 0, 0.972929, -0.229389, 0.210065, 0.738575)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass23" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.372631, 0, -0.927979, 0, 1, 0, 0.927979, 0, 0.372631, 0.0240002, 0.210065, 0.86816)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass24" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.601954, 0, -0.798531, 0, 1, 0, 0.798531, 0, 0.601954, -0.044632, 0.210065, 0.658529)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass25" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.69774, 0, 0.716351, 0, 1, 0, -0.716351, 0, 0.69774, -0.597015, 0.210065, 1.70822)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass26" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.382038, 0, 0.924146, 0, 1, 0, -0.924146, 0, 0.382038, -0.76474, 0.210065, 1.79269)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass27" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.975227, 0, 0.221208, 0, 1, 0, -0.221208, 0, 0.975227, -0.596718, 0.210065, 1.56299)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass28" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.883668, 0, 0.468115, 0, 1, 0, -0.468115, 0, 0.883668, -0.814562, 0.210065, 1.5976)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass29" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.945479, 0, 0.325684, 0, 1, 0, -0.325684, 0, 0.945479, -0.248808, 0.210065, 1.82185)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass30" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.757075, 0, 0.653328, 0, 1, 0, -0.653328, 0, 0.757075, -0.436605, 0.210065, 1.8218)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass31" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.970435, 0, -0.241363, 0, 1, 0, 0.241363, 0, 0.970435, -0.183178, 0.210065, 1.69229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass32" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.999793, 0, 0.0203317, 0, 1, 0, -0.0203317, 0, 0.999793, -0.393295, 0.210065, 1.62517)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass33" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.933305, 0, -0.359085, 0, 1, 0, 0.359085, 0, 0.933305, -0.508451, 0.210065, 1.45959)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass34" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.999916, 0, 0.01295, 0, 1, 0, -0.01295, 0, 0.999916, -0.652168, 0.210065, 1.33871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass35" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.587531, 0, -0.809202, 0, 1, 0, 0.809202, 0, 0.587531, -0.37484, 0.210065, 1.40264)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass36" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.778397, 0, -0.627773, 0, 1, 0, 0.627773, 0, 0.778397, -0.492487, 0.210065, 1.21605)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass37" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.239245, 0, 0.970959, 0, 1, 0, -0.970959, 0, 0.239245, 0.067749, 0.210065, 0.34045)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass38" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.138205, 0, 0.990404, 0, 1, 0, -0.990404, 0, -0.138205, -0.0341568, 0.210065, 0.498192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass39" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.72916, 0, 0.684344, 0, 1, 0, -0.684344, 0, 0.72916, -0.00549316, 0.210065, 0.215042)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass40" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.525234, 0, 0.850958, 0, 1, 0, -0.850958, 0, 0.525234, -0.175859, 0.210065, 0.355148)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass41" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.650628, 0, 0.759396, 0, 1, 0, -0.759396, 0, 0.650628, 0.425581, 0.210065, 0.262232)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass42" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.322315, 0, 0.946633, 0, 1, 0, -0.946633, 0, 0.322315, 0.263584, 0.210065, 0.357231)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass43" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.959131, 0, 0.282961, 0, 1, 0, -0.282961, 0, 0.959131, 0.416616, 0.210065, 0.117275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass44" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.85201, 0, 0.523525, 0, 1, 0, -0.523525, 0, 0.85201, 0.201424, 0.210065, 0.16572)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass45" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.986686, 0, 0.162637, 0, 1, 0, -0.162637, 0, 0.986686, 0.0183048, 0.210065, 0.081192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass46" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.855852, 0, 0.517221, 0, 1, 0, -0.517221, 0, 0.855852, -0.166824, 0.210065, 0.0496712)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass47" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.916265, 0, -0.400573, 0, 1, 0, 0.400573, 0, 0.916265, 0.104723, 0.210065, -0.0355434)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass48" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.989062, 0, -0.147499, 0, 1, 0, 0.147499, 0, 0.989062, -0.091177, 0.210065, -0.13693)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass49" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.0381785, 0, 0.999271, 0, 1, 0, -0.999271, 0, 0.0381785, 0.542879, 0.210065, 0.997828)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass50" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.335419, 0, 0.942069, 0, 1, 0, -0.942069, 0, -0.335419, 0.474937, 0.210065, 1.1729)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass51" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.57589, 0, 0.817527, 0, 1, 0, -0.817527, 0, 0.57589, 0.445814, 0.210065, 0.889799)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass52" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.342512, 0, 0.939514, 0, 1, 0, -0.939514, 0, 0.342512, 0.307262, 0.210065, 1.06143)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass53" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.483817, 0, 0.875169, 0, 1, 0, -0.875169, 0, 0.483817, 0.877535, 0.210065, 0.84894)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass54" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.12445, 0, 0.992226, 0, 1, 0, -0.992226, 0, 0.12445, 0.738068, 0.210065, 0.974703)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass55" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.882201, 0, 0.470873, 0, 1, 0, -0.470873, 0, 0.882201, 0.839474, 0.210065, 0.708782)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass56" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.728694, 0, 0.68484, 0, 1, 0, -0.68484, 0, 0.728694, 0.638502, 0.210065, 0.799696)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass57" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.933493, 0, 0.358596, 0, 1, 0, -0.358596, 0, 0.933493, 0.442083, 0.210065, 0.753901)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass58" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.73373, 0, 0.679441, 0, 1, 0, -0.679441, 0, 0.73373, 0.254404, 0.210065, 0.760427)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass59" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.978292, 0, -0.207229, 0, 1, 0, 0.207229, 0, 0.978292, 0.503139, 0.210065, 0.622116)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass60" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.998468, 0, 0.0553335, 0, 1, 0, -0.0553335, 0, 0.998468, 0.290798, 0.210065, 0.562391)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass61" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.185529, 0, 0.982639, 0, 1, 0, -0.982639, 0, -0.185529, 1.06856, 0.210065, 0.415432)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass62" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.536976, 0, 0.843598, 0, 1, 0, -0.843598, 0, -0.536976, 1.04136, 0.210065, 0.601248)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass63" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.379165, 0, 0.925329, 0, 1, 0, -0.925329, 0, 0.379165, 0.94986, 0.210065, 0.331758)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass64" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.124467, 0, 0.992224, 0, 1, 0, -0.992224, 0, 0.124467, 0.853052, 0.210065, 0.529957)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass65" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.27656, 0, 0.960997, 0, 1, 0, -0.960997, 0, 0.27656, 1.36161, 0.210065, 0.195692)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass66" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.0998581, 0, 0.995002, 0, 1, 0, -0.995002, 0, -0.0998581, 1.25368, 0.210065, 0.34938)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass67" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.755042, 0, 0.655677, 0, 1, 0, -0.655677, 0, 0.755042, 1.29326, 0.210065, 0.0675449)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass68" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.557702, 0, 0.830042, 0, 1, 0, -0.830042, 0, 0.557702, 1.11761, 0.210065, 0.20097)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass69" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.830071, 0, 0.557658, 0, 1, 0, -0.557658, 0, 0.830071, 0.91593, 0.210065, 0.200111)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass70" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.563814, 0, 0.825902, 0, 1, 0, -0.825902, 0, 0.563814, 0.734426, 0.210065, 0.24831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass71" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.999871, 0, 0.0160564, 0, 1, 0, -0.0160564, 0, 0.999871, 0.946074, 0.210065, 0.058033)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass72" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.961011, 0, 0.27651, 0, 1, 0, -0.27651, 0, 0.961011, 0.725761, 0.210065, 0.0471439)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass73" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.319356, 0, 0.947635, 0, 1, 0, -0.947635, 0, -0.319356, 1.67327, 0.210065, 0.721437)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass74" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.648253, 0, 0.761425, 0, 1, 0, -0.761425, 0, -0.648253, 1.67196, 0.210065, 0.909229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass75" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.247845, 0, 0.9688, 0, 1, 0, -0.9688, 0, 0.247845, 1.54415, 0.210065, 0.654945)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass76" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, 1.47562, 0.210065, 0.864607)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass77" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.141299, 0, 0.989967, 0, 1, 0, -0.989967, 0, 0.141299, 1.93318, 0.210065, 0.46336)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass78" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.236211, 0, 0.971702, 0, 1, 0, -0.971702, 0, -0.236211, 1.8475, 0.210065, 0.630472)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass79" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.657336, 0, 0.753598, 0, 1, 0, -0.753598, 0, 0.657336, 1.84781, 0.210065, 0.345871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass80" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.437822, 0, 0.899062, 0, 1, 0, -0.899062, 0, 0.437822, 1.69225, 0.210065, 0.502258)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass81" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.745174, 0, 0.666871, 0, 1, 0, -0.666871, 0, 0.745174, 1.49238, 0.210065, 0.52924)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass82" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.444448, 0, 0.895805, 0, 1, 0, -0.895805, 0, 0.444448, 1.31926, 0.210065, 0.602024)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass83" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.988089, 0, 0.153883, 0, 1, 0, -0.153883, 0, 0.988089, 1.50263, 0.210065, 0.384361)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass84" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.913659, 0, 0.406482, 0, 1, 0, -0.406482, 0, 0.913659, 1.28292, 0.210065, 0.403978)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass85" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 0.580549, 0.210065, 1.8037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass86" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 0.603968, 0.210065, 1.99003)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass87" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 0.44381, 0.210065, 1.75478)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass88" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 0.403463, 0.210065, 1.97163)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass89" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 0.804249, 0.210065, 1.51367)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass90" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 0.741301, 0.210065, 1.6906)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass91" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 0.704157, 0.210065, 1.40843)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass92" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 0.570532, 0.210065, 1.58393)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass93" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 0.375948, 0.210065, 1.63698)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass94" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.213913, 0.210065, 1.73191)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass95" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 0.367043, 0.210065, 1.49201)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass96" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.151827, 0.210065, 1.54037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass97" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 1.29758, 0.210065, 1.48303)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass98" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 1.321, 0.210065, 1.66936)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass99" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 1.16084, 0.210065, 1.43411)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass100" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 1.12049, 0.210065, 1.65096)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass101" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 1.52128, 0.210065, 1.193)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass102" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 1.45833, 0.210065, 1.36993)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass103" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 1.42119, 0.210065, 1.08777)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass104" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 1.28756, 0.210065, 1.26326)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass105" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 1.09298, 0.210065, 1.31631)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass106" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.930944, 0.210065, 1.41124)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass107" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 1.08407, 0.210065, 1.17134)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass108" type="MeshInstance3D" parent="Objects/IslandGreen/Grass2"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.868858, 0.210065, 1.2197)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(0.963523, 0, -0.267625, 0, 1, 0, 0.267625, 0, 0.963523, -1.44855, 0.774021, -27.7693)
+metadata/_edit_group_ = true
+
+[node name="Grass" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.854898, 0.210065, 0.546797)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.928577, 0, 0.371141, 0, 1, 0, -0.371141, 0, 0.928577, -1.03244, 0.210065, 0.485588)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.838918, 0, -0.544258, 0, 1, 0, 0.544258, 0, 0.838918, -0.750654, 0.210065, 0.445677)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.951905, 0, -0.306393, 0, 1, 0, 0.306393, 0, 0.951905, -0.92745, 0.210064, 0.313778)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.893003, 0, -0.450052, 0, 1, 0, 0.450052, 0, 0.893003, -0.693342, 0.210065, 0.875523)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass6" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.996254, 0, -0.0864776, 0, 1, 0, 0.0864776, 0, 0.996254, -0.824339, 0.210065, 0.740961)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass7" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.504211, 0, -0.86358, 0, 1, 0, 0.86358, 0, 0.504211, -0.554739, 0.210065, 0.832138)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass8" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -0.653261, 0.210064, 0.634783)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass9" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.393974, 0, -0.919122, 0, 1, 0, 0.919122, 0, 0.393974, -0.614996, 0.210065, 0.436762)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass10" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.706959, 0, -0.707255, 0, 1, 0, 0.707255, 0, 0.706959, -0.628683, 0.210065, 0.249468)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass11" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.169728, 0, -0.985491, 0, 1, 0, 0.985491, 0, -0.169728, -0.480978, 0.210065, 0.492739)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass12" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.0934132, 0, -0.995627, 0, 1, 0, 0.995627, 0, 0.0934132, -0.429403, 0.210064, 0.278275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass13" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.851269, 0, 0.524729, 0, 1, 0, -0.524729, 0, 0.851269, -0.265942, 0.210065, 1.11038)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass14" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.59572, 0, 0.803192, 0, 1, 0, -0.803192, 0, 0.59572, -0.449194, 0.210065, 1.15144)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass15" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.999733, 0, -0.023106, 0, 1, 0, 0.023106, 0, 0.999733, -0.230263, 0.210065, 0.969604)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass16" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.971101, 0, 0.238669, 0, 1, 0, -0.238669, 0, 0.971101, -0.449974, 0.210065, 0.950092)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass17" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.996341, 0, 0.0854691, 0, 1, 0, -0.0854691, 0, 0.996341, 0.0440788, 0.210065, 1.30544)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass18" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.893458, 0, 0.449148, 0, 1, 0, -0.449148, 0, 0.893458, -0.138044, 0.210065, 1.25963)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass19" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.882365, 0, -0.470565, 0, 1, 0, 0.470565, 0, 0.882365, 0.139301, 0.210065, 1.19578)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass20" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.974609, 0, -0.223914, 0, 1, 0, 0.223914, 0, 0.974609, -0.0481243, 0.210065, 1.07948)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass21" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.817668, 0, -0.575691, 0, 1, 0, 0.575691, 0, 0.817668, -0.119459, 0.210065, 0.890831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass22" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.972929, 0, -0.231103, 0, 1, 0, 0.231103, 0, 0.972929, -0.229389, 0.210065, 0.738575)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass23" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.372631, 0, -0.927979, 0, 1, 0, 0.927979, 0, 0.372631, 0.0240002, 0.210065, 0.86816)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass24" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.601954, 0, -0.798531, 0, 1, 0, 0.798531, 0, 0.601954, -0.044632, 0.210065, 0.658529)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass25" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.69774, 0, 0.716351, 0, 1, 0, -0.716351, 0, 0.69774, -0.597015, 0.210065, 1.70822)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass26" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.382038, 0, 0.924146, 0, 1, 0, -0.924146, 0, 0.382038, -0.76474, 0.210065, 1.79269)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass27" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.975227, 0, 0.221208, 0, 1, 0, -0.221208, 0, 0.975227, -0.596718, 0.210065, 1.56299)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass28" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.883668, 0, 0.468115, 0, 1, 0, -0.468115, 0, 0.883668, -0.814562, 0.210065, 1.5976)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass29" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.945479, 0, 0.325684, 0, 1, 0, -0.325684, 0, 0.945479, -0.248808, 0.210065, 1.82185)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass30" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.757075, 0, 0.653328, 0, 1, 0, -0.653328, 0, 0.757075, -0.436605, 0.210065, 1.8218)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass31" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.970435, 0, -0.241363, 0, 1, 0, 0.241363, 0, 0.970435, -0.183178, 0.210065, 1.69229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass32" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.999793, 0, 0.0203317, 0, 1, 0, -0.0203317, 0, 0.999793, -0.393295, 0.210065, 1.62517)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass33" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.933305, 0, -0.359085, 0, 1, 0, 0.359085, 0, 0.933305, -0.508451, 0.210065, 1.45959)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass34" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.999916, 0, 0.01295, 0, 1, 0, -0.01295, 0, 0.999916, -0.652168, 0.210065, 1.33871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass35" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.587531, 0, -0.809202, 0, 1, 0, 0.809202, 0, 0.587531, -0.37484, 0.210065, 1.40264)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass36" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.778397, 0, -0.627773, 0, 1, 0, 0.627773, 0, 0.778397, -0.492487, 0.210065, 1.21605)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass37" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.239245, 0, 0.970959, 0, 1, 0, -0.970959, 0, 0.239245, 0.067749, 0.210065, 0.34045)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass38" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.138205, 0, 0.990404, 0, 1, 0, -0.990404, 0, -0.138205, -0.0341568, 0.210065, 0.498192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass39" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.72916, 0, 0.684344, 0, 1, 0, -0.684344, 0, 0.72916, -0.00549316, 0.210065, 0.215042)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass40" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.525234, 0, 0.850958, 0, 1, 0, -0.850958, 0, 0.525234, -0.175859, 0.210065, 0.355148)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass41" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.650628, 0, 0.759396, 0, 1, 0, -0.759396, 0, 0.650628, 0.425581, 0.210065, 0.262232)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass42" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.322315, 0, 0.946633, 0, 1, 0, -0.946633, 0, 0.322315, 0.263584, 0.210065, 0.357231)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass43" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.959131, 0, 0.282961, 0, 1, 0, -0.282961, 0, 0.959131, 0.416616, 0.210065, 0.117275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass44" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.85201, 0, 0.523525, 0, 1, 0, -0.523525, 0, 0.85201, 0.201424, 0.210065, 0.16572)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass45" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.986686, 0, 0.162637, 0, 1, 0, -0.162637, 0, 0.986686, 0.0183048, 0.210065, 0.081192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass46" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.855852, 0, 0.517221, 0, 1, 0, -0.517221, 0, 0.855852, -0.166824, 0.210065, 0.0496712)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass47" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.916265, 0, -0.400573, 0, 1, 0, 0.400573, 0, 0.916265, 0.104723, 0.210065, -0.0355434)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass48" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.989062, 0, -0.147499, 0, 1, 0, 0.147499, 0, 0.989062, -0.091177, 0.210065, -0.13693)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass49" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.0381785, 0, 0.999271, 0, 1, 0, -0.999271, 0, 0.0381785, 0.542879, 0.210065, 0.997828)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass50" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.335419, 0, 0.942069, 0, 1, 0, -0.942069, 0, -0.335419, 0.474937, 0.210065, 1.1729)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass51" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.57589, 0, 0.817527, 0, 1, 0, -0.817527, 0, 0.57589, 0.445814, 0.210065, 0.889799)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass52" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.342512, 0, 0.939514, 0, 1, 0, -0.939514, 0, 0.342512, 0.307262, 0.210065, 1.06143)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass53" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.483817, 0, 0.875169, 0, 1, 0, -0.875169, 0, 0.483817, 0.877535, 0.210065, 0.84894)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass54" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.12445, 0, 0.992226, 0, 1, 0, -0.992226, 0, 0.12445, 0.738068, 0.210065, 0.974703)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass55" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.882201, 0, 0.470873, 0, 1, 0, -0.470873, 0, 0.882201, 0.839474, 0.210065, 0.708782)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass56" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.728694, 0, 0.68484, 0, 1, 0, -0.68484, 0, 0.728694, 0.638502, 0.210065, 0.799696)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass57" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.933493, 0, 0.358596, 0, 1, 0, -0.358596, 0, 0.933493, 0.442083, 0.210065, 0.753901)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass58" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.73373, 0, 0.679441, 0, 1, 0, -0.679441, 0, 0.73373, 0.254404, 0.210065, 0.760427)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass59" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.978292, 0, -0.207229, 0, 1, 0, 0.207229, 0, 0.978292, 0.503139, 0.210065, 0.622116)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass60" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.998468, 0, 0.0553335, 0, 1, 0, -0.0553335, 0, 0.998468, 0.290798, 0.210065, 0.562391)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass61" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.185529, 0, 0.982639, 0, 1, 0, -0.982639, 0, -0.185529, 1.06856, 0.210065, 0.415432)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass62" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.536976, 0, 0.843598, 0, 1, 0, -0.843598, 0, -0.536976, 1.04136, 0.210065, 0.601248)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass63" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.379165, 0, 0.925329, 0, 1, 0, -0.925329, 0, 0.379165, 0.94986, 0.210065, 0.331758)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass64" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.124467, 0, 0.992224, 0, 1, 0, -0.992224, 0, 0.124467, 0.853052, 0.210065, 0.529957)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass65" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.27656, 0, 0.960997, 0, 1, 0, -0.960997, 0, 0.27656, 1.36161, 0.210065, 0.195692)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass66" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.0998581, 0, 0.995002, 0, 1, 0, -0.995002, 0, -0.0998581, 1.25368, 0.210065, 0.34938)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass67" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.755042, 0, 0.655677, 0, 1, 0, -0.655677, 0, 0.755042, 1.29326, 0.210065, 0.0675449)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass68" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.557702, 0, 0.830042, 0, 1, 0, -0.830042, 0, 0.557702, 1.11761, 0.210065, 0.20097)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass69" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.830071, 0, 0.557658, 0, 1, 0, -0.557658, 0, 0.830071, 0.91593, 0.210065, 0.200111)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass70" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.563814, 0, 0.825902, 0, 1, 0, -0.825902, 0, 0.563814, 0.734426, 0.210065, 0.24831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass71" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.999871, 0, 0.0160564, 0, 1, 0, -0.0160564, 0, 0.999871, 0.946074, 0.210065, 0.058033)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass72" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.961011, 0, 0.27651, 0, 1, 0, -0.27651, 0, 0.961011, 0.725761, 0.210065, 0.0471439)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass73" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.319356, 0, 0.947635, 0, 1, 0, -0.947635, 0, -0.319356, 1.67327, 0.210065, 0.721437)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass74" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.648253, 0, 0.761425, 0, 1, 0, -0.761425, 0, -0.648253, 1.67196, 0.210065, 0.909229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass75" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.247845, 0, 0.9688, 0, 1, 0, -0.9688, 0, 0.247845, 1.54415, 0.210065, 0.654945)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass76" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, 1.47562, 0.210065, 0.864607)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass77" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.141299, 0, 0.989967, 0, 1, 0, -0.989967, 0, 0.141299, 1.93318, 0.210065, 0.46336)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass78" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.236211, 0, 0.971702, 0, 1, 0, -0.971702, 0, -0.236211, 1.8475, 0.210065, 0.630472)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass79" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.657336, 0, 0.753598, 0, 1, 0, -0.753598, 0, 0.657336, 1.84781, 0.210065, 0.345871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass80" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.437822, 0, 0.899062, 0, 1, 0, -0.899062, 0, 0.437822, 1.69225, 0.210065, 0.502258)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass81" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.745174, 0, 0.666871, 0, 1, 0, -0.666871, 0, 0.745174, 1.49238, 0.210065, 0.52924)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass82" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.444448, 0, 0.895805, 0, 1, 0, -0.895805, 0, 0.444448, 1.31926, 0.210065, 0.602024)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass83" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.988089, 0, 0.153883, 0, 1, 0, -0.153883, 0, 0.988089, 1.50263, 0.210065, 0.384361)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass84" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.913659, 0, 0.406482, 0, 1, 0, -0.406482, 0, 0.913659, 1.28292, 0.210065, 0.403978)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass85" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 0.580549, 0.210065, 1.8037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass86" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 0.603968, 0.210065, 1.99003)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass87" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 0.44381, 0.210065, 1.75478)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass88" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 0.403463, 0.210065, 1.97163)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass89" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 0.804249, 0.210065, 1.51367)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass90" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 0.741301, 0.210065, 1.6906)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass91" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 0.704157, 0.210065, 1.40843)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass92" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 0.570532, 0.210065, 1.58393)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass93" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 0.375948, 0.210065, 1.63698)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass94" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.213913, 0.210065, 1.73191)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass95" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 0.367043, 0.210065, 1.49201)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass96" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.151827, 0.210065, 1.54037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass97" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 1.29758, 0.210065, 1.48303)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass98" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 1.321, 0.210065, 1.66936)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass99" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 1.16084, 0.210065, 1.43411)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass100" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 1.12049, 0.210065, 1.65096)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass101" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 1.52128, 0.210065, 1.193)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass102" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 1.45833, 0.210065, 1.36993)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass103" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 1.42119, 0.210065, 1.08777)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass104" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 1.28756, 0.210065, 1.26326)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass105" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 1.09298, 0.210065, 1.31631)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass106" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.930944, 0.210065, 1.41124)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass107" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 1.08407, 0.210065, 1.17134)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass108" type="MeshInstance3D" parent="Objects/IslandGreen/Grass3"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.868858, 0.210065, 1.2197)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(0.963523, 0, -0.267625, 0, 1, 0, 0.267625, 0, 0.963523, 0.245811, 0.774021, -26.6704)
+metadata/_edit_group_ = true
+
+[node name="Grass" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.854898, 0.210065, 0.546797)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.928577, 0, 0.371141, 0, 1, 0, -0.371141, 0, 0.928577, -1.03244, 0.210065, 0.485588)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.838918, 0, -0.544258, 0, 1, 0, 0.544258, 0, 0.838918, -0.750654, 0.210065, 0.445677)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.951905, 0, -0.306393, 0, 1, 0, 0.306393, 0, 0.951905, -0.92745, 0.210064, 0.313778)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.893003, 0, -0.450052, 0, 1, 0, 0.450052, 0, 0.893003, -0.693342, 0.210065, 0.875523)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass6" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.996254, 0, -0.0864776, 0, 1, 0, 0.0864776, 0, 0.996254, -0.824339, 0.210065, 0.740961)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass7" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.504211, 0, -0.86358, 0, 1, 0, 0.86358, 0, 0.504211, -0.554739, 0.210065, 0.832138)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass8" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -0.653261, 0.210064, 0.634783)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass9" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.393974, 0, -0.919122, 0, 1, 0, 0.919122, 0, 0.393974, -0.614996, 0.210065, 0.436762)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass10" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.706959, 0, -0.707255, 0, 1, 0, 0.707255, 0, 0.706959, -0.628683, 0.210065, 0.249468)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass11" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.169728, 0, -0.985491, 0, 1, 0, 0.985491, 0, -0.169728, -0.480978, 0.210065, 0.492739)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass12" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.0934132, 0, -0.995627, 0, 1, 0, 0.995627, 0, 0.0934132, -0.429403, 0.210064, 0.278275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass13" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.851269, 0, 0.524729, 0, 1, 0, -0.524729, 0, 0.851269, -0.265942, 0.210065, 1.11038)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass14" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.59572, 0, 0.803192, 0, 1, 0, -0.803192, 0, 0.59572, -0.449194, 0.210065, 1.15144)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass15" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.999733, 0, -0.023106, 0, 1, 0, 0.023106, 0, 0.999733, -0.230263, 0.210065, 0.969604)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass16" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.971101, 0, 0.238669, 0, 1, 0, -0.238669, 0, 0.971101, -0.449974, 0.210065, 0.950092)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass17" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.996341, 0, 0.0854691, 0, 1, 0, -0.0854691, 0, 0.996341, 0.0440788, 0.210065, 1.30544)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass18" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.893458, 0, 0.449148, 0, 1, 0, -0.449148, 0, 0.893458, -0.138044, 0.210065, 1.25963)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass19" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.882365, 0, -0.470565, 0, 1, 0, 0.470565, 0, 0.882365, 0.139301, 0.210065, 1.19578)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass20" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.974609, 0, -0.223914, 0, 1, 0, 0.223914, 0, 0.974609, -0.0481243, 0.210065, 1.07948)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass21" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.817668, 0, -0.575691, 0, 1, 0, 0.575691, 0, 0.817668, -0.119459, 0.210065, 0.890831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass22" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.972929, 0, -0.231103, 0, 1, 0, 0.231103, 0, 0.972929, -0.229389, 0.210065, 0.738575)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass23" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.372631, 0, -0.927979, 0, 1, 0, 0.927979, 0, 0.372631, 0.0240002, 0.210065, 0.86816)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass24" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.601954, 0, -0.798531, 0, 1, 0, 0.798531, 0, 0.601954, -0.044632, 0.210065, 0.658529)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass25" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.69774, 0, 0.716351, 0, 1, 0, -0.716351, 0, 0.69774, -0.597015, 0.210065, 1.70822)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass26" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.382038, 0, 0.924146, 0, 1, 0, -0.924146, 0, 0.382038, -0.76474, 0.210065, 1.79269)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass27" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.975227, 0, 0.221208, 0, 1, 0, -0.221208, 0, 0.975227, -0.596718, 0.210065, 1.56299)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass28" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.883668, 0, 0.468115, 0, 1, 0, -0.468115, 0, 0.883668, -0.814562, 0.210065, 1.5976)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass29" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.945479, 0, 0.325684, 0, 1, 0, -0.325684, 0, 0.945479, -0.248808, 0.210065, 1.82185)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass30" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.757075, 0, 0.653328, 0, 1, 0, -0.653328, 0, 0.757075, -0.436605, 0.210065, 1.8218)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass31" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.970435, 0, -0.241363, 0, 1, 0, 0.241363, 0, 0.970435, -0.183178, 0.210065, 1.69229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass32" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.999793, 0, 0.0203317, 0, 1, 0, -0.0203317, 0, 0.999793, -0.393295, 0.210065, 1.62517)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass33" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.933305, 0, -0.359085, 0, 1, 0, 0.359085, 0, 0.933305, -0.508451, 0.210065, 1.45959)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass34" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.999916, 0, 0.01295, 0, 1, 0, -0.01295, 0, 0.999916, -0.652168, 0.210065, 1.33871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass35" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.587531, 0, -0.809202, 0, 1, 0, 0.809202, 0, 0.587531, -0.37484, 0.210065, 1.40264)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass36" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.778397, 0, -0.627773, 0, 1, 0, 0.627773, 0, 0.778397, -0.492487, 0.210065, 1.21605)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass37" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.239245, 0, 0.970959, 0, 1, 0, -0.970959, 0, 0.239245, 0.067749, 0.210065, 0.34045)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass38" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.138205, 0, 0.990404, 0, 1, 0, -0.990404, 0, -0.138205, -0.0341568, 0.210065, 0.498192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass39" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.72916, 0, 0.684344, 0, 1, 0, -0.684344, 0, 0.72916, -0.00549316, 0.210065, 0.215042)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass40" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.525234, 0, 0.850958, 0, 1, 0, -0.850958, 0, 0.525234, -0.175859, 0.210065, 0.355148)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass41" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.650628, 0, 0.759396, 0, 1, 0, -0.759396, 0, 0.650628, 0.425581, 0.210065, 0.262232)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass42" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.322315, 0, 0.946633, 0, 1, 0, -0.946633, 0, 0.322315, 0.263584, 0.210065, 0.357231)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass43" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.959131, 0, 0.282961, 0, 1, 0, -0.282961, 0, 0.959131, 0.416616, 0.210065, 0.117275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass44" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.85201, 0, 0.523525, 0, 1, 0, -0.523525, 0, 0.85201, 0.201424, 0.210065, 0.16572)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass45" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.986686, 0, 0.162637, 0, 1, 0, -0.162637, 0, 0.986686, 0.0183048, 0.210065, 0.081192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass46" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.855852, 0, 0.517221, 0, 1, 0, -0.517221, 0, 0.855852, -0.166824, 0.210065, 0.0496712)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass47" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.916265, 0, -0.400573, 0, 1, 0, 0.400573, 0, 0.916265, 0.104723, 0.210065, -0.0355434)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass48" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.989062, 0, -0.147499, 0, 1, 0, 0.147499, 0, 0.989062, -0.091177, 0.210065, -0.13693)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass49" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.0381785, 0, 0.999271, 0, 1, 0, -0.999271, 0, 0.0381785, 0.542879, 0.210065, 0.997828)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass50" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.335419, 0, 0.942069, 0, 1, 0, -0.942069, 0, -0.335419, 0.474937, 0.210065, 1.1729)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass51" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.57589, 0, 0.817527, 0, 1, 0, -0.817527, 0, 0.57589, 0.445814, 0.210065, 0.889799)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass52" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.342512, 0, 0.939514, 0, 1, 0, -0.939514, 0, 0.342512, 0.307262, 0.210065, 1.06143)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass53" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.483817, 0, 0.875169, 0, 1, 0, -0.875169, 0, 0.483817, 0.877535, 0.210065, 0.84894)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass54" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.12445, 0, 0.992226, 0, 1, 0, -0.992226, 0, 0.12445, 0.738068, 0.210065, 0.974703)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass55" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.882201, 0, 0.470873, 0, 1, 0, -0.470873, 0, 0.882201, 0.839474, 0.210065, 0.708782)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass56" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.728694, 0, 0.68484, 0, 1, 0, -0.68484, 0, 0.728694, 0.638502, 0.210065, 0.799696)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass57" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.933493, 0, 0.358596, 0, 1, 0, -0.358596, 0, 0.933493, 0.442083, 0.210065, 0.753901)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass58" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.73373, 0, 0.679441, 0, 1, 0, -0.679441, 0, 0.73373, 0.254404, 0.210065, 0.760427)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass59" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.978292, 0, -0.207229, 0, 1, 0, 0.207229, 0, 0.978292, 0.503139, 0.210065, 0.622116)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass60" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.998468, 0, 0.0553335, 0, 1, 0, -0.0553335, 0, 0.998468, 0.290798, 0.210065, 0.562391)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass61" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.185529, 0, 0.982639, 0, 1, 0, -0.982639, 0, -0.185529, 1.06856, 0.210065, 0.415432)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass62" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.536976, 0, 0.843598, 0, 1, 0, -0.843598, 0, -0.536976, 1.04136, 0.210065, 0.601248)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass63" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.379165, 0, 0.925329, 0, 1, 0, -0.925329, 0, 0.379165, 0.94986, 0.210065, 0.331758)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass64" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.124467, 0, 0.992224, 0, 1, 0, -0.992224, 0, 0.124467, 0.853052, 0.210065, 0.529957)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass65" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.27656, 0, 0.960997, 0, 1, 0, -0.960997, 0, 0.27656, 1.36161, 0.210065, 0.195692)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass66" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.0998581, 0, 0.995002, 0, 1, 0, -0.995002, 0, -0.0998581, 1.25368, 0.210065, 0.34938)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass67" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.755042, 0, 0.655677, 0, 1, 0, -0.655677, 0, 0.755042, 1.29326, 0.210065, 0.0675449)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass68" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.557702, 0, 0.830042, 0, 1, 0, -0.830042, 0, 0.557702, 1.11761, 0.210065, 0.20097)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass69" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.830071, 0, 0.557658, 0, 1, 0, -0.557658, 0, 0.830071, 0.91593, 0.210065, 0.200111)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass70" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.563814, 0, 0.825902, 0, 1, 0, -0.825902, 0, 0.563814, 0.734426, 0.210065, 0.24831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass71" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.999871, 0, 0.0160564, 0, 1, 0, -0.0160564, 0, 0.999871, 0.946074, 0.210065, 0.058033)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass72" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.961011, 0, 0.27651, 0, 1, 0, -0.27651, 0, 0.961011, 0.725761, 0.210065, 0.0471439)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass73" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.319356, 0, 0.947635, 0, 1, 0, -0.947635, 0, -0.319356, 1.67327, 0.210065, 0.721437)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass74" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.648253, 0, 0.761425, 0, 1, 0, -0.761425, 0, -0.648253, 1.67196, 0.210065, 0.909229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass75" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.247845, 0, 0.9688, 0, 1, 0, -0.9688, 0, 0.247845, 1.54415, 0.210065, 0.654945)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass76" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, 1.47562, 0.210065, 0.864607)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass77" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.141299, 0, 0.989967, 0, 1, 0, -0.989967, 0, 0.141299, 1.93318, 0.210065, 0.46336)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass78" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.236211, 0, 0.971702, 0, 1, 0, -0.971702, 0, -0.236211, 1.8475, 0.210065, 0.630472)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass79" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.657336, 0, 0.753598, 0, 1, 0, -0.753598, 0, 0.657336, 1.84781, 0.210065, 0.345871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass80" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.437822, 0, 0.899062, 0, 1, 0, -0.899062, 0, 0.437822, 1.69225, 0.210065, 0.502258)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass81" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.745174, 0, 0.666871, 0, 1, 0, -0.666871, 0, 0.745174, 1.49238, 0.210065, 0.52924)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass82" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.444448, 0, 0.895805, 0, 1, 0, -0.895805, 0, 0.444448, 1.31926, 0.210065, 0.602024)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass83" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.988089, 0, 0.153883, 0, 1, 0, -0.153883, 0, 0.988089, 1.50263, 0.210065, 0.384361)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass84" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.913659, 0, 0.406482, 0, 1, 0, -0.406482, 0, 0.913659, 1.28292, 0.210065, 0.403978)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass85" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 0.580549, 0.210065, 1.8037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass86" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 0.603968, 0.210065, 1.99003)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass87" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 0.44381, 0.210065, 1.75478)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass88" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 0.403463, 0.210065, 1.97163)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass89" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 0.804249, 0.210065, 1.51367)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass90" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 0.741301, 0.210065, 1.6906)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass91" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 0.704157, 0.210065, 1.40843)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass92" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 0.570532, 0.210065, 1.58393)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass93" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 0.375948, 0.210065, 1.63698)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass94" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.213913, 0.210065, 1.73191)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass95" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 0.367043, 0.210065, 1.49201)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass96" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.151827, 0.210065, 1.54037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass97" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 1.29758, 0.210065, 1.48303)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass98" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 1.321, 0.210065, 1.66936)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass99" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 1.16084, 0.210065, 1.43411)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass100" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 1.12049, 0.210065, 1.65096)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass101" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 1.52128, 0.210065, 1.193)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass102" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 1.45833, 0.210065, 1.36993)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass103" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 1.42119, 0.210065, 1.08777)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass104" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 1.28756, 0.210065, 1.26326)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass105" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 1.09298, 0.210065, 1.31631)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass106" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.930944, 0.210065, 1.41124)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass107" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 1.08407, 0.210065, 1.17134)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass108" type="MeshInstance3D" parent="Objects/IslandGreen/Grass4"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.868858, 0.210065, 1.2197)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(0.613789, 0, 0.78947, 0, 1, 0, -0.78947, 0, 0.613789, 0.919806, 0.77402, -27.7715)
+metadata/_edit_group_ = true
+
+[node name="Grass" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.854898, 0.210065, 0.546797)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass2" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.928577, 0, 0.371141, 0, 1, 0, -0.371141, 0, 0.928577, -1.03244, 0.210065, 0.485588)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass3" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.838918, 0, -0.544258, 0, 1, 0, 0.544258, 0, 0.838918, -0.750654, 0.210065, 0.445677)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass4" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.951905, 0, -0.306393, 0, 1, 0, 0.306393, 0, 0.951905, -0.92745, 0.210064, 0.313778)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass5" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.893003, 0, -0.450052, 0, 1, 0, 0.450052, 0, 0.893003, -0.693342, 0.210065, 0.875523)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass6" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.996254, 0, -0.0864776, 0, 1, 0, 0.0864776, 0, 0.996254, -0.824339, 0.210065, 0.740961)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass7" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.504211, 0, -0.86358, 0, 1, 0, 0.86358, 0, 0.504211, -0.554739, 0.210065, 0.832138)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass8" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.712161, 0, -0.702016, 0, 1, 0, 0.702016, 0, 0.712161, -0.653261, 0.210064, 0.634783)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass9" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.393974, 0, -0.919122, 0, 1, 0, 0.919122, 0, 0.393974, -0.614996, 0.210065, 0.436762)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass10" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.706959, 0, -0.707255, 0, 1, 0, 0.707255, 0, 0.706959, -0.628683, 0.210065, 0.249468)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass11" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.169728, 0, -0.985491, 0, 1, 0, 0.985491, 0, -0.169728, -0.480978, 0.210065, 0.492739)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass12" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.0934132, 0, -0.995627, 0, 1, 0, 0.995627, 0, 0.0934132, -0.429403, 0.210064, 0.278275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass13" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.851269, 0, 0.524729, 0, 1, 0, -0.524729, 0, 0.851269, -0.265942, 0.210065, 1.11038)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass14" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.59572, 0, 0.803192, 0, 1, 0, -0.803192, 0, 0.59572, -0.449194, 0.210065, 1.15144)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass15" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.999733, 0, -0.023106, 0, 1, 0, 0.023106, 0, 0.999733, -0.230263, 0.210065, 0.969604)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass16" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.971101, 0, 0.238669, 0, 1, 0, -0.238669, 0, 0.971101, -0.449974, 0.210065, 0.950092)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass17" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.996341, 0, 0.0854691, 0, 1, 0, -0.0854691, 0, 0.996341, 0.0440788, 0.210065, 1.30544)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass18" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.893458, 0, 0.449148, 0, 1, 0, -0.449148, 0, 0.893458, -0.138044, 0.210065, 1.25963)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass19" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.882365, 0, -0.470565, 0, 1, 0, 0.470565, 0, 0.882365, 0.139301, 0.210065, 1.19578)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass20" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.974609, 0, -0.223914, 0, 1, 0, 0.223914, 0, 0.974609, -0.0481243, 0.210065, 1.07948)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass21" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.817668, 0, -0.575691, 0, 1, 0, 0.575691, 0, 0.817668, -0.119459, 0.210065, 0.890831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass22" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.972929, 0, -0.231103, 0, 1, 0, 0.231103, 0, 0.972929, -0.229389, 0.210065, 0.738575)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass23" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.372631, 0, -0.927979, 0, 1, 0, 0.927979, 0, 0.372631, 0.0240002, 0.210065, 0.86816)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass24" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.601954, 0, -0.798531, 0, 1, 0, 0.798531, 0, 0.601954, -0.044632, 0.210065, 0.658529)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass25" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.69774, 0, 0.716351, 0, 1, 0, -0.716351, 0, 0.69774, -0.597015, 0.210065, 1.70822)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass26" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.382038, 0, 0.924146, 0, 1, 0, -0.924146, 0, 0.382038, -0.76474, 0.210065, 1.79269)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass27" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.975227, 0, 0.221208, 0, 1, 0, -0.221208, 0, 0.975227, -0.596718, 0.210065, 1.56299)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass28" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.883668, 0, 0.468115, 0, 1, 0, -0.468115, 0, 0.883668, -0.814562, 0.210065, 1.5976)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass29" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.945479, 0, 0.325684, 0, 1, 0, -0.325684, 0, 0.945479, -0.248808, 0.210065, 1.82185)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass30" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.757075, 0, 0.653328, 0, 1, 0, -0.653328, 0, 0.757075, -0.436605, 0.210065, 1.8218)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass31" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.970435, 0, -0.241363, 0, 1, 0, 0.241363, 0, 0.970435, -0.183178, 0.210065, 1.69229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass32" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.999793, 0, 0.0203317, 0, 1, 0, -0.0203317, 0, 0.999793, -0.393295, 0.210065, 1.62517)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass33" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.933305, 0, -0.359085, 0, 1, 0, 0.359085, 0, 0.933305, -0.508451, 0.210065, 1.45959)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass34" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.999916, 0, 0.01295, 0, 1, 0, -0.01295, 0, 0.999916, -0.652168, 0.210065, 1.33871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass35" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.587531, 0, -0.809202, 0, 1, 0, 0.809202, 0, 0.587531, -0.37484, 0.210065, 1.40264)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass36" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.778397, 0, -0.627773, 0, 1, 0, 0.627773, 0, 0.778397, -0.492487, 0.210065, 1.21605)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass37" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.239245, 0, 0.970959, 0, 1, 0, -0.970959, 0, 0.239245, 0.067749, 0.210065, 0.34045)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass38" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.138205, 0, 0.990404, 0, 1, 0, -0.990404, 0, -0.138205, -0.0341568, 0.210065, 0.498192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass39" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.72916, 0, 0.684344, 0, 1, 0, -0.684344, 0, 0.72916, -0.00549316, 0.210065, 0.215042)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass40" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.525234, 0, 0.850958, 0, 1, 0, -0.850958, 0, 0.525234, -0.175859, 0.210065, 0.355148)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass41" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.650628, 0, 0.759396, 0, 1, 0, -0.759396, 0, 0.650628, 0.425581, 0.210065, 0.262232)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass42" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.322315, 0, 0.946633, 0, 1, 0, -0.946633, 0, 0.322315, 0.263584, 0.210065, 0.357231)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass43" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.959131, 0, 0.282961, 0, 1, 0, -0.282961, 0, 0.959131, 0.416616, 0.210065, 0.117275)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass44" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.85201, 0, 0.523525, 0, 1, 0, -0.523525, 0, 0.85201, 0.201424, 0.210065, 0.16572)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass45" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.986686, 0, 0.162637, 0, 1, 0, -0.162637, 0, 0.986686, 0.0183048, 0.210065, 0.081192)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass46" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.855852, 0, 0.517221, 0, 1, 0, -0.517221, 0, 0.855852, -0.166824, 0.210065, 0.0496712)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass47" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.916265, 0, -0.400573, 0, 1, 0, 0.400573, 0, 0.916265, 0.104723, 0.210065, -0.0355434)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass48" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.989062, 0, -0.147499, 0, 1, 0, 0.147499, 0, 0.989062, -0.091177, 0.210065, -0.13693)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass49" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.0381785, 0, 0.999271, 0, 1, 0, -0.999271, 0, 0.0381785, 0.542879, 0.210065, 0.997828)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass50" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.335419, 0, 0.942069, 0, 1, 0, -0.942069, 0, -0.335419, 0.474937, 0.210065, 1.1729)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass51" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.57589, 0, 0.817527, 0, 1, 0, -0.817527, 0, 0.57589, 0.445814, 0.210065, 0.889799)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass52" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.342512, 0, 0.939514, 0, 1, 0, -0.939514, 0, 0.342512, 0.307262, 0.210065, 1.06143)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass53" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.483817, 0, 0.875169, 0, 1, 0, -0.875169, 0, 0.483817, 0.877535, 0.210065, 0.84894)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass54" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.12445, 0, 0.992226, 0, 1, 0, -0.992226, 0, 0.12445, 0.738068, 0.210065, 0.974703)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass55" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.882201, 0, 0.470873, 0, 1, 0, -0.470873, 0, 0.882201, 0.839474, 0.210065, 0.708782)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass56" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.728694, 0, 0.68484, 0, 1, 0, -0.68484, 0, 0.728694, 0.638502, 0.210065, 0.799696)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass57" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.933493, 0, 0.358596, 0, 1, 0, -0.358596, 0, 0.933493, 0.442083, 0.210065, 0.753901)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass58" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.73373, 0, 0.679441, 0, 1, 0, -0.679441, 0, 0.73373, 0.254404, 0.210065, 0.760427)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass59" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.978292, 0, -0.207229, 0, 1, 0, 0.207229, 0, 0.978292, 0.503139, 0.210065, 0.622116)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass60" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.998468, 0, 0.0553335, 0, 1, 0, -0.0553335, 0, 0.998468, 0.290798, 0.210065, 0.562391)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass61" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.185529, 0, 0.982639, 0, 1, 0, -0.982639, 0, -0.185529, 1.06856, 0.210065, 0.415432)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass62" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.536976, 0, 0.843598, 0, 1, 0, -0.843598, 0, -0.536976, 1.04136, 0.210065, 0.601248)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass63" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.379165, 0, 0.925329, 0, 1, 0, -0.925329, 0, 0.379165, 0.94986, 0.210065, 0.331758)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass64" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.124467, 0, 0.992224, 0, 1, 0, -0.992224, 0, 0.124467, 0.853052, 0.210065, 0.529957)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass65" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.27656, 0, 0.960997, 0, 1, 0, -0.960997, 0, 0.27656, 1.36161, 0.210065, 0.195692)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass66" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.0998581, 0, 0.995002, 0, 1, 0, -0.995002, 0, -0.0998581, 1.25368, 0.210065, 0.34938)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass67" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.755042, 0, 0.655677, 0, 1, 0, -0.655677, 0, 0.755042, 1.29326, 0.210065, 0.0675449)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass68" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.557702, 0, 0.830042, 0, 1, 0, -0.830042, 0, 0.557702, 1.11761, 0.210065, 0.20097)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass69" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.830071, 0, 0.557658, 0, 1, 0, -0.557658, 0, 0.830071, 0.91593, 0.210065, 0.200111)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass70" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.563814, 0, 0.825902, 0, 1, 0, -0.825902, 0, 0.563814, 0.734426, 0.210065, 0.24831)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass71" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.999871, 0, 0.0160564, 0, 1, 0, -0.0160564, 0, 0.999871, 0.946074, 0.210065, 0.058033)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass72" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.961011, 0, 0.27651, 0, 1, 0, -0.27651, 0, 0.961011, 0.725761, 0.210065, 0.0471439)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass73" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.319356, 0, 0.947635, 0, 1, 0, -0.947635, 0, -0.319356, 1.67327, 0.210065, 0.721437)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass74" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.648253, 0, 0.761425, 0, 1, 0, -0.761425, 0, -0.648253, 1.67196, 0.210065, 0.909229)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass75" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.247845, 0, 0.9688, 0, 1, 0, -0.9688, 0, 0.247845, 1.54415, 0.210065, 0.654945)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass76" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.0136481, 0, 0.999907, 0, 1, 0, -0.999907, 0, -0.0136481, 1.47562, 0.210065, 0.864607)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass77" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.141299, 0, 0.989967, 0, 1, 0, -0.989967, 0, 0.141299, 1.93318, 0.210065, 0.46336)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass78" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.236211, 0, 0.971702, 0, 1, 0, -0.971702, 0, -0.236211, 1.8475, 0.210065, 0.630472)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass79" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.657336, 0, 0.753598, 0, 1, 0, -0.753598, 0, 0.657336, 1.84781, 0.210065, 0.345871)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass80" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.437822, 0, 0.899062, 0, 1, 0, -0.899062, 0, 0.437822, 1.69225, 0.210065, 0.502258)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass81" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.745174, 0, 0.666871, 0, 1, 0, -0.666871, 0, 0.745174, 1.49238, 0.210065, 0.52924)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass82" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.444448, 0, 0.895805, 0, 1, 0, -0.895805, 0, 0.444448, 1.31926, 0.210065, 0.602024)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass83" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.988089, 0, 0.153883, 0, 1, 0, -0.153883, 0, 0.988089, 1.50263, 0.210065, 0.384361)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass84" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.913659, 0, 0.406482, 0, 1, 0, -0.406482, 0, 0.913659, 1.28292, 0.210065, 0.403978)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass85" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 0.580549, 0.210065, 1.8037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass86" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 0.603968, 0.210065, 1.99003)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass87" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 0.44381, 0.210065, 1.75478)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass88" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 0.403463, 0.210065, 1.97163)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass89" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 0.804249, 0.210065, 1.51367)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass90" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 0.741301, 0.210065, 1.6906)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass91" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 0.704157, 0.210065, 1.40843)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass92" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 0.570532, 0.210065, 1.58393)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass93" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 0.375948, 0.210065, 1.63698)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass94" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.213913, 0.210065, 1.73191)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass95" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 0.367043, 0.210065, 1.49201)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass96" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.151827, 0.210065, 1.54037)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass97" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.441271, 0, 0.897374, 0, 1, 0, -0.897374, 0, -0.441271, 1.29758, 0.210065, 1.48303)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass98" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.742806, 0, 0.669507, 0, 1, 0, -0.669507, 0, -0.742806, 1.321, 0.210065, 1.66936)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass99" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, 1.16084, 0.210065, 1.43411)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass100" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.145099, 0, 0.989417, 0, 1, 0, -0.989417, 0, -0.145099, 1.12049, 0.210065, 1.65096)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass101" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.00980859, 0, 0.999952, 0, 1, 0, -0.999952, 0, 0.00980859, 1.52128, 0.210065, 1.193)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass102" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(-0.362015, 0, 0.932172, 0, 1, 0, -0.932172, 0, -0.362015, 1.45833, 0.210065, 1.36993)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass103" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.552461, 0, 0.833539, 0, 1, 0, -0.833539, 0, 0.552461, 1.42119, 0.210065, 1.08777)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass104" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.315715, 0, 0.948854, 0, 1, 0, -0.948854, 0, 0.315715, 1.28756, 0.210065, 1.26326)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass105" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.650947, 0, 0.759124, 0, 1, 0, -0.759124, 0, 0.650947, 1.09298, 0.210065, 1.31631)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass106" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.322712, 0, 0.946497, 0, 1, 0, -0.946497, 0, 0.322712, 0.930944, 0.210065, 1.41124)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass107" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.95925, 0, 0.282559, 0, 1, 0, -0.282559, 0, 0.95925, 1.08407, 0.210065, 1.17134)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Grass108" type="MeshInstance3D" parent="Objects/IslandGreen/Grass5"]
+transform = Transform3D(0.85223, 0, 0.523168, 0, 1, 0, -0.523168, 0, 0.85223, 0.868858, 0.210065, 1.2197)
+mesh = ExtResource("26_jen86")
+skeleton = NodePath("../../../..")
+
+[node name="Fences" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50116, 1.17197, -31.5554)
+
+[node name="Fence" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.563238, 0, -0.826295, 0, 1, 0, 0.826295, 0, -0.563238, -0.785664, -0.18696, -0.0878944)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence2" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.902247, 0, -0.43122, 0, 1, 0, 0.43122, 0, -0.902247, -0.436781, -0.18696, -0.368818)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence3" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.978807, 0, -0.204787, 0, 1, 0, 0.204787, 0, -0.978807, 0.0436096, -0.18696, -0.572931)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence4" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, 0.602379, -0.18696, -0.615282)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence5" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.980026, 0, 0.198872, 0, 1, 0, -0.198872, 0, -0.980026, 1.17456, -0.18696, -0.620726)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence6" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.410433, 0, 0.911891, 0, 1, 0, -0.911891, 0, -0.410433, 1.45908, -0.186961, -0.197449)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence7" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.00879619, 0, 0.999961, 0, 1, 0, -0.999961, 0, 0.00879619, 1.52632, -0.186961, 0.538921)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence8" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.636549, 0, 0.771236, 0, 1, 0, -0.771236, 0, 0.636549, 1.25589, -0.186961, 1.0218)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence9" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.972577, 0, 0.23258, 0, 1, 0, -0.23258, 0, 0.972577, 0.824026, -0.186962, 1.31261)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence10" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.9088, 0, -0.417233, 0, 1, 0, 0.417233, 0, 0.9088, 0.326271, -0.186962, 1.29641)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence11" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.9088, 0, -0.417233, 0, 1, 0, 0.417233, 0, 0.9088, -0.299326, -0.186962, 0.916649)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence12" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(0.9088, 0, -0.417233, 0, 1, 0, 0.417233, 0, 0.9088, -0.886782, -0.186962, 0.619503)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="Fence13" type="MeshInstance3D" parent="Objects/IslandGreen/Fences"]
+transform = Transform3D(-0.422555, 0, -0.906338, 0, 1, 0, 0.906338, 0, -0.422555, -1.04417, -0.186962, 0.486893)
+mesh = ExtResource("27_48am2")
+skeleton = NodePath("../../../..")
+
+[node name="trees" type="Node3D" parent="Objects/IslandGreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.65137, 0, -27.1818)
+
+[node name="Tree" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69114, 0.985625, -1.07008)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree2" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 2.83414, 0.985625, -0.823681)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree3" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 3.19917, 0.985625, -1.45959)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 2.27885, 0.651569, -0.305452)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree7" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.907029, 0, 0.421067, 0, 1, 0, -0.421067, 0, 0.907029, 2.91295, 0.985625, 0.80048)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree8" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.816326, 0, 0.378961, 0, 0.9, 0, -0.378961, 0, 0.816326, 4.05344, 0.985625, 0.542694)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree9" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.997732, 0, 0.463174, 0, 1.1, 0, -0.463174, 0, 0.997732, 4.11677, 0.985625, -0.187798)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge3" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(1.08844, 0, 0.505281, 0, 1.2, 0, -0.505281, 0, 1.08844, 3.76799, 0.651569, 1.24656)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree10" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.939142, 0, -0.343529, 0, 1, 0, 0.343529, 0, -0.939142, 3.81227, 0.985625, 1.94925)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree11" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.845228, 0, -0.309176, 0, 0.9, 0, 0.309176, 0, -0.845228, 4.90885, 0.985625, 0.810158)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree13" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.731338, 0, 0.821672, 0, 1.1, 0, -0.821672, 0, 0.731338, 3.84852, 0.985625, -2.5417)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge5" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.797823, 0, 0.89637, 0, 1.2, 0, -0.89637, 0, 0.797823, 4.09877, 0.651569, -1.08691)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree14" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.288514, 0, 0.957476, 0, 1, 0, -0.957476, 0, 0.288514, 5.34645, 0.985625, -0.825285)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree15" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.259662, 0, 0.861728, 0, 0.9, 0, -0.861728, 0, 0.259662, 5.91215, 0.985625, -1.84859)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree16" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.317365, 0, 1.05322, 0, 1.1, 0, -1.05322, 0, 0.317365, 5.40859, 0.985625, -2.38157)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge6" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.346216, 0, 1.14897, 0, 1.2, 0, -1.14897, 0, 0.346216, 6.24813, 0.651569, -1.1674)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree17" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.367784, 0, -0.929911, 0, 1, 0, 0.929911, 0, -0.367784, 6.80247, 0.985625, -0.733294)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree18" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.331005, 0, -0.83692, 0, 0.9, 0, 0.83692, 0, -0.331005, 6.68066, 0.985625, -2.30974)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree19" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.05996, 0, 0.294092, 0, 1.1, 0, -0.294092, 0, -1.05996, 4.54189, 0.985625, -1.98152)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge7" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.15632, 0, 0.320827, 0, 1.2, 0, -0.320827, 0, -1.15632, 5.91391, 0.651569, -2.99191)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree20" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.986587, 0, -0.16324, 0, 1, 0, 0.16324, 0, -0.986587, 5.42194, 0.985625, -4.0828)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree21" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-0.887928, 0, -0.146916, 0, 0.9, 0, 0.146916, 0, -0.887928, 4.25404, 0.985625, -4.13931)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree22" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.08525, 0, -0.179564, 0, 1.1, 0, 0.179564, 0, -1.08525, 3.99772, 0.985625, -3.45234)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge8" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.1839, 0, -0.195888, 0, 1.2, 0, 0.195888, 0, -1.1839, 4.71729, 0.651569, -4.74123)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree23" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.9968, 0, 0.0799378, 0, 1, 0, -0.0799378, 0, 0.9968, 4.86248, 0.985625, -5.43019)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree24" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.89712, 0, 0.0719441, 0, 0.9, 0, -0.0719441, 0, 0.89712, 3.50128, 0.985625, -4.62574)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree12" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.03306, 0, -0.377881, 0, 1.1, 0, 0.377881, 0, -1.03306, 4.78449, 0.985625, 1.53277)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge4" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(-1.12697, 0, -0.412234, 0, 1.2, 0, 0.412234, 0, -1.12697, 5.25232, 0.651569, 0.132711)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
+
+[node name="Tree4" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.715656, 0, -0.698453, 0, 1, 0, 0.698453, 0, 0.715656, 1.27973, 0.985625, -0.593214)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree5" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.644091, 0, -0.628607, 0, 0.9, 0, 0.628607, 0, 0.644091, 1.92563, 0.985625, 0.381458)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="Tree6" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.787222, 0, -0.768298, 0, 1.1, 0, 0.768298, 0, 0.787222, 2.63101, 0.985625, 0.181318)
+mesh = ExtResource("28_5id55")
+skeleton = NodePath("../../../..")
+
+[node name="TreeLarge2" type="MeshInstance3D" parent="Objects/IslandGreen/trees"]
+transform = Transform3D(0.858787, 0, -0.838143, 0, 1.2, 0, 0.838143, 0, 0.858787, 1.16627, 0.651568, 0.364491)
+mesh = ExtResource("29_fn7dy")
+skeleton = NodePath("../../../..")
 
 [node name="Bottom" type="Node3D" parent="Objects"]
 

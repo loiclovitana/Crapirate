@@ -7,6 +7,8 @@ size = Vector3(2.98669, 1, 1.96442)
 
 [node name="RockFlatGrass" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.30605, 0, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="RockFlatGrass" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_f0k36")

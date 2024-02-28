@@ -6,9 +6,10 @@
 size = Vector3(1.98157, 2.43726, 1.85638)
 
 [node name="Rock3" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
 
 [node name="FormationRock" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_g7088")
 skeleton = NodePath("../../..")
 
