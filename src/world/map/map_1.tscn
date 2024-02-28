@@ -271,7 +271,7 @@ mesh = ExtResource("15_iau52")
 skeleton = NodePath("../../../../..")
 
 [node name="FishingStand" type="MeshInstance3D" parent="Objects/MainIsland/Campfire"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202186, 0.35542, 0.594637)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202186, 0.0117844, 0.594637)
 mesh = ExtResource("16_lv8ug")
 skeleton = NodePath("../../../..")
 

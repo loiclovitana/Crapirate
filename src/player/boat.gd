@@ -3,6 +3,7 @@ class_name Boat extends Area3D
 #Constants
 const TIME_TO_HAUL = 3
 const TIME_TO_HELM = 1.5
+const TIME_TO_HELM_STRAIGHT = 2.5
 const TIME_FOR_MAX_SPEED = 10.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
 const TIME_TO_FULLTURN = 1.0
@@ -120,7 +121,7 @@ func _update_haul(delta,haul_direction):
 		_sail_haul= 0
 
 func _update_helm_straight(delta):
-	var update_helm = (delta / TIME_TO_HELM)
+	var update_helm = (delta / TIME_TO_HELM_STRAIGHT)
 	if abs(_helm_direction)<= update_helm:
 		_helm_direction=0
 	if _helm_direction<0:
@@ -173,21 +174,20 @@ func _compute_new_speed_accelerating(delta,intended_max_speed) -> float:
 	if intended_max_speed<new_speed:
 		return intended_max_speed
 	return new_speed
-	
+
+
 func _compute_new_speed_decelerating(delta,intended_max_speed):
-	var adjusted_intended_speed = intended_max_speed+1
-	var speed_relative = (_current_speed+1)/adjusted_intended_speed if adjusted_intended_speed>1 else _current_speed+1
+	const TIME_FROM_1_TO_0 =4
 	
-	var current_speed_time =  pow(2-speed_relative,3) * TIME_FOR_MAX_SPEED 
-	if current_speed_time<=0:
-		current_speed_time=0
+	var current_speed_time =  - sqrt(_current_speed)*TIME_FROM_1_TO_0
 	var new_speed_time = current_speed_time+delta 
-	var new_speed = adjusted_intended_speed*(2 - pow(new_speed_time/TIME_FOR_MAX_SPEED,1.0/3.0)) -1
+	if new_speed_time>0:
+		return intended_max_speed
+	var new_speed = (new_speed_time/TIME_FROM_1_TO_0)**2
 	
 	if new_speed<intended_max_speed:
 		return intended_max_speed
 	return new_speed
-	
 
 func _rotation_speed():
 	var r_speed = _helm_direction*max(1,_current_speed*0.5)

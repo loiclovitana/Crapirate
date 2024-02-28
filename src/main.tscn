@@ -3,13 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="1_b6ytr"]
 [ext_resource type="Script" path="res://src/main.gd" id="1_q8dep"]
 [ext_resource type="PackedScene" uid="uid://brgh15k8ufvrd" path="res://src/player/boat.tscn" id="2_qxrrm"]
-
-[sub_resource type="Environment" id="Environment_n1oja"]
-background_mode = 1
-background_color = Color(0.00784314, 0.690196, 1, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.882353, 0.796078, 0.831373, 1)
-ambient_light_energy = 0.2
+[ext_resource type="Script" path="res://src/StaticCamera.gd" id="4_c1qx7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_q8dep")
@@ -23,9 +17,8 @@ speed_stat = 10
 
 [node name="followCamera" type="Camera3D" parent="Boat"]
 transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.77636e-15, -4.37114e-08, -2.72879, 1.98386, 0)
-current = true
 
-[node name="Camera" type="Camera3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(0.958735, -0.229711, 0.167508, 0, 0.589196, 0.80799, -0.2843, -0.774649, 0.564883, 1.78517, 10, 6)
-environment = SubResource("Environment_n1oja")
+[node name="StaticCamera" type="Camera3D" parent="Boat"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 6)
+current = true
+script = ExtResource("4_c1qx7")
