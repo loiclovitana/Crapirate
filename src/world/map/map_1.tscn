@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://dltsdrq8grbsc"]
+[gd_scene load_steps=32 format=3 uid="uid://dltsdrq8grbsc"]
 
 [ext_resource type="PackedScene" uid="uid://bb7tva3djhjvu" path="res://src/world/rocks/rock_1.tscn" id="1_1jnq6"]
+[ext_resource type="PackedScene" uid="uid://cm1ldtjt4cg73" path="res://src/world/sea.tscn" id="1_f28cp"]
 [ext_resource type="PackedScene" uid="uid://yom4ha3i084y" path="res://src/world/rocks/rock_2.tscn" id="2_p07ra"]
 [ext_resource type="ArrayMesh" uid="uid://ca0u4p67efou4" path="res://ressources/3D/terrain/rocks/formationLarge_rock.obj" id="3_6ftw7"]
 [ext_resource type="PackedScene" uid="uid://poi1nxpyltxa" path="res://src/world/rocks/small_rock.tscn" id="3_ystak"]
@@ -31,26 +32,9 @@
 [ext_resource type="ArrayMesh" uid="uid://c8l5merdh30do" path="res://ressources/3D/terrain/tree/tree.obj" id="28_5id55"]
 [ext_resource type="ArrayMesh" uid="uid://dlheknlvvd5vo" path="res://ressources/3D/terrain/tree/treeLarge.obj" id="29_fn7dy"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yaqkr"]
-transparency = 1
-albedo_color = Color(0.439216, 1, 1, 0.427451)
-emission_energy_multiplier = 0.0
-clearcoat_enabled = true
-clearcoat = 0.55
-clearcoat_roughness = 0.16
-
-[sub_resource type="BoxMesh" id="BoxMesh_2rwjc"]
-material = SubResource("StandardMaterial3D_yaqkr")
-size = Vector3(100, 20, 100)
-
 [node name="Map1" type="Node3D"]
 
-[node name="Sea" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-layers = 2
-cast_shadow = 0
-mesh = SubResource("BoxMesh_2rwjc")
-metadata/_edit_lock_ = true
+[node name="Sea" parent="." instance=ExtResource("1_f28cp")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)

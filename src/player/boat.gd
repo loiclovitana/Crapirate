@@ -1,4 +1,4 @@
-class_name Boat extends Area3D
+class_name Boat extends CharacterBody3D
 
 #Constants
 const TIME_TO_HAUL = 3
@@ -70,15 +70,18 @@ func _process(delta):
 	
 	
 	# update position
-	set_global_position(self.get_global_position() 
-					+( self.global_transform.basis.x * _current_speed * delta)*0.5
-		)
+	#set_global_position(self.get_global_position() 
+	#				+( self.global_transform.basis.x * _current_speed * delta)*0.5
+	#	)
 	rotate_y (
 		rotation_speed*delta
 	)
-	set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
+	#set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
 	
 	_current_speed=new_speed
+	
+	set_velocity(( self.global_transform.basis.x * new_speed ))
+	move_and_slide()
 	
 	# update display 
 	if OS.is_debug_build():
@@ -222,6 +225,6 @@ func _speed_with_collision(speed,rotation_speed) -> Array[float]:
 			
 	#set rotation_speed if collision isn't centered
 	if  ( not is_zero_approx(back_collision.z) ) or not is_zero_approx(front_collision.z):
-		collision_rotation=max(2,_current_speed*2)*(front_collision.z - back_collision.z )
+		collision_rotation+=max(2,_current_speed*2)*(front_collision.z - back_collision.z )
 	
 	return [collision_speed,collision_rotation]

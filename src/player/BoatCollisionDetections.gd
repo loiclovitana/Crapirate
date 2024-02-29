@@ -19,7 +19,7 @@ func _process(_delta):
 	if not collisions_point.is_empty():
 		collisions_point.clear()
 	for ray in rays:
-		if ray.is_colliding():
+		if ray.is_colliding() and ray.get_collider() is Boat:
 			collisions_point.append(self.to_local(ray.get_collision_point()))
 	
 		
