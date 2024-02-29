@@ -1,4 +1,4 @@
-class_name Boat extends CharacterBody3D
+class_name Boat extends RigidBody3D
 
 #Constants
 const TIME_TO_HAUL = 3
@@ -65,23 +65,23 @@ func _process(delta):
 	var rotation_speed = _rotation_speed()
 	
 	var s_r= _speed_with_collision(new_speed,rotation_speed)
-	new_speed = s_r[0]
-	rotation_speed = s_r[1]
+	#new_speed = s_r[0]
+	#rotation_speed = s_r[1]
 	
 	
 	# update position
-	#set_global_position(self.get_global_position() 
-	#				+( self.global_transform.basis.x * _current_speed * delta)*0.5
-	#	)
-	rotate_y (
-		rotation_speed*delta
-	)
+	set_global_position(self.get_global_position() 
+					+( self.global_transform.basis.x * _current_speed * delta)*0.5
+		)
+	#rotate_y (
+		#rotation_speed*delta
+	#)
 	#set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
 	
 	_current_speed=new_speed
 	
-	set_velocity(( self.global_transform.basis.x * new_speed ))
-	move_and_slide()
+	#set_velocity(( self.global_transform.basis.x * new_speed ))
+	#move_and_slide()
 	
 	# update display 
 	if OS.is_debug_build():

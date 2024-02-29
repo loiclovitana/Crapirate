@@ -10,9 +10,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
 size = Vector3(1.69549, 1.74908, 0.4)
 
-[node name="Boat" type="CharacterBody3D"]
+[node name="Boat" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 6
+center_of_mass_mode = 1
 script = ExtResource("1_qrajo")
 
 [node name="BoatRendering" parent="." instance=ExtResource("2_4qo4p")]
