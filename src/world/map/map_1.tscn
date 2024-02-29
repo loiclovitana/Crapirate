@@ -35,6 +35,8 @@
 [node name="Map1" type="Node3D"]
 
 [node name="Sea" parent="." instance=ExtResource("1_f28cp")]
+collision_layer = 8
+collision_mask = 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)

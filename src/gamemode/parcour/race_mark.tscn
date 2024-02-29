@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://wwbhal8v70ht"]
+
+[ext_resource type="Script" path="res://src/gamemode/raceGate.gd" id="1_ujy10"]
+[ext_resource type="Script" path="res://src/gamemode/parcour/buoy.gd" id="2_5i73q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_muxd8"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pghip"]
+radius = 0.25
+height = 0.5
+
+[node name="RaceMark" type="Node3D"]
+script = ExtResource("1_ujy10")
+
+[node name="Buoy" type="RigidBody3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 10
+mass = 0.3
+gravity_scale = 0.0
+script = ExtResource("2_5i73q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Buoy"]
+mesh = SubResource("CapsuleMesh_muxd8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Buoy"]
+shape = SubResource("CapsuleShape3D_pghip")
