@@ -1,7 +1,7 @@
 class_name RaceGate
 extends Node3D
 
-enum GateType {TRIBORD, BABORD,  BOTH}
+enum GateType {TRIBORD, BABORD}
 @export var type: GateType
 
 var boats_to_cross : Array[Boat] = []
@@ -13,4 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if boats_to_cross.is_empty():
+		return
+	
