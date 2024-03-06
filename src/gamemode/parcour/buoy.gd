@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+## Positon where the buoy doesn't move if no force is applied to it
+@onready var stable_position : Vector3 = get_global_position() 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +14,7 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-	var rel_position = get_parent().get_global_position() -get_global_position()
+	var rel_position = stable_position - get_global_position()
 	var friction = self.linear_velocity*self.linear_velocity.length()
 	apply_central_force(rel_position*3-friction)
 	

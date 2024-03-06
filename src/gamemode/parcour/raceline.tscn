@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bshx3wv2h387b"]
+
+[ext_resource type="Script" path="res://src/gamemode/parcour/raceline.gd" id="1_7fbee"]
+
+[node name="RaceLine" type="Node3D"]
+script = ExtResource("1_7fbee")
+
+[node name="Line" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+collision_mask = 2
+debug_shape_thickness = 5
