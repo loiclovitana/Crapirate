@@ -1,10 +1,9 @@
 class_name RaceMark
-extends Node3D
+extends RaceCheckpoint
 
 enum GateType {TRIBORD, BABORD}
 @export var type: GateType
 
-var _boats_to_cross : Array[Boat] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +16,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	super(delta)
 	if _boats_to_cross.is_empty():
 		if %Arrow.visible:
 			%Arrow.visible=false
@@ -26,7 +26,7 @@ func _process(delta):
 
 ## add player as the next mark in the race
 func add_player_(boat : Boat):
-	_boats_to_cross.append(boat)
+	super(boat)
 	for child in %Arrow.get_children():
 		var p_id = int(boat.player)
 		if 0<p_id<10:
@@ -34,7 +34,7 @@ func add_player_(boat : Boat):
 			
 ## remove player from tracking this mark
 func remove_player(boat : Boat):
-	_boats_to_cross.erase(boat)
+	super(boat)
 	var p_id = int(boat.player)
 	for child in %Arrow.get_children():
 		if 0<p_id<10:

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bshx3wv2h387b"]
+[gd_scene load_steps=3 format=3 uid="uid://bshx3wv2h387b"]
 
 [ext_resource type="Script" path="res://src/gamemode/parcour/raceline.gd" id="1_7fbee"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wlqfy"]
+top_radius = 0.05
+bottom_radius = 0.05
 
 [node name="RaceLine" type="Node3D"]
 script = ExtResource("1_7fbee")
@@ -9,3 +13,9 @@ script = ExtResource("1_7fbee")
 unique_name_in_owner = true
 collision_mask = 2
 debug_shape_thickness = 5
+
+[node name="LineVisual" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+layers = 3072
+mesh = SubResource("CylinderMesh_wlqfy")
