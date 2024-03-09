@@ -10,7 +10,7 @@ clearcoat_roughness = 0.16
 
 [sub_resource type="BoxMesh" id="BoxMesh_2rwjc"]
 material = SubResource("StandardMaterial3D_yaqkr")
-size = Vector3(100, 20, 100)
+size = Vector3(200, 20, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yam46"]
 size = Vector3(100, 20, 100)

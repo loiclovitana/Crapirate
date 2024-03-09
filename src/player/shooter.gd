@@ -14,7 +14,7 @@ class_name BulletShooter extends Node3D
 # Attributes
 var shooters :Array[Marker3D] = []
 @onready var boat : Boat = get_parent()
-@onready var bullets = %Bullets
+var bullets :Node
 
 
 # variables
@@ -23,11 +23,16 @@ var _delay_next_shoot = 0
 
 var bullets_ready : Array[Bullet] = []
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
+	# get the markers
 	for child in get_children():
 		if child is Marker3D:
 			shooters.append(child)
+	
+	# create a node where to instantiate the bullets (make it not 3d so that the transform is not impacted)
+	bullets = Node.new()
+	self.add_child(bullets)
 
 
 ##	==================================================================

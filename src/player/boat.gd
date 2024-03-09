@@ -10,7 +10,7 @@ const TIME_TO_FULLTURN = 1.0
 const SPEED_SCALE = 0.1
 
 # stats
-@export_range(1,10) var speed_stat = 5
+@export_range(1,100) var speed_stat = 5
 @export_range(0,1) var sail_influence = 1 #not used yet
 
 @export var player = 'p1'

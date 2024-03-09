@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
 [ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/boat_rendering.tscn" id="2_4qo4p"]
-[ext_resource type="Script" path="res://src/player/shooter.gd" id="4_0ymc3"]
+[ext_resource type="Script" path="res://src/player/Shooter.gd" id="4_0ymc3"]
 [ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/hud/boat_canvas.tscn" id="4_qqy8j"]
 [ext_resource type="PackedScene" uid="uid://dqs7ybxxgn4lf" path="res://src/bullets/base_bullet.tscn" id="5_rjarl"]
 [ext_resource type="Script" path="res://src/player/BoatCollisionDetections.gd" id="6_opmnx"]

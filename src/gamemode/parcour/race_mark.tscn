@@ -27,7 +27,6 @@ height = 0.4
 script = ExtResource("1_8gu8o")
 
 [node name="Buoy" parent="." instance=ExtResource("2_dp2wq")]
-unique_name_in_owner = true
 
 [node name="Arrow" type="Node3D" parent="Buoy"]
 unique_name_in_owner = true
