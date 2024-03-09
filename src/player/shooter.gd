@@ -25,9 +25,7 @@ var bullets_ready : Array[Bullet] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for child in get_children():
-		if child is Marker3D:
-			shooters.append(child)
+	assert(false,"WRONG FILE")
 
 
 ##	==================================================================
