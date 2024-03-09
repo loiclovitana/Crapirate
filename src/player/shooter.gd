@@ -25,6 +25,7 @@ var bullets_ready : Array[Bullet] = []
 
 
 func _ready() -> void:
+
 	# get the markers
 	for child in get_children():
 		if child is Marker3D:
