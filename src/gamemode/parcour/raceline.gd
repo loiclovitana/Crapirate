@@ -25,6 +25,10 @@ func _update_mesh_position():
 	
 	lineMesh.mesh.set_height((portMark.get_global_position() -startbordMark.get_global_position()).length())
 	
+	var line = (portMark.get_global_position() -startbordMark.get_global_position())
+	var angle_line = Vector2(line.x,line.z).angle()
+	lineMesh.set_global_rotation(Vector3(0,-angle_line,PI/2))
+	
 	
 func _update_raycast_position():
 	line.set_global_position(portMark.get_global_position())

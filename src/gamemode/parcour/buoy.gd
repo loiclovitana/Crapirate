@@ -5,8 +5,8 @@ extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_constant_force(Vector3.UP*0.5, Vector3(0,0.2,0))
-	add_constant_force(Vector3.DOWN*0.5, Vector3(0,-0.2,0))
+	add_constant_force(Vector3.UP*0.05, Vector3(0,0.2,0))
+	add_constant_force(Vector3.DOWN*0.05, Vector3(0,-0.2,0))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

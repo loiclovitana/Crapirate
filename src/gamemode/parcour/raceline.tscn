@@ -3,8 +3,12 @@
 [ext_resource type="Script" path="res://src/gamemode/parcour/raceline.gd" id="1_7fbee"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wlqfy"]
-top_radius = 0.05
-bottom_radius = 0.05
+top_radius = 0.03
+bottom_radius = 0.03
+radial_segments = 4
+rings = 1
+cap_top = false
+cap_bottom = false
 
 [node name="RaceLine" type="Node3D"]
 script = ExtResource("1_7fbee")
@@ -16,6 +20,5 @@ debug_shape_thickness = 5
 
 [node name="LineVisual" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 layers = 3072
 mesh = SubResource("CylinderMesh_wlqfy")
