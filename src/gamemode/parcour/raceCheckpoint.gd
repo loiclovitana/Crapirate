@@ -22,7 +22,6 @@ func _pass_checkpoint(boat : Boat):
 	has_passed.emit(boat)
 	if next_checkpoint:
 		next_checkpoint.add_player(boat)
-	print("Checkpoint passed")
 
 ## add player as the next mark in the race
 func add_player(boat : Boat):

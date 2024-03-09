@@ -29,7 +29,6 @@ func _ready():
 	# find all player in the scene
 	# FIXME not very clean
 	var boats = get_tree().get_root().find_children("*","Boat",true,false)
-	print(boats)
 	for b in boats:
 		starting_line.add_player(b)
 		

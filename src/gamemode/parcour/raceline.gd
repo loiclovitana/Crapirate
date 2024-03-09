@@ -41,8 +41,6 @@ func _detect_if_player_pass():
 	if _line.is_colliding():
 		var boat = _line.get_collider()
 		if boat not in _boats_to_cross:
-			print("Not a player")
-			print(_boats_to_cross)
 			return
 			
 		if _has_started :

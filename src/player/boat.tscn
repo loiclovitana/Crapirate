@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
 [ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/boat_rendering.tscn" id="2_4qo4p"]
+[ext_resource type="Script" path="res://src/player/BulletShooter.gd" id="4_7413p"]
 [ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/hud/boat_canvas.tscn" id="4_qqy8j"]
-[ext_resource type="Script" path="res://src/player/BulletShooter.gd" id="4_xonbd"]
 [ext_resource type="PackedScene" uid="uid://dqs7ybxxgn4lf" path="res://src/bullets/base_bullet.tscn" id="5_rjarl"]
 [ext_resource type="Script" path="res://src/player/BoatCollisionDetections.gd" id="6_opmnx"]
 
@@ -24,7 +24,7 @@ shape = SubResource("BoxShape3D_nefth")
 [node name="BoatCanvas" parent="." instance=ExtResource("4_qqy8j")]
 
 [node name="Shooter" type="Node3D" parent="."]
-script = ExtResource("4_xonbd")
+script = ExtResource("4_7413p")
 bullet_type = ExtResource("5_rjarl")
 
 [node name="Canon" type="Marker3D" parent="Shooter"]
