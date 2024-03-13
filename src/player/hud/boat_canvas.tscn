@@ -1,6 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdd2vi53oum2w"]
+[gd_scene load_steps=9 format=3 uid="uid://bdd2vi53oum2w"]
 
 [ext_resource type="Script" path="res://src/player/hud/boat_canvas.gd" id="1_3ssya"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvwly"]
+resource_local_to_scene = true
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_nmc0n"]
 colors = PackedColorArray(0.792157, 0.584314, 0.0470588, 1, 0.792157, 0.584314, 0.0470588, 1)
@@ -68,6 +73,18 @@ text = "Stats:"
 layout_mode = 2
 size_flags_horizontal = 8
 alignment = 2
+
+[node name="SpeedLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Speed"
+
+[node name="SpeedDisplay" type="Label" parent="BoatHUD/MarginContainer/control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0.0 KTS"
+label_settings = SubResource("LabelSettings_yvwly")
 
 [node name="HaulLabel" type="Label" parent="BoatHUD/MarginContainer/control"]
 layout_mode = 2

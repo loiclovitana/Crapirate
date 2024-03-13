@@ -22,6 +22,8 @@ func _process(_delta):
 		%helmRightView.value =0
 	
 	%haulView.value = boat._sail_haul*100
+	
+	%SpeedDisplay.set_text("%3.1f KTS" % boat._current_speed)
 
 
 func debug_set_stats(statsDisplayText):

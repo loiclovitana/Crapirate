@@ -24,5 +24,5 @@ func _update_timer(delta):
 	var minutes = int(abs(timer/60))
 	var seconds = int(abs(fmod(timer,60)))
 	var cent = int(abs(fmod(timer,1)*100))
-	var timer_format : String = "%s%02d:%02d.%02d " % [sign_,minutes , seconds,cent]
+	var timer_format : String = "%1s%02d:%02d.%02d " % [sign_,minutes , seconds,cent]
 	%Timer.set_text(timer_format)
