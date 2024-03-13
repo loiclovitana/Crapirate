@@ -9,6 +9,13 @@ class_name RaceLine extends RaceCheckpoint
 
 var _has_started = true
 
+
+
+## return the position where the boat need to go to pass the checkpoint
+func get_position_to_go() -> Vector3:
+	return (portMark.get_global_position() +startbordMark.get_global_position()) /2 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_update_raycast_position()
@@ -46,4 +53,5 @@ func _detect_if_player_pass():
 		if _has_started :
 			_pass_checkpoint(boat)
 			_line.add_exception(boat)
-		
+
+

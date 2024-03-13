@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmesiygxqdgyi"]
+[gd_scene load_steps=11 format=3 uid="uid://dmesiygxqdgyi"]
 
 [ext_resource type="Script" path="res://src/gamemode/race.gd" id="1_kg8se"]
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="2_ndh3e"]
 [ext_resource type="PackedScene" uid="uid://brgh15k8ufvrd" path="res://src/player/boat.tscn" id="3_4j3ew"]
 [ext_resource type="Script" path="res://src/player/view/splitScreenView.gd" id="3_gb4n2"]
 [ext_resource type="Script" path="res://src/StaticCamera.gd" id="4_2hlpx"]
+[ext_resource type="PackedScene" uid="uid://d0pl38nig0mdj" path="res://src/player/view/gps.tscn" id="6_i4foo"]
 [ext_resource type="Script" path="res://src/gamemode/parcour/parcours.gd" id="6_iee00"]
 [ext_resource type="PackedScene" uid="uid://wwbhal8v70ht" path="res://src/gamemode/parcour/race_mark.tscn" id="7_li58y"]
 [ext_resource type="PackedScene" uid="uid://bshx3wv2h387b" path="res://src/gamemode/parcour/raceline.tscn" id="8_gpvjv"]
@@ -14,6 +15,7 @@
 script = ExtResource("1_kg8se")
 
 [node name="Map1" parent="." instance=ExtResource("2_ndh3e")]
+metadata/_edit_lock_ = true
 
 [node name="SplitscreenView" type="HBoxContainer" parent="."]
 anchors_preset = 15
@@ -26,7 +28,7 @@ script = ExtResource("3_gb4n2")
 
 [node name="Boat" parent="SplitscreenView" instance=ExtResource("3_4j3ew")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.7436, -0.0120038, 27.3579)
-speed_stat = 10
+speed_stat = 20
 
 [node name="StaticCamera" type="Camera3D" parent="SplitscreenView/Boat"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 0)
@@ -37,6 +39,9 @@ script = ExtResource("4_2hlpx")
 [node name="followCamera" type="Camera3D" parent="SplitscreenView/Boat"]
 transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.77636e-15, -4.37114e-08, -2.72879, 1.98386, 0)
 cull_mask = 2047
+
+[node name="GPS" parent="SplitscreenView/Boat" instance=ExtResource("6_i4foo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.3579, 0.0120038, -15.7436)
 
 [node name="Boat2" parent="SplitscreenView" instance=ExtResource("3_4j3ew")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1313, -0.012, 26.6746)
@@ -49,9 +54,12 @@ cull_mask = 3071
 script = ExtResource("4_2hlpx")
 
 [node name="followCamera" type="Camera3D" parent="SplitscreenView/Boat2"]
-transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.06581e-14, -4.37113e-08, -2.72879, 1.98386, 0)
+transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.06581e-14, -4.37113e-08, -2.7, 2, 0)
 cull_mask = 3071
 current = true
+
+[node name="GPS2" parent="SplitscreenView/Boat2" instance=ExtResource("6_i4foo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.6746, 0.012, -19.1313)
 
 [node name="Parcours" type="Node3D" parent="."]
 script = ExtResource("6_iee00")
@@ -86,6 +94,10 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 
 [node name="RaceMark6" parent="Parcours" instance=ExtResource("7_li58y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4979, -3.8147e-06, -31.8247)
+
+[node name="RaceMark7" parent="Parcours" instance=ExtResource("7_li58y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0727, -7.6294e-06, 17.1902)
+type = 1
 
 [node name="FinishLine" parent="Parcours" node_paths=PackedStringArray("portMark", "startbordMark") instance=ExtResource("8_gpvjv")]
 transform = Transform3D(0.0685029, 0, 0.997651, 0, 1, 0, -0.997651, 0, 0.0685029, -3.34829, -1.90735e-06, 28.7271)

@@ -31,6 +31,7 @@ func _ready():
 	var boats = get_tree().get_root().find_children("*","Boat",true,false)
 	for b in boats:
 		starting_line.add_player(b)
+		b.next_checkpoint = starting_line
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

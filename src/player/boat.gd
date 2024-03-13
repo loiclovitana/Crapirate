@@ -39,6 +39,9 @@ var next_display_update = UPDATE_DELTA
 var _sail_haul = 0
 var _helm_direction = 0
 
+## determine the next checkpoint in the race
+var next_checkpoint : RaceCheckpoint = null
+
 # ==========================================================================================
 #		Processing method
 # ==========================================================================================

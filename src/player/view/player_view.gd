@@ -1,4 +1,7 @@
 extends SubViewportContainer
+class_name PlayerView
+
+const PLAYER_VIEW_ID_OFFSET = 10
 
 
 # Called when the node enters the scene tree for the first time.

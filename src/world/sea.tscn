@@ -7,6 +7,7 @@ emission_energy_multiplier = 0.0
 clearcoat_enabled = true
 clearcoat = 0.55
 clearcoat_roughness = 0.16
+disable_receive_shadows = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_2rwjc"]
 material = SubResource("StandardMaterial3D_yaqkr")
@@ -22,7 +23,6 @@ gravity_space_override = 3
 gravity = -20.0
 
 [node name="SeaMesh" type="MeshInstance3D" parent="."]
-layers = 2
 cast_shadow = 0
 mesh = SubResource("BoxMesh_2rwjc")
 skeleton = NodePath("../..")

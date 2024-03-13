@@ -19,6 +19,7 @@ func _process(delta):
 	
 func _pass_checkpoint(boat : Boat):
 	remove_player(boat)
+	boat.next_checkpoint = next_checkpoint
 	has_passed.emit(boat)
 	if next_checkpoint:
 		next_checkpoint.add_player(boat)
@@ -30,3 +31,8 @@ func add_player(boat : Boat):
 ## remove player from tracking this mark
 func remove_player(boat : Boat):
 	_boats_to_cross.erase(boat)
+
+## return the position where the boat need to go to pass the checkpoint
+func get_position_to_go() -> Vector3:
+	return get_global_position()
+	

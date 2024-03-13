@@ -1,6 +1,8 @@
 class_name RaceMark
 extends RaceCheckpoint
 
+const DISTANCE_INDICATION : float = 1.0
+
 enum GateType {TRIBORD, BABORD}
 @export var type: GateType
 
@@ -8,24 +10,17 @@ enum GateType {TRIBORD, BABORD}
 
 var boat_infos :Dictionary = {}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	%Arrow.visible=false
-	for child in %Arrow.get_children():
-		for layer in range(1,20):
-			child.set_layer_mask_value(layer,false)
+#region PUBLIC
+# ===================== PUBLIC ==============================================
 
+## return the position where the boat need to go to pass the checkpoint
+func get_position_to_go() -> Vector3:
+	var to_last_checkpoint :Vector3 = last_checkpoint.get_global_position() - mark.get_global_position() 
+	var angle_mid_checkpoint = _get_angle_between_checkpoint()/2
+	if type == GateType.TRIBORD:
+		angle_mid_checkpoint = -angle_mid_checkpoint
+	return mark.get_global_position() + DISTANCE_INDICATION*to_last_checkpoint.normalized().rotated(Vector3.UP,angle_mid_checkpoint)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	_detect_if_player_pass()
-	super(delta)
-	if _boats_to_cross.is_empty():
-		if %Arrow.visible:
-			%Arrow.visible=false
-	else:
-		if not %Arrow.visible:
-			%Arrow.visible=true
 
 ## add player as the next mark in the race
 func add_player(boat : Boat):
@@ -39,32 +34,17 @@ func add_player(boat : Boat):
 	if type == GateType.BABORD:
 		angle_done= -angle_done
 	
-	if type == GateType.TRIBORD:
-		pass
 	var angle_checkpoint =  _get_angle_between_checkpoint()
 	
 	boat_infos[boat]={
 			"last_relative_position" : boat_relative_position
 			,"angle_todo" : (angle_checkpoint/2.0) - angle_done
 		}
-	
-	for child in %Arrow.get_children():
-		var p_id = int(boat.player)
-		if 0<p_id and p_id<=10:
-			child.set_layer_mask_value(10 +p_id ,true)
-			
-## remove player from tracking this mark
-func remove_player(boat : Boat):
-	
-	boat_infos.erase(boat)
-	super(boat)
-	var p_id = int(boat.player)
-	for child in %Arrow.get_children():
-		if 0<p_id and p_id<=10:
-			child.set_layer_mask_value(10 +p_id ,false)
-
-
+		
+var __cache_angle_checkpoint : float = NAN
 func _get_angle_between_checkpoint()-> float:
+	if not is_nan(__cache_angle_checkpoint):
+		return __cache_angle_checkpoint
 	var next_checkpoint_relative_position = To2DWorld.to_2d(next_checkpoint.get_global_position() - get_global_position())
 	var last_checkpoint_relative_position = To2DWorld.to_2d(last_checkpoint.get_global_position() - get_global_position())
 	var angle_checkpoint = last_checkpoint_relative_position.angle_to(next_checkpoint_relative_position)
@@ -72,7 +52,37 @@ func _get_angle_between_checkpoint()-> float:
 		angle_checkpoint += 2*PI
 	if type == GateType.BABORD:
 		angle_checkpoint = 2*PI - angle_checkpoint
+	
+	__cache_angle_checkpoint = angle_checkpoint
 	return angle_checkpoint
+
+## remove player from tracking this mark
+func remove_player(boat : Boat):
+	
+	boat_infos.erase(boat)
+	super(boat)
+
+#============================================================================
+#endregion
+
+
+#region READY
+# ===================== READY ==============================================
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+#============================================================================
+#endregion
+
+#region PROCESS
+# ===================== PROCESS ==============================================
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	_detect_if_player_pass()
+	super(delta)
+
 
 func _detect_if_player_pass():
 	for boat in _boats_to_cross:
@@ -87,5 +97,5 @@ func _detect_if_player_pass():
 		if boat_infos[boat]["angle_todo"]<0:
 			_pass_checkpoint(boat)
 		
-		
-		
+# ============================================================================
+#endregion

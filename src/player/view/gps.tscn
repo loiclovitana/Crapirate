@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0pl38nig0mdj"]
+[gd_scene load_steps=10 format=3 uid="uid://d0pl38nig0mdj"]
+
+[ext_resource type="Script" path="res://src/player/view/gps.gd" id="1_8a38a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_off7h"]
 albedo_color = Color(1, 0.615686, 0.133333, 1)
@@ -22,13 +24,22 @@ bottom_radius = 0.25
 height = 0.4
 radial_segments = 20
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f28t5"]
+albedo_color = Color(0.219608, 0.705882, 1, 1)
+
 [sub_resource type="PrismMesh" id="PrismMesh_w47jl"]
+material = SubResource("StandardMaterial3D_f28t5")
 size = Vector3(0.3, 0.3, 0.1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqv6y"]
+albedo_color = Color(0.219608, 0.705882, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_7cfo8"]
+material = SubResource("StandardMaterial3D_kqv6y")
 size = Vector3(0.2, 0.1, 0.1)
 
 [node name="GPS" type="Node3D"]
+script = ExtResource("1_8a38a")
 
 [node name="ArrowDown" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -36,12 +47,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 metadata/_edit_group_ = true
 
 [node name="ArrowBody" type="MeshInstance3D" parent="ArrowDown"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00631857, 0.841653, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00631857, 0.559646, 0)
 layers = 1025
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_kr7ea")
 
 [node name="arrowHead" type="MeshInstance3D" parent="ArrowDown"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00631857, 0.491653, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00631857, 0.209646, 0)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_pr4pb")
 skeleton = NodePath("../..")
 
@@ -51,23 +64,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.00284)
 metadata/_edit_group_ = true
 
 [node name="ArrowBody" type="MeshInstance3D" parent="ArrowDirection"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0.346949, 0)
 layers = 1025
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_kr7ea")
 
 [node name="arrowHead" type="MeshInstance3D" parent="ArrowDirection"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.37196, 0, 0)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0.346949, -0.375)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_pr4pb")
 skeleton = NodePath("../..")
 
 [node name="WindArrow" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271, 1)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WindArrow"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.122108, -0.00134163, 0.00226259)
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0.879825, -0.125)
+cast_shadow = 0
 mesh = SubResource("PrismMesh_w47jl")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="WindArrow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11776, -0.000853345, 0.00226259)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.879825, 0.125)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_7cfo8")

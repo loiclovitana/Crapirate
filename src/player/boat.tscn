@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/player/BoatCollisionDetections.gd" id="6_opmnx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
-size = Vector3(1.69549, 1.74908, 0.4)
+size = Vector3(1.61241, 1.749, 0.7)
 
 [node name="Boat" type="CharacterBody3D"]
 collision_layer = 2
@@ -18,7 +18,7 @@ script = ExtResource("1_qrajo")
 [node name="BoatRendering" parent="." instance=ExtResource("2_4qo4p")]
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0254242, 0.573822, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0469917, 0.574, 0)
 shape = SubResource("BoxShape3D_nefth")
 
 [node name="BoatCanvas" parent="." instance=ExtResource("4_qqy8j")]

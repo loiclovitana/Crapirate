@@ -21,4 +21,6 @@ debug_shape_thickness = 5
 [node name="LineVisual" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 layers = 3072
+transparency = 0.5
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_wlqfy")

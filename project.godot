@@ -82,7 +82,7 @@ p2_shoot={
 
 [layer_names]
 
-3d_render/layer_2="noShadow"
+3d_render/layer_1="mainLayer"
 3d_render/layer_11="p1_view"
 3d_render/layer_12="p2_view"
 3d_render/layer_13="p3_view"

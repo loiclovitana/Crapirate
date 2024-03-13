@@ -1,42 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://wwbhal8v70ht"]
+[gd_scene load_steps=3 format=3 uid="uid://wwbhal8v70ht"]
 
 [ext_resource type="Script" path="res://src/gamemode/parcour/raceMark.gd" id="1_8gu8o"]
 [ext_resource type="PackedScene" uid="uid://b8q0p5qi2obaf" path="res://src/gamemode/parcour/buoy.tscn" id="2_dp2wq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_off7h"]
-albedo_color = Color(1, 0.615686, 0.133333, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_moe5l"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_off7h")
-top_radius = 0.13
-bottom_radius = 0.13
-height = 0.35
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4suv3"]
-albedo_color = Color(1, 0.615686, 0.133333, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_mb7ue"]
-lightmap_size_hint = Vector2i(9, 9)
-material = SubResource("StandardMaterial3D_4suv3")
-top_radius = 0.0
-bottom_radius = 0.25
-height = 0.4
 
 [node name="RaceMark" type="Node3D"]
 script = ExtResource("1_8gu8o")
 
 [node name="Buoy" parent="." instance=ExtResource("2_dp2wq")]
-
-[node name="Arrow" type="Node3D" parent="Buoy"]
-unique_name_in_owner = true
-
-[node name="ArrowBody" type="MeshInstance3D" parent="Buoy/Arrow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.841653, 0)
-layers = 1025
-mesh = SubResource("CylinderMesh_moe5l")
-
-[node name="arrowHead" type="MeshInstance3D" parent="Buoy/Arrow"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 1, 0.491653, 0)
-mesh = SubResource("CylinderMesh_mb7ue")
-skeleton = NodePath("../..")
