@@ -49,9 +49,11 @@ func _detect_if_player_pass():
 		var boat = _line.get_collider()
 		if boat not in _boats_to_cross:
 			return
-			
+		
 		if _has_started :
 			_pass_checkpoint(boat)
 			_line.add_exception(boat)
-
+		else:
+			var displacement : Vector3 = 5 * (portMark.get_global_position()-startbordMark.get_global_position()).normalized().rotated(Vector3.UP,PI/2.0)
+			boat.project_to(boat.get_global_position()+displacement)
 

@@ -35,11 +35,7 @@ func _process(delta):
 	_update_wind_arrow()
 	_update_next_checkpoint_arrow()
 
-## set the position of the wind arrow indication
-func _update_wind_arrow():
-	var arrow_position = boat.get_global_position() - To2DWorld.to_3d(-boat.wind_direction.normalized())*DISTANCE_POINTING_ARROW
-	windArrow.look_at_from_position(arrow_position,boat.get_global_position())
-	
+
 ## set the position of the arrow that indicates the next checkpoint
 func _update_next_checkpoint_arrow():
 	
@@ -58,6 +54,10 @@ func _update_next_checkpoint_arrow():
 		arrowDirection.set_visible(true)
 		_update_pointing_checkpoint_arrow(boat_to_checkpoint)
 
+## set the position of the wind arrow indication
+func _update_wind_arrow():
+	var arrow_position = boat.get_global_position() - To2DWorld.to_3d(-boat.wind_direction.normalized())*DISTANCE_WIND_ARROW
+	windArrow.look_at_from_position(arrow_position,boat.get_global_position())
 
 func _update_down_checkpoint_arrow():
 	arrowDown.set_global_position(boat.next_checkpoint.get_position_to_go())

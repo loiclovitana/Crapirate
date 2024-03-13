@@ -23,8 +23,8 @@ func _ready():
 	starting_line = checkpoints[0] as RaceLine
 	finish_line = checkpoints[-1] as RaceLine
 	
-	# starting_line._has_started=false 
-	# TODO: timer for starting
+	starting_line._has_started=false 
+	_change_starting_line_color(Color(1,0,0,1))
 	
 	# find all player in the scene
 	# FIXME not very clean
@@ -34,6 +34,14 @@ func _ready():
 		b.next_checkpoint = starting_line
 		
 
+func _change_starting_line_color(color : Color):
+	var material : Material = starting_line.lineMesh.get_active_material(0)
+	if material and material is BaseMaterial3D:
+		material.set_albedo(color)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if not starting_line._has_started:
+		if get_parent().timer>=0:
+			starting_line._has_started =true
+			_change_starting_line_color(Color(0,1,0,1))

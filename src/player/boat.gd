@@ -42,6 +42,11 @@ var _helm_direction = 0
 ## determine the next checkpoint in the race
 var next_checkpoint : RaceCheckpoint = null
 
+
+## launch the boat to another position
+func project_to(target_position : Vector3):
+	set_global_position(target_position)
+
 # ==========================================================================================
 #		Processing method
 # ==========================================================================================
@@ -231,3 +236,4 @@ func _speed_with_collision(speed,rotation_speed) -> Array[float]:
 		collision_rotation+=max(2,_current_speed*2)*(front_collision.z - back_collision.z )
 	
 	return [collision_speed,collision_rotation]
+
