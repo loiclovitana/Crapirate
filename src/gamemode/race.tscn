@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmesiygxqdgyi"]
+[gd_scene load_steps=13 format=3 uid="uid://dmesiygxqdgyi"]
 
 [ext_resource type="Script" path="res://src/gamemode/race.gd" id="1_kg8se"]
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="2_ndh3e"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://wwbhal8v70ht" path="res://src/gamemode/parcour/race_mark.tscn" id="7_li58y"]
 [ext_resource type="PackedScene" uid="uid://bshx3wv2h387b" path="res://src/gamemode/parcour/raceline.tscn" id="8_gpvjv"]
 [ext_resource type="PackedScene" uid="uid://b8q0p5qi2obaf" path="res://src/gamemode/parcour/buoy.tscn" id="9_w4rdk"]
+[ext_resource type="Texture2D" uid="uid://dxdehrt0e8c1i" path="res://ressources/hud/timer_bg.png" id="11_a8ttv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_s7bsg"]
+font_size = 30
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Race" type="Node"]
 script = ExtResource("1_kg8se")
@@ -51,12 +57,12 @@ player = "p2"
 [node name="StaticCamera" type="Camera3D" parent="SplitscreenView/Boat2"]
 transform = Transform3D(1, -3.15544e-30, -3.55271e-15, 0, 1, -6.66134e-16, 3.55271e-15, 6.66134e-16, 1, -6, 10, 0)
 cull_mask = 3071
+current = true
 script = ExtResource("4_2hlpx")
 
 [node name="followCamera" type="Camera3D" parent="SplitscreenView/Boat2"]
 transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.06581e-14, -4.37113e-08, -2.7, 2, 0)
 cull_mask = 3071
-current = true
 
 [node name="GPS2" parent="SplitscreenView/Boat2" instance=ExtResource("6_i4foo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.6746, 0.012, -19.1313)
@@ -109,3 +115,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38276, 0, 0.40905)
 
 [node name="Buoy2" parent="Parcours/FinishLine" instance=ExtResource("9_w4rdk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40579, -1.90735e-06, 0.0333195)
+
+[node name="MainHUD" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainHUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MainHUD/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainHUD/VBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("11_a8ttv")
+
+[node name="Timer" type="Label" parent="MainHUD/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "99:99.99"
+label_settings = SubResource("LabelSettings_s7bsg")
