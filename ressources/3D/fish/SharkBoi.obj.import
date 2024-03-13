@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://tif5d882glpk"
+path="res://.godot/imported/SharkBoi.obj-211fd4bd4cb60e0cf6b2d52dcf81f5d3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/SharkBoi.obj-211fd4bd4cb60e0cf6b2d52dcf81f5d3.mesh"]
+
+source_file="res://ressources/3D/fish/SharkBoi.obj"
+dest_files=["res://.godot/imported/SharkBoi.obj-211fd4bd4cb60e0cf6b2d52dcf81f5d3.mesh", "res://.godot/imported/SharkBoi.obj-211fd4bd4cb60e0cf6b2d52dcf81f5d3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

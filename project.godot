@@ -92,7 +92,3 @@ p2_shoot={
 3d_physics/layer_3="Rocks"
 3d_physics/layer_4="sea"
 3d_physics/layer_5="Buoy"
-
-[rendering]
-
-anti_aliasing/quality/screen_space_aa=1
