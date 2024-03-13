@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brgh15k8ufvrd"]
+[gd_scene load_steps=9 format=3 uid="uid://brgh15k8ufvrd"]
 
 [ext_resource type="Script" path="res://src/player/boat.gd" id="1_qrajo"]
 [ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/boat_rendering.tscn" id="2_4qo4p"]
@@ -10,6 +10,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_nefth"]
 size = Vector3(1.61241, 1.749, 0.7)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cecgo"]
+height = 1.0
+radius = 0.3
+
 [node name="Boat" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 6
@@ -20,6 +24,10 @@ script = ExtResource("1_qrajo")
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0469917, 0.574, 0)
 shape = SubResource("BoxShape3D_nefth")
+
+[node name="Hitboxfront" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668397, 0.301883, 0)
+shape = SubResource("CylinderShape3D_cecgo")
 
 [node name="BoatCanvas" parent="." instance=ExtResource("4_qqy8j")]
 

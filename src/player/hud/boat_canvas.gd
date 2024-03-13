@@ -23,7 +23,8 @@ func _process(_delta):
 	
 	%haulView.value = boat._sail_haul*100
 	
-	%SpeedDisplay.set_text("%3.1f KTS" % boat._current_speed)
+	var speed_in_knot = boat._current_speed*1.5
+	%SpeedDisplay.set_text("%3.1f KTS" % speed_in_knot)
 
 
 func debug_set_stats(statsDisplayText):

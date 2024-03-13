@@ -27,8 +27,8 @@ func add_player(boat : Boat):
 	super(boat)
 	
 	# Compute initial angle for the boat
-	var boat_relative_position= To2DWorld.to_2d(boat.get_global_position() - get_global_position())
-	var last_checkpoint_relative_position = To2DWorld.to_2d(last_checkpoint.get_global_position() - get_global_position() )
+	var boat_relative_position= To2DWorld.to_2d(boat.get_global_position() - mark.get_global_position())
+	var last_checkpoint_relative_position = To2DWorld.to_2d(last_checkpoint.get_global_position() - mark.get_global_position() )
 	
 	var angle_done =last_checkpoint_relative_position.angle_to(boat_relative_position)
 	if type == GateType.BABORD:
@@ -45,8 +45,8 @@ var __cache_angle_checkpoint : float = NAN
 func _get_angle_between_checkpoint()-> float:
 	if not is_nan(__cache_angle_checkpoint):
 		return __cache_angle_checkpoint
-	var next_checkpoint_relative_position = To2DWorld.to_2d(next_checkpoint.get_global_position() - get_global_position())
-	var last_checkpoint_relative_position = To2DWorld.to_2d(last_checkpoint.get_global_position() - get_global_position())
+	var next_checkpoint_relative_position = To2DWorld.to_2d(next_checkpoint.get_global_position() - mark.get_global_position())
+	var last_checkpoint_relative_position = To2DWorld.to_2d(last_checkpoint.get_global_position() - mark.get_global_position())
 	var angle_checkpoint = last_checkpoint_relative_position.angle_to(next_checkpoint_relative_position)
 	if angle_checkpoint<0:
 		angle_checkpoint += 2*PI
@@ -86,7 +86,7 @@ func _process(delta):
 
 func _detect_if_player_pass():
 	for boat in _boats_to_cross:
-		var boat_relative_position = To2DWorld.to_2d(boat.get_global_position() - get_global_position())
+		var boat_relative_position = To2DWorld.to_2d(boat.get_global_position() - mark.get_global_position())
 		var angle_delta =  boat_relative_position.angle_to(boat_infos[boat]["last_relative_position"])
 		if type == GateType.TRIBORD:
 			angle_delta= -angle_delta
