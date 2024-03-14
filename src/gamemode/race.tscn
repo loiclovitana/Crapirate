@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmesiygxqdgyi"]
+[gd_scene load_steps=14 format=3 uid="uid://dmesiygxqdgyi"]
 
 [ext_resource type="Script" path="res://src/gamemode/race.gd" id="1_kg8se"]
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="2_ndh3e"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bshx3wv2h387b" path="res://src/gamemode/parcour/raceline.tscn" id="8_gpvjv"]
 [ext_resource type="PackedScene" uid="uid://b8q0p5qi2obaf" path="res://src/gamemode/parcour/buoy.tscn" id="9_w4rdk"]
 [ext_resource type="Texture2D" uid="uid://dxdehrt0e8c1i" path="res://ressources/hud/timer_bg.png" id="11_a8ttv"]
+[ext_resource type="PackedScene" uid="uid://c7s5246dt3dcd" path="res://src/interface/menu.tscn" id="12_q13uq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s7bsg"]
 font_size = 30
@@ -143,3 +144,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "99:99.99"
 label_settings = SubResource("LabelSettings_s7bsg")
+
+[node name="Menu" parent="." instance=ExtResource("12_q13uq")]
+unique_name_in_owner = true
+visible = false

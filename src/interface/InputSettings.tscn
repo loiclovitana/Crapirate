@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://5spc68prq7t0"]
+
+[node name="SettingsTabContainer" type="TabContainer"]
+
+[node name="Inputs" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inputs"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="Inputs/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Inputs/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inputs/VBoxContainer/Button/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Inputs/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Action"
+
+[node name="VSeparator" type="VSeparator" parent="Inputs/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Inputs/VBoxContainer/Button/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Input key"

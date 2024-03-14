@@ -14,6 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_timer(delta)
 	
+	if Input.is_action_pressed("ui_cancel"):
+		%Menu.set_visible(true)
+		get_tree().paused = true
+		
 	
 	
 func _update_timer(delta):
