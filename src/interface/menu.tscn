@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7s5246dt3dcd"]
+
+[ext_resource type="Texture2D" uid="uid://cxyu60cchlby" path="res://ressources/ui/buttonLong_brown.png" id="1_l5bha"]
+[ext_resource type="Texture2D" uid="uid://bbd5uy336ub3s" path="res://ressources/ui/buttonLong_brown_pressed.png" id="2_10sx5"]
+[ext_resource type="Script" path="res://src/interface/EventButton.gd" id="3_mivi4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_in1xt"]
+font_size = 19
+outline_size = 2
+outline_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="Menu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenuVBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ContinueCenterContainer" type="CenterContainer" parent="CenterContainer/PauseMenuVBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="TextureButton" parent="CenterContainer/PauseMenuVBoxContainer/ContinueCenterContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_l5bha")
+texture_pressed = ExtResource("2_10sx5")
+script = ExtResource("3_mivi4")
+event_name = "continue"
+
+[node name="Label" type="Label" parent="CenterContainer/PauseMenuVBoxContainer/ContinueCenterContainer"]
+layout_mode = 2
+text = "Continue"
+label_settings = SubResource("LabelSettings_in1xt")
+
+[node name="RestartCenterContainer2" type="CenterContainer" parent="CenterContainer/PauseMenuVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RestartButton" type="TextureButton" parent="CenterContainer/PauseMenuVBoxContainer/RestartCenterContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("1_l5bha")
+texture_pressed = ExtResource("2_10sx5")
+script = ExtResource("3_mivi4")
+event_name = "restart"
+
+[node name="Label" type="Label" parent="CenterContainer/PauseMenuVBoxContainer/RestartCenterContainer2"]
+layout_mode = 2
+text = "Restart"
+label_settings = SubResource("LabelSettings_in1xt")
+
+[node name="SettingsCenterContainer3" type="CenterContainer" parent="CenterContainer/PauseMenuVBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="TextureButton" parent="CenterContainer/PauseMenuVBoxContainer/SettingsCenterContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("1_l5bha")
+texture_pressed = ExtResource("2_10sx5")
+
+[node name="Label" type="Label" parent="CenterContainer/PauseMenuVBoxContainer/SettingsCenterContainer3"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_in1xt")
+
+[node name="ExitCenterContainer3" type="CenterContainer" parent="CenterContainer/PauseMenuVBoxContainer"]
+layout_mode = 2
+
+[node name="ContinueButton" type="TextureButton" parent="CenterContainer/PauseMenuVBoxContainer/ExitCenterContainer3"]
+layout_mode = 2
+texture_normal = ExtResource("1_l5bha")
+texture_pressed = ExtResource("2_10sx5")
+
+[node name="Label" type="Label" parent="CenterContainer/PauseMenuVBoxContainer/ExitCenterContainer3"]
+layout_mode = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_in1xt")
+
+[node name="SettingsTabContainer" type="TabContainer" parent="CenterContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Inputs" type="HBoxContainer" parent="CenterContainer/SettingsTabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SettingsTabContainer/Inputs"]
+layout_mode = 2
