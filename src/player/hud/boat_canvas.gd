@@ -1,7 +1,9 @@
 extends CanvasLayer
 
+const winLose_hud : PackedScene =preload("res://src/player/hud/finish_race_hud.tscn")
 
 var boat : Boat 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,3 +32,10 @@ func _process(_delta):
 func debug_set_stats(statsDisplayText):
 	%StatsDisplay.set_visible(true)
 	%StatsDisplay.set_text(statsDisplayText)
+
+func display_finish_screen(time : float,win : bool=true):
+	var win_hud = winLose_hud.instantiate()
+	self.add_child(win_hud)
+	win_hud.set_winning(win)
+	win_hud.set_end_time(time)
+	

@@ -43,6 +43,10 @@ var _helm_direction = 0
 var next_checkpoint : RaceCheckpoint = null
 
 
+## signal to the player that he finished the race
+func has_finished(player_time : float,won: bool):
+	canvas.display_finish_screen(player_time,won)
+
 ## launch the boat to another position
 func project_to(target_position : Vector3):
 	set_global_position(target_position)

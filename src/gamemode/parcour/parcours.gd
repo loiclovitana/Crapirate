@@ -5,6 +5,8 @@ var checkpoints : Array[RaceCheckpoint] = []
 var starting_line : RaceLine
 var finish_line : RaceLine
 
+var race_ranking: Array[Dictionary] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var last_checkpoint = null
@@ -26,13 +28,32 @@ func _ready():
 	starting_line._has_started=false 
 	_change_starting_line_color(Color(1,0,0,1))
 	
+	
+	finish_line.has_passed.connect(player_finished)
+	
 	# find all player in the scene
-	# FIXME not very clean
-	var boats = get_tree().get_root().find_children("*","Boat",true,false)
-	for b in boats:
-		starting_line.add_player(b)
-		b.next_checkpoint = starting_line
+	for player in PlayersManagement.registered_players:
+		add_player(player)
 		
+	PlayersManagement.new_player.connect(add_player)
+
+
+func add_player(boat : Boat):
+	starting_line.add_player(boat)
+	boat.next_checkpoint = starting_line
+
+func player_finished(boat : Boat):
+	var player_time = get_parent().timer
+	var won = race_ranking.is_empty()
+	race_ranking.append(
+		{
+			"player":boat.player
+			,"time":player_time
+			,"rank":len(race_ranking)+1
+		}
+	)
+	boat.has_finished(player_time,won)
+	
 
 func _change_starting_line_color(color : Color):
 	var material : Material = starting_line.lineMesh.get_active_material(0)

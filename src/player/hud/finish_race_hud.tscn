@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cseb8qmyyh3dt"]
+
+[ext_resource type="Script" path="res://src/player/hud/finish_race_hud.gd" id="1_8ys7w"]
+[ext_resource type="Script" path="res://src/player/hud/WinLoseLabel.gd" id="1_miw61"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4aj8"]
+resource_local_to_scene = true
+font_size = 56
+font_color = Color(0, 0.466667, 0, 1)
+outline_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_q1ogd"]
+font_size = 27
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="FinishRace_HUD" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ys7w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="WinLoseLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "YOU WIN!"
+label_settings = SubResource("LabelSettings_c4aj8")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_miw61")
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TIME : 99:99.99
+(New record!!)"
+label_settings = SubResource("LabelSettings_q1ogd")
+horizontal_alignment = 1
+vertical_alignment = 1

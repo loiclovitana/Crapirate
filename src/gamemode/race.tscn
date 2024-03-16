@@ -35,7 +35,7 @@ script = ExtResource("3_gb4n2")
 
 [node name="Boat" parent="SplitscreenView" instance=ExtResource("3_4j3ew")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.7436, -0.0120038, 27.3579)
-speed_stat = 20
+speed_stat = 50
 
 [node name="StaticCamera" type="Camera3D" parent="SplitscreenView/Boat"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 0)
