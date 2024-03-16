@@ -17,7 +17,8 @@ func process_event(event_name,event_data):
 		"exit" : get_tree().quit()
 		"continue" :  _continue()
 		"restart" : get_tree().reload_current_scene()
-		"goto_settings": goto_menu(%SettingsTabContainer)
+		"goto_settings": goto_menu(%Settings)
+		"return":goto_menu(%PauseMenu)
 
 func goto_menu(menu : Node):
 	for container in %MainContainer.get_children():

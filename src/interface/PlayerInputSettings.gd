@@ -1,6 +1,6 @@
 extends MarginContainer
 
-@onready var input_controller : InputBoatController =  InputBoatController.new('p1') 
+var input_controller : InputBoatController 
 
 const setInputButton : PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
 
@@ -11,14 +11,20 @@ var old_key_label = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.set_name(input_controller._player_name)
-	_create_input()
+	if input_controller:
+		self.set_name(input_controller._player_name)
+		_create_input()
+	else:
+		self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _create_input():
+	for c in %ListInputButton.get_children():
+		c.queue_free()
+	
 	for action in input_controller.control_event:
 		var player_action : String = input_controller.get_player_action(action)
 		var new_button = setInputButton.instantiate()
@@ -68,9 +74,15 @@ func _input(event):
 	if remaping_button:
 		if (event is InputEventKey
 			or event is InputEventMouseButton
+			or event is InputEventJoypadButton
+			or event is InputEventJoypadMotion
 		):
+			if event is InputEventMouseButton && event.double_click:
+				event.double_click = false
+			
 			if not InputMap.has_action(remaping_action):
 				InputMap.add_action(remaping_action)
 			InputMap.action_erase_events(remaping_action)
 			InputMap.action_add_event(remaping_action,event)
 			_release_button()
+			accept_event()
