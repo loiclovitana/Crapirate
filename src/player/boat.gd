@@ -39,6 +39,8 @@ var next_display_update = UPDATE_DELTA
 var _sail_haul = 0
 var _helm_direction = 0
 
+var spinning = 0
+
 ## determine the next checkpoint in the race
 var next_checkpoint : RaceCheckpoint = null
 
@@ -49,7 +51,13 @@ func has_finished(player_time : float,won: bool):
 
 ## launch the boat to another position
 func project_to(target_position : Vector3):
-	set_global_position(target_position)
+	var tween = create_tween()
+	tween.tween_property(self,"global_position",target_position,2)
+	tween.parallel().tween_property(self,"global_rotation",Vector3(0,4*PI,0),2).as_relative()
+	tween.tween_callback(stop_boat)
+
+func stop_boat():
+	_current_speed = 0
 
 # ==========================================================================================
 #		Processing method

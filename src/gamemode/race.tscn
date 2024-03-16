@@ -35,7 +35,7 @@ script = ExtResource("3_gb4n2")
 
 [node name="Boat" parent="SplitscreenView" instance=ExtResource("3_4j3ew")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.7436, -0.0120038, 27.3579)
-speed_stat = 50
+speed_stat = 10
 
 [node name="StaticCamera" type="Camera3D" parent="SplitscreenView/Boat"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 0)
@@ -48,7 +48,7 @@ transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369,
 cull_mask = 2047
 
 [node name="GPS" parent="SplitscreenView/Boat" instance=ExtResource("6_i4foo")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.3579, 0.0120038, -15.7436)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.357901, 0.0120038, -0.743601)
 
 [node name="Boat2" parent="SplitscreenView" instance=ExtResource("3_4j3ew")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.1313, -0.012, 26.6746)
@@ -66,7 +66,7 @@ transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369,
 cull_mask = 3071
 
 [node name="GPS2" parent="SplitscreenView/Boat2" instance=ExtResource("6_i4foo")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.6746, 0.012, -19.1313)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.674601, 0.012, -0.1313)
 
 [node name="Parcours" type="Node3D" parent="."]
 script = ExtResource("6_iee00")
