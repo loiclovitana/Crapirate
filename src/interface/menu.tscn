@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7s5246dt3dcd"]
+[gd_scene load_steps=9 format=3 uid="uid://c7s5246dt3dcd"]
 
 [ext_resource type="Script" path="res://src/interface/PauseMenu.gd" id="1_c20kl"]
 [ext_resource type="Texture2D" uid="uid://cxyu60cchlby" path="res://ressources/ui/buttonLong_brown.png" id="1_l5bha"]
 [ext_resource type="Texture2D" uid="uid://bbd5uy336ub3s" path="res://ressources/ui/buttonLong_brown_pressed.png" id="2_10sx5"]
+[ext_resource type="Script" path="res://src/interface/MainPauseMenu.gd" id="2_e11qy"]
 [ext_resource type="Script" path="res://src/interface/button/EventButton.gd" id="3_mivi4"]
+[ext_resource type="Texture2D" uid="uid://bhlhdbe0d2fgm" path="res://ressources/ui/buttonLong_brown_focus.png" id="4_14yj6"]
 [ext_resource type="PackedScene" uid="uid://5spc68prq7t0" path="res://src/interface/Settings.tscn" id="5_243ah"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_in1xt"]
@@ -34,14 +36,17 @@ grow_vertical = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 15
+script = ExtResource("2_e11qy")
 
 [node name="ContinueCenterContainer" type="CenterContainer" parent="MainContainer/PauseMenu"]
 layout_mode = 2
 
 [node name="ContinueButton" type="TextureButton" parent="MainContainer/PauseMenu/ContinueCenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("1_l5bha")
 texture_pressed = ExtResource("2_10sx5")
+texture_focused = ExtResource("4_14yj6")
 script = ExtResource("3_mivi4")
 event_name = "continue"
 
@@ -59,6 +64,7 @@ size_flags_horizontal = 4
 layout_mode = 2
 texture_normal = ExtResource("1_l5bha")
 texture_pressed = ExtResource("2_10sx5")
+texture_focused = ExtResource("4_14yj6")
 script = ExtResource("3_mivi4")
 event_name = "restart"
 
@@ -74,6 +80,7 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("1_l5bha")
 texture_pressed = ExtResource("2_10sx5")
+texture_focused = ExtResource("4_14yj6")
 script = ExtResource("3_mivi4")
 event_name = "goto_settings"
 
@@ -89,6 +96,7 @@ layout_mode = 2
 layout_mode = 2
 texture_normal = ExtResource("1_l5bha")
 texture_pressed = ExtResource("2_10sx5")
+texture_focused = ExtResource("4_14yj6")
 script = ExtResource("3_mivi4")
 event_name = "exit"
 

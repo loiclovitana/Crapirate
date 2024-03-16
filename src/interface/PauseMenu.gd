@@ -1,11 +1,15 @@
 extends Control
 
+func open_menu():
+	set_visible(true)
+	%PauseMenu.open_menu()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_visible(false)
 	for c in find_children("*","EventButton"):
 		c.pressed_event.connect(process_event)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +27,7 @@ func process_event(event_name,event_data):
 func goto_menu(menu : Node):
 	for container in %MainContainer.get_children():
 		container.set_visible(false)
-	menu.set_visible(true)
+	menu.open_menu()
 	
 
 func _continue():

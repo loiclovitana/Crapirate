@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://5spc68prq7t0"]
+[gd_scene load_steps=10 format=3 uid="uid://5spc68prq7t0"]
 
 [ext_resource type="PackedScene" uid="uid://cd2cuq3yp1epm" path="res://src/interface/PlayerInputSettings.tscn" id="1_djnhn"]
 [ext_resource type="Script" path="res://src/interface/Settings.gd" id="1_fmby8"]
 [ext_resource type="Script" path="res://src/interface/InputsSettings.gd" id="1_p50bk"]
 [ext_resource type="Script" path="res://src/interface/button/EventButton.gd" id="3_mlg00"]
 [ext_resource type="Texture2D" uid="uid://cxyu60cchlby" path="res://ressources/ui/buttonLong_brown.png" id="4_pxx4k"]
+[ext_resource type="Texture2D" uid="uid://bbd5uy336ub3s" path="res://ressources/ui/buttonLong_brown_pressed.png" id="5_6yeum"]
+[ext_resource type="Texture2D" uid="uid://bhlhdbe0d2fgm" path="res://ressources/ui/buttonLong_brown_focus.png" id="6_y32hl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6ax7"]
 bg_color = Color(0.6, 0.6, 0.556863, 0.384314)
@@ -21,8 +23,8 @@ grow_vertical = 2
 script = ExtResource("1_fmby8")
 
 [node name="SettingsTabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
-tab_focus_mode = 0
 
 [node name="Inputs" type="PanelContainer" parent="SettingsTabContainer"]
 custom_minimum_size = Vector2(500, 500)
@@ -40,7 +42,6 @@ theme_override_constants/margin_bottom = 20
 [node name="input_player_tab" type="TabContainer" parent="SettingsTabContainer/Inputs/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-tab_focus_mode = 0
 
 [node name="Player_input_test" parent="SettingsTabContainer/Inputs/MarginContainer/input_player_tab" instance=ExtResource("1_djnhn")]
 layout_mode = 2
@@ -50,6 +51,8 @@ custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 8
 texture_normal = ExtResource("4_pxx4k")
+texture_pressed = ExtResource("5_6yeum")
+texture_focused = ExtResource("6_y32hl")
 script = ExtResource("3_mlg00")
 event_name = "return"
 

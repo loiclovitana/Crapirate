@@ -65,10 +65,12 @@ func _release_button():
 func _on_button_pressed(button : Button, action :String):
 	if remaping_button:
 		_release_button()
+	
 	if button.is_pressed():
 		remaping_button=button
 		remaping_action=action
 		button.set_key_label("Press Key to assign ...")
+		button.release_focus()
 
 func _input(event):
 	if remaping_button:
@@ -77,6 +79,7 @@ func _input(event):
 			or event is InputEventJoypadButton
 			or event is InputEventJoypadMotion
 		):
+			remaping_button.grab_focus()
 			if event is InputEventMouseButton && event.double_click:
 				event.double_click = false
 			
@@ -86,3 +89,4 @@ func _input(event):
 			InputMap.action_add_event(remaping_action,event)
 			_release_button()
 			accept_event()
+			
