@@ -7,6 +7,7 @@
 bg_color = Color(0.6, 0.6, 0.556863, 0.384314)
 
 [node name="SettingsTabContainer" type="TabContainer"]
+tab_focus_mode = 0
 
 [node name="Inputs" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(500, 500)
@@ -23,6 +24,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="input_player_tab" type="TabContainer" parent="Inputs/MarginContainer"]
 layout_mode = 2
+tab_focus_mode = 0
 
 [node name="Player_input" parent="Inputs/MarginContainer/input_player_tab" instance=ExtResource("1_djnhn")]
 layout_mode = 2

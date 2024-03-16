@@ -3,11 +3,22 @@ class_name InputBoatController extends BoatController
 #
 const control_event = {
 	"haul":CONTROL_ACTION.HAUL,
-	"unhaul":CONTROL_ACTION.UNHAUL,
+	"ease":CONTROL_ACTION.UNHAUL,
+	"loose": CONTROL_ACTION.LOOSE,
 	"helm_right":CONTROL_ACTION.HELM_RIGHT,
 	"helm_left":CONTROL_ACTION.HELM_LEFT,
 	"shoot" : CONTROL_ACTION.SHOOT
+	
 }
+const action_name = {
+	"haul":"Border la voile",
+	"ease":"Choquer la voile",
+	"loose": "Choquer complètement",
+	"helm_right":"Tourner à droite",
+	"helm_left":"Tourner à gauche",
+	"shoot" : "Tir (canon)"
+}
+
 
 @export var _player_name : String="p1"
 
@@ -25,6 +36,7 @@ func get_actions(_boat : Boat) -> Array[CONTROL_ACTION]:
 
 func get_player_action(action):
 	return _player_name+"_"+action
+
 
 func get_player_name() -> String:
 	return _player_name

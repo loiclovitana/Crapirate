@@ -6,7 +6,8 @@ enum CONTROL_ACTION  {
 	HELM_RIGHT,
 	HELM_LEFT,
 	HELM_STRAIGHT,
-	SHOOT
+	SHOOT,
+	LOOSE
 }
 
 func get_actions(_boat : Boat) -> Array[CONTROL_ACTION]:

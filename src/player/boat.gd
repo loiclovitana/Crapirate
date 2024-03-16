@@ -56,6 +56,7 @@ func _ready():
 	canvas.boat = self
 	renderer.boat = self
 	controller =  InputBoatController.new(player)
+	PlayersManagement.register_player(self)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
