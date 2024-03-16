@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5spc68prq7t0"]
+
+[ext_resource type="PackedScene" uid="uid://cd2cuq3yp1epm" path="res://src/interface/PlayerInputSettings.tscn" id="1_djnhn"]
+[ext_resource type="Script" path="res://src/interface/InputsSettings.gd" id="1_p50bk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f6ax7"]
+bg_color = Color(0.6, 0.6, 0.556863, 0.384314)
+
+[node name="SettingsTabContainer" type="TabContainer"]
+
+[node name="Inputs" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f6ax7")
+script = ExtResource("1_p50bk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Inputs"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="input_player_tab" type="TabContainer" parent="Inputs/MarginContainer"]
+layout_mode = 2
+
+[node name="Player_input" parent="Inputs/MarginContainer/input_player_tab" instance=ExtResource("1_djnhn")]
+layout_mode = 2
