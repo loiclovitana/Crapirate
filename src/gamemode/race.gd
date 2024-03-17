@@ -1,8 +1,19 @@
-extends VBoxContainer
+extends Node
 
 
 @export var timer : float = -20
 var has_started = false
+
+
+var added_player = 0
+
+func add_player(boat : Boat):
+	var all_position =  %StartingPositions.get_children()
+	var starting_position =all_position[added_player%len(all_position)].get_position()
+	boat.set_global_position(starting_position)
+	boat.rotate_y(PI/2)
+	print(starting_position)
+	%SplitscreenView.add_child(boat)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
