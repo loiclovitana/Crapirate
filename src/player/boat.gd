@@ -1,13 +1,13 @@
 class_name Boat extends CharacterBody3D
 
 #Constants
-const TIME_TO_HAUL = 3
-const TIME_TO_HELM = 1.5
-const TIME_TO_HELM_STRAIGHT = 2.5
-const TIME_FOR_MAX_SPEED = 10.0
+var TIME_TO_HAUL = 3
+var TIME_TO_HELM = 1.5
+var TIME_TO_HELM_STRAIGHT = TIME_TO_HELM+1
+var TIME_FOR_MAX_SPEED = 10.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
-const TIME_TO_FULLTURN = 1.0
-const SPEED_SCALE = 0.1
+var TIME_TO_FULLTURN = 1.0 #Fixme const
+
 
 # stats
 @export_range(1,100) var speed_stat = 5

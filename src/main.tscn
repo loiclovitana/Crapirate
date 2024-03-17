@@ -1,24 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq4wyds1k7lgo"]
+[gd_scene load_steps=3 format=3 uid="uid://bq4wyds1k7lgo"]
 
-[ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="1_b6ytr"]
-[ext_resource type="Script" path="res://src/gamemode/race.gd" id="1_hhrd6"]
-[ext_resource type="PackedScene" uid="uid://brgh15k8ufvrd" path="res://src/player/boat.tscn" id="2_qxrrm"]
-[ext_resource type="Script" path="res://src/StaticCamera.gd" id="4_c1qx7"]
+[ext_resource type="Script" path="res://src/interface/MainMenu/DynamicPlayerNameInput.gd" id="2_cvfrw"]
+[ext_resource type="PackedScene" uid="uid://bw1rw6s1mabbo" path="res://src/interface/MainMenu/player_name_input.tscn" id="3_7u260"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_hhrd6")
 
-[node name="Map1" parent="." instance=ExtResource("1_b6ytr")]
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Boat" parent="." instance=ExtResource("2_qxrrm")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10602, 0, 30)
-speed_stat = 10
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+offset_right = 310.0
+offset_bottom = 75.0
 
-[node name="followCamera" type="Camera3D" parent="Boat"]
-transform = Transform3D(-3.88318e-08, 0.45913, -0.888369, 2.00692e-08, 0.888369, 0.45913, 1, -1.77636e-15, -4.37114e-08, -2.72879, 1.98386, 0)
+[node name="Container" type="HBoxContainer" parent="MainMenu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
 
-[node name="StaticCamera" type="Camera3D" parent="Boat"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 6)
-current = true
-script = ExtResource("4_c1qx7")
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nombre de joueurs"
+
+[node name="NumberOfPlayer" type="SpinBox" parent="MainMenu/VBoxContainer/Container"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="DynamicPlayerNameInput" type="VBoxContainer" parent="MainMenu/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("2_cvfrw")
+
+[node name="PlayerNameInput" parent="MainMenu/VBoxContainer/DynamicPlayerNameInput" instance=ExtResource("3_7u260")]
+layout_mode = 2
+
+[connection signal="value_changed" from="MainMenu/VBoxContainer/Container/NumberOfPlayer" to="MainMenu/VBoxContainer/DynamicPlayerNameInput" method="_on_number_player_value_changed"]

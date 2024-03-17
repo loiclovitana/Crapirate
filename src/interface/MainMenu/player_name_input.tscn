@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bw1rw6s1mabbo"]
+
+[node name="PlayerNameInput" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Nom joueur 1"
+
+[node name="PlayerName" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+placeholder_text = "Tanguy"

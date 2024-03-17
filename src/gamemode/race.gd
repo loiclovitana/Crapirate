@@ -1,4 +1,4 @@
-extends Node
+extends VBoxContainer
 
 
 @export var timer : float = -20
