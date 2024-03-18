@@ -6,7 +6,7 @@ var TIME_TO_HELM = 1.5
 var TIME_TO_HELM_STRAIGHT = TIME_TO_HELM+1
 var TIME_FOR_MAX_SPEED = 10.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
-var TIME_TO_FULLTURN = 1.0 #Fixme const
+var TIME_TO_FULLTURN = 7.5 #Fixme const
 
 
 # stats
@@ -14,6 +14,7 @@ var TIME_TO_FULLTURN = 1.0 #Fixme const
 @export_range(0,1) var sail_influence = 1 #not used yet
 
 @export var player = 'p1'
+var player_name = ""
 #controller FIXME ressource export doesnt work just yet
 var controller :BoatController #= InputBoatController.new("p1")
 
@@ -224,7 +225,7 @@ func _compute_new_speed_decelerating(delta,intended_max_speed) -> float:
 func _rotation_speed() -> float:
 	var r_speed = _helm_direction*max(1,_current_speed*0.5)
 	
-	return r_speed/TIME_TO_FULLTURN
+	return r_speed*2*PI/TIME_TO_FULLTURN
 
 # ==========================================================================================
 #		Compute collision

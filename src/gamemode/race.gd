@@ -14,6 +14,8 @@ func add_player(boat : Boat):
 	boat.rotate_y(PI/2)
 	print(starting_position)
 	%SplitscreenView.add_child(boat)
+	
+	added_player+=1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
