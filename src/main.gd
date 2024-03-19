@@ -74,7 +74,7 @@ func _create_player(p_id:int) -> Boat:
 	#camera
 	var camera = StaticCamera.new()
 	camera.set_position(Vector3(-6,10,0))
-	for i in range(10,20):
+	for i in range(1,10):
 		camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+i,false)
 	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+p_id,true)
 	player.add_child(camera)
