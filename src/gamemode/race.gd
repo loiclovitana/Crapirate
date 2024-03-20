@@ -41,6 +41,17 @@ func _ready() -> void:
 	
 	%Menu.pressed_event.connect(process_event)
 	
+	var highscore = HighScore.get_highest_score()
+	
+	if highscore.is_empty():
+		%RecordDisplay.set_text("")
+	else:
+		highscore = highscore[HighScore.TIME_IDX]
+		var minutes = int(abs(highscore/60))
+		var seconds = int(abs(fmod(highscore,60)))
+		var cent = int(abs(fmod(highscore,1)*100))
+		var record_format : String = "Record: %02d:%02d.%02d " % [minutes , seconds,cent]
+		%RecordDisplay.set_text(record_format)
 	if timer<0:
 		%Timer.get_label_settings().set_font_color(Color(1,0,0,1))
 

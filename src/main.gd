@@ -123,12 +123,13 @@ func get_game_preset() -> Dictionary:
 	}
 
 func _on_start_button_pressed() -> void:
-	var race = race_scene.instantiate()
-	add_child(race)
 	
 	var game_preset =get_game_preset()
 	
 	HighScore.load_high_score(str(game_preset))
+	
+	var race = race_scene.instantiate()
+	add_child(race)
 	
 	for p_id in range(get_nb_player()):
 		race.add_player(_create_player(p_id+1,game_preset))
