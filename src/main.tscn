@@ -71,7 +71,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 min_value = 1.0
-max_value = 4.0
+max_value = 8.0
 value = 1.0
 
 [node name="DynamicPlayerNameInput" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers"]

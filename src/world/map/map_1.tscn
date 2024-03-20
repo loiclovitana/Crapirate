@@ -379,7 +379,7 @@ mesh = ExtResource("13_sgdca")
 skeleton = NodePath("../../../../..")
 
 [node name="palms4" type="Node3D" parent="Objects/MainIsland/palms"]
-transform = Transform3D(-0.926391, 0, 0.376564, 0, 1, 0, -0.376564, 0, -0.926391, 11.2082, 0.998626, 14.8279)
+transform = Transform3D(-0.926391, 0, 0.376564, 0, 1, 0, -0.376564, 0, -0.926391, 11.2082, 0.618193, 14.8279)
 
 [node name="PalmLong" type="MeshInstance3D" parent="Objects/MainIsland/palms/palms4"]
 mesh = ExtResource("10_ptkv4")

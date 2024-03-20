@@ -32,8 +32,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("3_gb4n2")
+
+[node name="VerticalSplit1" type="VBoxContainer" parent="SplitscreenView"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="VerticalSplit2" type="VBoxContainer" parent="SplitscreenView"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
 
 [node name="StartingPositions" type="Node" parent="."]
 unique_name_in_owner = true
@@ -49,6 +64,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5185, 0, 28.6113)
 
 [node name="Marker3D4" type="Node3D" parent="StartingPositions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1901, 0, 27.7121)
+
+[node name="Marker3D5" type="Node3D" parent="StartingPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2975, 0, 29.3504)
+
+[node name="Marker3D7" type="Node3D" parent="StartingPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4373, 0, 35.2366)
+
+[node name="Marker3D8" type="Node3D" parent="StartingPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.913, 0, 38.3504)
+
+[node name="Marker3D6" type="Node3D" parent="StartingPositions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4059, 0, 28.8783)
 
 [node name="Parcours" type="Node3D" parent="."]
 script = ExtResource("6_iee00")
