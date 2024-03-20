@@ -108,7 +108,10 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 ## process sent event
 func process_event(event_name,event_data):
 	match event_name:
-		"restart" : %MainMenu.set_visible(true)
+		"restart" : 
+			%MainMenu.set_visible(true)
+			var high_scores = HighScore.load_high_score(str(current_game_preset))
+			%RecordsDisplay.set_highscores(high_scores)
 		_ :push_warning("event %s is not handled" % event_name)
 		
 
