@@ -2,10 +2,10 @@ extends Node
 
 signal send_event(event_name,event_data)
 
+## indicates the time before / after the start of the race
 @export var timer : float = -20
 var has_started = false
 
-var high_scores : Array[Array] = []
 
 var added_player = 0
 ## add a player to the race to one of the starting position on the race
@@ -20,60 +20,6 @@ func add_player(boat : Boat):
 	
 	added_player+=1
 
-
-const HIGH_SCORE_FILE ="user://records.csv"
-const TIME_IDX = 0
-const NAME_IDX = 1
-const FILTER_IDX = 2
-const NB_COL = 3
-var sort_score = func(a,b): return a[TIME_IDX]<b[TIME_IDX]
-## Load the high score for a given filter
-func load_high_score(filter : String):
-	high_scores.clear()
-	if not FileAccess.file_exists(HIGH_SCORE_FILE):
-		return 
-	
-	var highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.READ)
-	var highScoreData = highScoreFile.get_as_text().split('\n')
-	
-	var hashFilter = filter.sha256_text()
-	
-	for line in highScoreData:
-		var line_data = line.split(';')
-		if len(line_data)==1:
-			return
-		if len(line_data)!=NB_COL:
-			push_error("The record file does not match the expected number of columns %d" % NB_COL)
-			return
-		if line_data[FILTER_IDX]==hashFilter:
-			high_scores.append([float(line_data[TIME_IDX]),line_data[NAME_IDX]])
-			
-	high_scores.sort_custom(sort_score)
-	
-## Save the score to highscore
-## Return:
-##		true if saving the score was sucessfull
-##		false in case of file error
-func save_score(score: float, name: String, filter: String) -> bool:
-	
-	high_scores.append([score,name])
-	high_scores.sort_custom(sort_score)
-	
-	var highScoreFile : FileAccess
-	if not FileAccess.file_exists(HIGH_SCORE_FILE):
-		highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.WRITE)
-	else:
-		highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.READ_WRITE)
-	
-	if not highScoreFile:
-		return false
-	
-	var filterHash = filter.sha256_text()
-	highScoreFile.seek_end()
-	var score_line_data = ';'.join([str(score),name.replace(';',''),filterHash])
-	highScoreFile.store_line(score_line_data)
-	
-	return true
 	
 ## exit the current scene
 func exit_race():

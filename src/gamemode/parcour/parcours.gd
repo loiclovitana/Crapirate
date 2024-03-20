@@ -53,20 +53,10 @@ func player_finished(boat : Boat):
 			,"rank":len(race_ranking)+1
 		}
 	)
-	var new_record = raceGame.high_scores.is_empty() or player_time<=raceGame.high_scores[0][raceGame.TIME_IDX]
+	var new_record = HighScore.get_highest_score().is_empty() or player_time<HighScore.get_highest_score()[HighScore.TIME_IDX]
 	boat.has_finished(player_time,won, new_record)
 	
-	var game_preset = {
-		"speed_stat" = boat.speed_stat
-		,"TIME_FOR_MAX_SPEED" = boat.TIME_FOR_MAX_SPEED
-		,"maniability" = {
-			"turn":boat.TIME_TO_FULLTURN
-			,"haul":boat.TIME_TO_HAUL
-			,"helm":boat.TIME_TO_HELM
-			,"helm_straight":boat.TIME_TO_HELM_STRAIGHT
-		}
-	}
-	raceGame.save_score(player_time,boat.player_name,str(game_preset))
+	HighScore.save_score(player_time,boat.player_name)
 	
 
 func _change_starting_line_color(color : Color):

@@ -101,7 +101,7 @@ func _on_start_button_pressed() -> void:
 		,"TIME_FOR_MAX_SPEED" = get_acceleration()
 		,"maniability" = get_maniability()
 	}
-	race.load_high_score(str(game_preset))
+	HighScore.load_high_score(str(game_preset))
 	
 	for p_id in range(get_nb_player()):
 		race.add_player(_create_player(p_id+1,game_preset))
