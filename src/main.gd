@@ -8,9 +8,23 @@ func _ready() -> void:
 	pass
 
 
+
+var current_game_preset : Dictionary ={}
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	
+	#update MainMenu
+	if %MainMenu.is_visible:
+		var new_preset = get_game_preset()
+		if new_preset != current_game_preset:
+			current_game_preset=new_preset
+			var high_scores = HighScore.load_high_score(str(new_preset))
+			%RecordsDisplay.set_highscores(high_scores)
+			
+		
+		
+
+
 
 func get_player_name(pid):
 	return %DynamicPlayerNameInput.get_player_name(pid)
@@ -92,15 +106,19 @@ func process_event(event_name,event_data):
 		_ :push_warning("event %s is not handled" % event_name)
 		
 
-func _on_start_button_pressed() -> void:
-	var race = race_scene.instantiate()
-	add_child(race)
-	
-	var game_preset ={
+func get_game_preset() -> Dictionary:
+	return {
 		"speed_stat" = get_vitesse()
 		,"TIME_FOR_MAX_SPEED" = get_acceleration()
 		,"maniability" = get_maniability()
 	}
+
+func _on_start_button_pressed() -> void:
+	var race = race_scene.instantiate()
+	add_child(race)
+	
+	var game_preset =get_game_preset()
+	
 	HighScore.load_high_score(str(game_preset))
 	
 	for p_id in range(get_nb_player()):

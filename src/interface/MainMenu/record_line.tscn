@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3i0qqi04ecyw"]
+
+[ext_resource type="Script" path="res://src/interface/MainMenu/record_line.gd" id="1_ako6l"]
+
+[node name="Record" type="ColorRect"]
+custom_minimum_size = Vector2(0, 35)
+color = Color(0.168627, 0.168627, 0.168627, 1)
+script = ExtResource("1_ako6l")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Id" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "1"
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "PlayerName"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Time"
+vertical_alignment = 1
