@@ -112,6 +112,7 @@ func process_event(event_name,event_data):
 			%MainMenu.set_visible(true)
 			var high_scores = HighScore.load_high_score(str(current_game_preset))
 			%RecordsDisplay.set_highscores(high_scores)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		_ :push_warning("event %s is not handled" % event_name)
 		
 
@@ -135,5 +136,5 @@ func _on_start_button_pressed() -> void:
 		race.add_player(_create_player(p_id+1,game_preset))
 	
 	%MainMenu.set_visible(false)
-	
 	race.send_event.connect(process_event)
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
