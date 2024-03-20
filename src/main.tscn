@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq4wyds1k7lgo"]
+[gd_scene load_steps=8 format=3 uid="uid://bq4wyds1k7lgo"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_f13lg"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/DynamicPlayerNameInput.gd" id="2_cvfrw"]
 [ext_resource type="PackedScene" uid="uid://bw1rw6s1mabbo" path="res://src/interface/MainMenu/player_name_input.tscn" id="3_7u260"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/RecordsDisplay.gd" id="4_s7t4w"]
 [ext_resource type="PackedScene" uid="uid://c3i0qqi04ecyw" path="res://src/interface/MainMenu/record_line.tscn" id="5_j8utw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyu3n"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5a2kh"]
 bg_color = Color(0.168627, 0.168627, 0.168627, 1)
@@ -46,20 +53,20 @@ theme_override_constants/separation = 30
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
+[node name="NBPlayers" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
-[node name="Container" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer"]
+[node name="Container" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers"]
 custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer/Container"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nombre de joueurs"
 
-[node name="NumberOfPlayer" type="SpinBox" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer/Container"]
+[node name="NumberOfPlayer" type="SpinBox" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/Container"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -67,26 +74,32 @@ min_value = 1.0
 max_value = 4.0
 value = 1.0
 
-[node name="DynamicPlayerNameInput" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer"]
+[node name="DynamicPlayerNameInput" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_cvfrw")
 
-[node name="PlayerNameInput" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer/DynamicPlayerNameInput" instance=ExtResource("3_7u260")]
+[node name="PlayerNameInput" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/DynamicPlayerNameInput" instance=ExtResource("3_7u260")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
+[node name="playerStats" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(310, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyu3n")
+text = "Paramètre du joueur"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer"]
 layout_mode = 2
 text = "Vitesse du bateau     "
 
-[node name="VitesseSelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="VitesseSelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -98,14 +111,14 @@ item_1/text = "x1"
 item_2/text = "x1.5"
 item_3/text = "x2"
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer2"]
 layout_mode = 2
 text = "Accélération               "
 
-[node name="AccelerationSelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="AccelerationSelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -117,14 +130,14 @@ item_1/text = "x1"
 item_2/text = "x1.5"
 item_3/text = "x2"
 
-[node name="VBoxContainer3" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer3" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer3"]
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer3"]
 layout_mode = 2
 text = "Maniabilité                 "
 
-[node name="ManiabilitySelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer2/VBoxContainer3"]
+[node name="ManiabilitySelection" type="ItemList" parent="MainMenu/VBoxContainer3/HBoxContainer/playerStats/VBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -135,6 +148,46 @@ item_0/text = "x0.5"
 item_1/text = "x1"
 item_2/text = "x1.5"
 item_3/text = "x2"
+
+[node name="CameraSettings" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vyu3n")
+text = "Paramètre de la caméra"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings/VBoxContainer"]
+layout_mode = 2
+text = "Distance                                     "
+
+[node name="CameraDistance" type="SpinBox" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 3.0
+max_value = 20.0
+step = 0.5
+value = 6.0
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings/VBoxContainer2"]
+layout_mode = 2
+text = "Hauteur                                      "
+
+[node name="CameraHauteur" type="SpinBox" parent="MainMenu/VBoxContainer3/HBoxContainer/CameraSettings/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 2.0
+max_value = 30.0
+step = 0.5
+value = 10.0
 
 [node name="RecordsDisplay" type="VBoxContainer" parent="MainMenu/VBoxContainer3"]
 unique_name_in_owner = true
@@ -159,5 +212,5 @@ size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_5a2kh")
 text = "START RACE"
 
-[connection signal="value_changed" from="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer/Container/NumberOfPlayer" to="MainMenu/VBoxContainer3/HBoxContainer/VBoxContainer/DynamicPlayerNameInput" method="_on_number_player_value_changed"]
+[connection signal="value_changed" from="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/Container/NumberOfPlayer" to="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/DynamicPlayerNameInput" method="_on_number_player_value_changed"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]

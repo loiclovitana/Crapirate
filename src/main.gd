@@ -32,6 +32,12 @@ func get_player_name(pid):
 func get_nb_player():
 	return int(%NumberOfPlayer.get_value())
 
+func get_camera_distance():
+	return int(%CameraDistance.get_value())
+
+func get_camera_hauteur():
+	return int(%CameraHauteur.get_value())
+
 func get_vitesse():
 	const vitesses = [6,10,16,22,10]
 	
@@ -88,7 +94,7 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	#camera
 	var camera = StaticCamera.new()
 	player.add_child(camera)
-	camera.set_position(Vector3(0,10,6))
+	camera.set_position(Vector3(0,get_camera_hauteur(),get_camera_distance()))
 	for i in range(1,10):
 		camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+i,false)
 	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+p_id,true)
