@@ -12,7 +12,10 @@ func _process(_delta: float) -> void:
 	pass
 
 func get_player_name(p_id: int):
-	return get_child(p_id-1).get_child(1).get_text()
+	var p_name = get_child(p_id-1).get_child(1).get_text()
+	if p_name:
+		return p_name
+	return "Player "+str(p_id)
 
 func _on_number_player_value_changed(value: float) -> void:
 	var children = get_children()

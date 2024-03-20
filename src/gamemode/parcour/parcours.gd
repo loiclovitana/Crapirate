@@ -4,6 +4,7 @@ extends Node3D
 var checkpoints : Array[RaceCheckpoint] = []
 var starting_line : RaceLine
 var finish_line : RaceLine
+@onready var raceGame =get_parent()
 
 var race_ranking: Array[Dictionary] = []
 
@@ -43,7 +44,7 @@ func add_player(boat : Boat):
 	boat.next_checkpoint = starting_line
 
 func player_finished(boat : Boat):
-	var player_time = get_parent().timer
+	var player_time = raceGame.timer
 	var won = race_ranking.is_empty()
 	race_ranking.append(
 		{
@@ -52,7 +53,20 @@ func player_finished(boat : Boat):
 			,"rank":len(race_ranking)+1
 		}
 	)
-	boat.has_finished(player_time,won)
+	var new_record = raceGame.high_scores.is_empty() or player_time<=raceGame.high_scores[0][raceGame.TIME_IDX]
+	boat.has_finished(player_time,won, new_record)
+	
+	var game_preset = {
+		"speed_stat" = boat.speed_stat
+		,"TIME_FOR_MAX_SPEED" = boat.TIME_FOR_MAX_SPEED
+		,"maniability" = {
+			"turn":boat.TIME_TO_FULLTURN
+			,"haul":boat.TIME_TO_HAUL
+			,"helm":boat.TIME_TO_HELM
+			,"helm_straight":boat.TIME_TO_HELM_STRAIGHT
+		}
+	}
+	raceGame.save_score(player_time,boat.player_name,str(game_preset))
 	
 
 func _change_starting_line_color(color : Color):

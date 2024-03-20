@@ -13,13 +13,13 @@ func _process(_delta: float) -> void:
 	pass
 
 func get_player_name(pid):
-	%DynamicPlayerNameInput.get_player_name(pid)
+	return %DynamicPlayerNameInput.get_player_name(pid)
 
 func get_nb_player():
 	return int(%NumberOfPlayer.get_value())
 
 func get_vitesse():
-	const vitesses = [5,10,15,20,10]
+	const vitesses = [6,10,16,22,10]
 	
 	var vitesse_selected = -1
 	for idx in  range(%VitesseSelection.get_item_count()):
@@ -53,7 +53,7 @@ func get_maniability():
 		,"helm_straight":time_to_helm_straight[m_selected]
 	}
 
-func _create_player(p_id:int) -> Boat:
+func _create_player(p_id:int ,game_preset) -> Boat:
 	var player = player_scene.instantiate()
 	
 	# attributes
@@ -61,10 +61,10 @@ func _create_player(p_id:int) -> Boat:
 	player.player_name = get_player_name(p_id)
 	
 	#stats
-	player.speed_stat=get_vitesse()
-	player.TIME_FOR_MAX_SPEED=get_acceleration()
+	player.speed_stat=game_preset['speed_stat']
+	player.TIME_FOR_MAX_SPEED=game_preset['TIME_FOR_MAX_SPEED']
 	
-	var maniability = get_maniability()
+	var maniability = game_preset['maniability']
 	player.TIME_TO_FULLTURN = maniability["turn"]
 	player.TIME_TO_HAUL = maniability["haul"]
 	player.TIME_TO_HELM = maniability["helm"]
@@ -73,11 +73,12 @@ func _create_player(p_id:int) -> Boat:
 	
 	#camera
 	var camera = StaticCamera.new()
-	camera.set_position(Vector3(-6,10,0))
+	player.add_child(camera)
+	camera.set_position(Vector3(0,10,6))
 	for i in range(1,10):
 		camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+i,false)
 	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+p_id,true)
-	player.add_child(camera)
+	
 	
 	#gps
 	player.add_child(gps_scene.instantiate())
@@ -87,9 +88,19 @@ func _create_player(p_id:int) -> Boat:
 
 func _on_start_button_pressed() -> void:
 	var race = race_scene.instantiate()
+	add_child(race)
+	
+	var game_preset ={
+		"speed_stat" = get_vitesse()
+		,"TIME_FOR_MAX_SPEED" = get_acceleration()
+		,"maniability" = get_maniability()
+	}
+	race.load_high_score(str(game_preset))
 	
 	for p_id in range(get_nb_player()):
-		race.add_player(_create_player(p_id+1))
+		race.add_player(_create_player(p_id+1,game_preset))
 	
-	add_child(race)
+	
+	
+	
 	%MainMenu.queue_free()
