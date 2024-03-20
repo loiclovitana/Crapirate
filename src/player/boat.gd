@@ -102,7 +102,12 @@ func _process(delta):
 	
 	_current_speed=new_speed
 	
-	set_velocity(( self.global_transform.basis.x * new_speed ))
+	# FIXME : find better way to keep position to 0
+	var altitude_correction = Vector3.ZERO
+	if not is_zero_approx(get_global_position().y):
+		altitude_correction += Vector3(0,-get_global_position().y,0)
+	
+	set_velocity(( self.global_transform.basis.x * new_speed ) + altitude_correction)
 	move_and_slide()
 	
 	# update display 

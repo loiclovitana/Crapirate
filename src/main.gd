@@ -85,6 +85,12 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	
 	return player
 	
+## process sent event
+func process_event(event_name,event_data):
+	match event_name:
+		"restart" : %MainMenu.set_visible(true)
+		_ :push_warning("event %s is not handled" % event_name)
+		
 
 func _on_start_button_pressed() -> void:
 	var race = race_scene.instantiate()
@@ -100,7 +106,6 @@ func _on_start_button_pressed() -> void:
 	for p_id in range(get_nb_player()):
 		race.add_player(_create_player(p_id+1,game_preset))
 	
+	%MainMenu.set_visible(false)
 	
-	
-	
-	%MainMenu.queue_free()
+	race.send_event.connect(process_event)

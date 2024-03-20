@@ -1,5 +1,7 @@
 extends Control
 
+signal pressed_event(event_name,event_data)
+
 func open_menu():
 	set_visible(true)
 	%PauseMenu.open_menu()
@@ -20,9 +22,9 @@ func process_event(event_name,event_data):
 	match event_name:
 		"exit" : get_tree().quit()
 		"continue" :  _continue()
-		"restart" : get_tree().reload_current_scene()
 		"goto_settings": goto_menu(%Settings)
 		"return":goto_menu(%PauseMenu)
+		_ :pressed_event.emit(event_name,event_data)
 
 func goto_menu(menu : Node):
 	for container in %MainContainer.get_children():

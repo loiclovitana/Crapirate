@@ -56,7 +56,6 @@ text = "Continue"
 label_settings = SubResource("LabelSettings_in1xt")
 
 [node name="RestartCenterContainer2" type="CenterContainer" parent="MainContainer/PauseMenu"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 

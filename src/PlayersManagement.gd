@@ -15,3 +15,8 @@ func unregister_player(player : Boat):
 	if player in registered_players:
 		registered_players.erase(player)
 		player_left.emit(player)
+
+func clear_players():
+	for player in  registered_players:
+		player_left.emit(player)
+	registered_players.clear()

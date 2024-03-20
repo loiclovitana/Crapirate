@@ -1,5 +1,6 @@
 extends Node
 
+signal send_event(event_name,event_data)
 
 @export var timer : float = -20
 var has_started = false
@@ -15,7 +16,6 @@ func add_player(boat : Boat):
 	var starting_position =all_position[added_player%len(all_position)].get_position()
 	boat.set_global_position(starting_position)
 	boat.rotate_y(PI/2)
-	print(starting_position)
 	
 	
 	added_player+=1
@@ -40,7 +40,6 @@ func load_high_score(filter : String):
 	
 	for line in highScoreData:
 		var line_data = line.split(';')
-		print(line_data)
 		if len(line_data)==1:
 			return
 		if len(line_data)!=NB_COL:
@@ -76,11 +75,26 @@ func save_score(score: float, name: String, filter: String) -> bool:
 	
 	return true
 	
+## exit the current scene
+func exit_race():
+	PlayersManagement.clear_players()
+	send_event.emit("restart",{})
+	get_tree().paused = false
+	queue_free()
 	
+
+## process sent event
+func process_event(event_name,event_data):
+	match event_name:
+		"restart" : exit_race()
+		_ :push_warning("event %s is not handled" % event_name)
 	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	%Menu.pressed_event.connect(process_event)
+	
 	if timer<0:
 		%Timer.get_label_settings().set_font_color(Color(1,0,0,1))
 
@@ -107,3 +121,6 @@ func _update_timer(delta):
 	var cent = int(abs(fmod(timer,1)*100))
 	var timer_format : String = "%1s%02d:%02d.%02d " % [sign_,minutes , seconds,cent]
 	%Timer.set_text(timer_format)
+
+
+

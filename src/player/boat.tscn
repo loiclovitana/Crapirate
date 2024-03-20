@@ -20,6 +20,7 @@ collision_mask = 6
 script = ExtResource("1_qrajo")
 
 [node name="BoatRendering" parent="." instance=ExtResource("2_4qo4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0619212, 0)
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0469917, 0.574, 0)
