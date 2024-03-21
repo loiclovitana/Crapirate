@@ -141,6 +141,8 @@ func _update_control(delta):
 				_update_helm(delta,-1)
 			BoatController.CONTROL_ACTION.HELM_STRAIGHT:
 				_update_helm_straight(delta)
+			BoatController.CONTROL_ACTION.LOOSE:
+				_sail_haul= 0
 			BoatController.CONTROL_ACTION.SHOOT:
 				shooter._is_shooting=true
 	
