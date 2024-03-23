@@ -1,5 +1,5 @@
 extends Camera3D
-class_name StaticCamera
+class_name OrientedCamera
 
 var relative_parent_position : Vector3
 @onready var parent :Node3D = get_parent()

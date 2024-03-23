@@ -17,5 +17,5 @@ script = ExtResource("1_m461a")
 [node name="playerView" type="SubViewport" parent="."]
 unique_name_in_owner = true
 handle_input_locally = false
+msaa_3d = 3
 size = Vector2i(1152, 648)
-render_target_update_mode = 4
