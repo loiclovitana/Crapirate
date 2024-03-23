@@ -12,4 +12,5 @@ enum CONTROL_ACTION {
 
 # Get actions - to be overwritten
 func get_actions() -> Array[CONTROL_ACTION]:
+	push_error("UNIMPLEMENTED ERROR: BoatController.get_actions()")
 	return []

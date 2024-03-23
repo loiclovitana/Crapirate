@@ -10,7 +10,6 @@ var sort_score = func(a,b): return a[TIME_IDX]<b[TIME_IDX]
 var current_filter = ""
 var high_scores : Array[Array] = []
 
-
 func get_highest_score() -> Array:
 	if high_scores.is_empty():
 		return []
@@ -19,16 +18,16 @@ func get_highest_score() -> Array:
 ## Load the high score for a given filter
 func load_high_score(filter : String) -> Array:
 	var hashFilter = filter.sha256_text()
-	if hashFilter==current_filter:
+	if hashFilter == current_filter:
 		return high_scores
 	
-	current_filter =hashFilter
+	current_filter = hashFilter
 	
 	high_scores.clear()
 	if not FileAccess.file_exists(HIGH_SCORE_FILE):
 		return high_scores
 	
-	var highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.READ)
+	var highScoreFile = FileAccess.open(HIGH_SCORE_FILE, FileAccess.READ)
 	if not highScoreFile:
 		push_error("Cannot open HIGH_SCORE_FILE : %s" % FileAccess.get_open_error())
 		return high_scores
@@ -37,13 +36,13 @@ func load_high_score(filter : String) -> Array:
 	
 	for line in highScoreData:
 		var line_data = line.split(';')
-		if len(line_data)==1:
+		if len(line_data) == 1:
 			continue
-		if len(line_data)!=NB_COL:
+		if len(line_data) != NB_COL:
 			push_error("The record file does not match the expected number of columns %d" % NB_COL)
 			continue
-		if line_data[FILTER_IDX]==hashFilter:
-			high_scores.append([float(line_data[TIME_IDX]),line_data[NAME_IDX]])
+		if line_data[FILTER_IDX] == hashFilter:
+			high_scores.append([float(line_data[TIME_IDX]), line_data[NAME_IDX]])
 			
 	high_scores.sort_custom(sort_score)
 	return high_scores
@@ -51,23 +50,23 @@ func load_high_score(filter : String) -> Array:
 ## Save the score to highscore with the current filter
 ## Return:
 ##		true wether the save was sucessfull
-func save_score(score: float, name: String) -> bool:
+func save_score(score: float, player_name: String) -> bool:
 	
-	high_scores.append([score,name])
+	high_scores.append([score, player_name])
 	high_scores.sort_custom(sort_score)
 	
-	var highScoreFile : FileAccess
+	var highScoreFile: FileAccess
 	if not FileAccess.file_exists(HIGH_SCORE_FILE):
-		highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.WRITE)
+		highScoreFile = FileAccess.open(HIGH_SCORE_FILE, FileAccess.WRITE)
 	else:
-		highScoreFile = FileAccess.open(HIGH_SCORE_FILE,FileAccess.READ_WRITE)
+		highScoreFile = FileAccess.open(HIGH_SCORE_FILE, FileAccess.READ_WRITE)
 	
 	if not highScoreFile:
 		return false
 	
 	
 	highScoreFile.seek_end()
-	var score_line_data = ';'.join([str(score),name.replace(';',''),current_filter])
+	var score_line_data = ';'.join([str(score), player_name.replace(';',''), current_filter])
 	highScoreFile.store_line(score_line_data)
 	
 	return true

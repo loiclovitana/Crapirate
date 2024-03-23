@@ -1,7 +1,11 @@
 class_name Bullet extends Area3D
 
+## The base speed of a bullet
 @export var base_speed = 5.0
+## The base range of a bullet
 @export var base_range = 15.0
+
+@onready var _active = false
 
 var _shooter: BulletShooter = null
 var _keep_when_inactive = true
@@ -10,8 +14,8 @@ var _starting_range: float = 0.0
 var _starting_height: float = 0.0
 var _remaining_range: float = 0.0
 
-@onready var _active = false
-
+#region PUBLIC
+# ===================== PUBLIC ==============================================
 ## Set the origin shooter (to be notified if bullet is ready to be reused)
 func set_origin_shooter(shooter: BulletShooter):
 	self._shooter = shooter
@@ -28,7 +32,11 @@ func launch(shot_position: Vector3, direction: Vector3, shoot_speed: float = 1,
 	self.set_monitoring(true)
 	self.set_visible(true)
 	self._active = true
-	
+#============================================================================
+#endregion
+
+#region PROCESS
+# ===================== PROCESS ==============================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if _active:
@@ -56,3 +64,5 @@ func _set_inactive():
 	
 	if not _keep_when_inactive:
 		self.queue_free()
+#============================================================================
+#endregion
