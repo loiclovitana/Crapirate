@@ -3,8 +3,10 @@
 [ext_resource type="Script" path="res://src/gamemode/parcour/raceline.gd" id="1_7fbee"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uacvo"]
+resource_local_to_scene = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wlqfy"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_uacvo")
 top_radius = 0.03
 bottom_radius = 0.03
@@ -23,7 +25,6 @@ debug_shape_thickness = 5
 
 [node name="LineVisual" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-layers = 3072
 transparency = 0.2
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_wlqfy")
