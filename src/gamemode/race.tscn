@@ -78,6 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.913, 0, 38.3504)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4059, 0, 28.8783)
 
 [node name="Parcours" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("6_iee00")
 
 [node name="StartLine" parent="Parcours" node_paths=PackedStringArray("portMark", "startbordMark") instance=ExtResource("8_gpvjv")]

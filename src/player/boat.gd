@@ -127,7 +127,7 @@ func _process(delta):
 #		Control methods
 # ==========================================================================================
 func _update_control(delta):
-	var actions = controller.get_actions(self)
+	var actions = controller.get_actions()
 	for action in actions:
 		match action:
 			BoatController.CONTROL_ACTION.HAUL:
