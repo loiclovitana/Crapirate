@@ -25,7 +25,7 @@ func _create_input():
 	for c in %ListInputButton.get_children():
 		c.queue_free()
 	
-	for action in input_controller.control_event:
+	for action in input_controller.CONTROL_EVENTS:
 		var player_action : String = input_controller.get_player_action(action)
 		var new_button = setInputButton.instantiate()
 		new_button.set_action_label(_format_action(action))
@@ -35,8 +35,8 @@ func _create_input():
 
 
 func _format_action(action :String) -> String:
-	if action in input_controller.action_name:
-		return input_controller.action_name[action]
+	if action in input_controller.ACTION_NAMES:
+		return input_controller.ACTION_NAMES[action]
 	return action
 	
 
