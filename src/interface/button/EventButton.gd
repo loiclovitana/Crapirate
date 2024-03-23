@@ -12,9 +12,6 @@ func _ready():
 	if event_name =="":
 		push_warning("The button %s does not have an event" % self.get_name())
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _button_pressed():

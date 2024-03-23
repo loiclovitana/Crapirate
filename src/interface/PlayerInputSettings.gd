@@ -17,9 +17,6 @@ func _ready() -> void:
 	else:
 		self.queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _create_input():
 	for c in %ListInputButton.get_children():

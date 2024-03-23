@@ -7,7 +7,7 @@ signal player_has_finished(boat: Boat)
 var _checkpoints: Array[RaceCheckpoint] = []
 var _starting_line: RaceLine
 var _finish_line: RaceLine
-var _race_started: bool = false
+
 
 func start():
 	_starting_line.enable()

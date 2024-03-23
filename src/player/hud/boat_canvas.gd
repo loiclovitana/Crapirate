@@ -73,9 +73,9 @@ func _update_players_name():
 	if not current_camera:
 		return 
 	
-	for boat in _player_tags:
-		var player_tag_position = boat.renderer.get_name_tag_position()
-		var label = _player_tags[boat]
+	for other_player in _player_tags:
+		var player_tag_position = other_player.renderer.get_name_tag_position()
+		var label = _player_tags[other_player]
 		var player_is_visible =  not current_camera.is_position_behind(player_tag_position)
 		label.set_visible(player_is_visible)
 		if player_is_visible:

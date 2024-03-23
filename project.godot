@@ -31,6 +31,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://bin/": "gray",
 "res://ressources/": "yellow",
+"res://settings/": "orange",
 "res://src/": "teal"
 }
 

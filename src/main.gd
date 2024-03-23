@@ -5,7 +5,7 @@ const player_scene = preload("res://src/player/boat.tscn")
 const gps_scene = preload("res://src/player/view/gps.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	PlayerSettings.get_all_player_presets()
 
 
 
@@ -106,7 +106,7 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	return player
 	
 ## process sent event
-func process_event(event_name,event_data):
+func process_event(event_name,_event_data):
 	match event_name:
 		"restart" : 
 			%MainMenu.set_visible(true)

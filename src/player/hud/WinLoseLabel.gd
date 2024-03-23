@@ -47,6 +47,3 @@ func _scale_up():
 	tween.tween_property(self,"scale",Vector2(2,2),0.5)
 	tween.tween_callback(_scale_down)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

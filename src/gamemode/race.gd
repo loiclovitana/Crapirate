@@ -53,7 +53,7 @@ func _ready() -> void:
 	self.parcours.player_has_finished.connect(self._record_player_time)
 
 ## process sent event
-func _process_event(event_name, event_data):
+func _process_event(event_name, _event_data):
 	match event_name:
 		"restart": exit_race()
 		_: push_warning("event %s is not handled" % event_name)

@@ -5,11 +5,6 @@ extends CenterContainer
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func set_end_time(time,is_record=false):
 	var minutes = int(abs(time/60))
 	var seconds = int(abs(fmod(time,60)))

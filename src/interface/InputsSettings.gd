@@ -25,6 +25,4 @@ func _remove_player_input(player : Boat):
 	player_input_tab[player].queue_free()
 	player_input_tab.erase(player)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+

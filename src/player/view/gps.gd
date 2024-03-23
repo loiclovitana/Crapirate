@@ -31,7 +31,7 @@ func _ready():
 # ===================== PROCESS ==============================================
 
 # Process method
-func _process(delta):
+func _process(_delta):
 	_update_wind_arrow()
 	_update_next_checkpoint_arrow()
 
