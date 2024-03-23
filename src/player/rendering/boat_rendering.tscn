@@ -15,45 +15,53 @@ size = Vector3(0.1, 0.5, 0.01)
 [node name="BoatRendering" type="Node3D"]
 script = ExtResource("1_4ynlb")
 
-[node name="body" type="MeshInstance3D" parent="."]
+[node name="Body" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="body" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.221561, 0, 0)
 mesh = ExtResource("1_w5rlr")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="windPivot" type="Node3D" parent="."]
+[node name="windPivot" type="Node3D" parent="Body"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.166822, 1.75815, 0.0089255)
 
-[node name="weathercock" type="MeshInstance3D" parent="windPivot"]
+[node name="weathercock" type="MeshInstance3D" parent="Body/windPivot"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.253114, -0.048789, 0)
 mesh = SubResource("PrismMesh_wx8c4")
 skeleton = NodePath("../../Sails/SailPivot")
 
-[node name="Sails" type="Node3D" parent="."]
+[node name="Sails" type="Node3D" parent="Body"]
+unique_name_in_owner = true
 
-[node name="SailPivot" type="Node3D" parent="Sails"]
+[node name="SailPivot" type="Node3D" parent="Body/Sails"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172241, 1.17929, 0)
 script = ExtResource("3_bt6k6")
 
-[node name="sail" type="MeshInstance3D" parent="Sails/SailPivot"]
+[node name="sail" type="MeshInstance3D" parent="Body/Sails/SailPivot"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0485303, -0.191933, 0)
 mesh = ExtResource("2_s6s0i")
 skeleton = NodePath("../../../body")
 
-[node name="SailPivot2" type="Node3D" parent="Sails"]
+[node name="SailPivot2" type="Node3D" parent="Body/Sails"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.842934, 1.6733, 0)
 script = ExtResource("3_bt6k6")
 
-[node name="sail" type="MeshInstance3D" parent="Sails/SailPivot2"]
+[node name="sail" type="MeshInstance3D" parent="Body/Sails/SailPivot2"]
 transform = Transform3D(-0.499989, 0.0054035, 1.20797e-07, 0.00337719, 0.799982, -4.72389e-10, -7.54982e-08, 3.43527e-10, -0.8, -0.0333799, -0.191933, 0)
 mesh = ExtResource("2_s6s0i")
 skeleton = NodePath("../../../body")
 
-[node name="SailPivot3" type="Node3D" parent="Sails"]
+[node name="SailPivot3" type="Node3D" parent="Body/Sails"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.670561, 0.965817, 0)
 script = ExtResource("3_bt6k6")
 
-[node name="sail" type="MeshInstance3D" parent="Sails/SailPivot3"]
+[node name="sail" type="MeshInstance3D" parent="Body/Sails/SailPivot3"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1.5, 0, -1.50996e-07, 0, -1, -0.0162916, -0.0385234, 0)
 mesh = ExtResource("2_s6s0i")
 skeleton = NodePath("../../../body")
+
+[node name="NameTagPosition" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.81034, 0)

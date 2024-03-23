@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayersManagement="*res://src/PlayersManagement.gd"
-HighScore="*res://src/HighScore.gd"
+PlayersManagement="*res://src/helpers/PlayersManagement.gd"
+HighScore="*res://src/helpers/HighScore.gd"
 
 [display]
 

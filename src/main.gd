@@ -92,7 +92,7 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	
 	
 	#camera
-	var camera = StaticCamera.new()
+	var camera = OrientedCamera.new()
 	player.add_child(camera)
 	camera.set_position(Vector3(0,get_camera_hauteur(),get_camera_distance()))
 	for i in range(1,10):

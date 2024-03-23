@@ -7,10 +7,16 @@ const MAX_HEEL_ANGLE = deg_to_rad(70)
 
 var boat: Boat
 var sails : Array[SailRendering]
+@onready var body : Node3D = %Body
+
+## get the global position of name tag
+func get_name_tag_position():
+	return %NameTagPosition.get_global_position() 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var sails_to_render = $Sails.get_children()
+	var sails_to_render = %Sails.get_children()
 	for s in sails_to_render:
 		sails.append(s)
 	
@@ -33,7 +39,7 @@ func _render_heel(wind_angle):
 		heel_angle=-MAX_HEEL_ANGLE
 	if MAX_HEEL_ANGLE<heel_angle:
 		heel_angle=MAX_HEEL_ANGLE
-	set_rotation ( Vector3(heel_angle,0,0))
+	body.set_rotation( Vector3(heel_angle,0,0))
 
 func _render_weathercock(wind_angle):
 	%windPivot.set_rotation(Vector3(0,wind_angle,0))
