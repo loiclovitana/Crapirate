@@ -7,8 +7,7 @@ var last_checkpoint: RaceCheckpoint
 
 var _boats_to_cross: Array[Boat] = []
 
-#region PUBLIC
-# ===================== PUBLIC ==============================================
+#region PUBLIC ================================================================
 ## add player as the next mark in the race
 func add_player(boat : Boat):
 	_boats_to_cross.append(boat)
@@ -20,19 +19,16 @@ func remove_player(boat : Boat):
 ## return the position where the boat need to go to pass the checkpoint
 func get_position_to_go() -> Vector3:
 	return get_global_position()
-# ============================================================================
-#endregion
+#endregion ====================================================================
 
-#region PROTECTED
-# ===================== PROTECTED =============================================
+#region PROTECTED =============================================================
 func _pass_checkpoint(boat: Boat):
 	remove_player(boat)
 	boat.next_checkpoint = next_checkpoint
 	has_passed.emit(boat)
 	if next_checkpoint:
 		next_checkpoint.add_player(boat)
-# ============================================================================
-#endregion
+#endregion ====================================================================
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

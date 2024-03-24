@@ -13,12 +13,11 @@ enum GateType {
 
 var boat_infos: Dictionary = {}
 
-#region PUBLIC
-# ===================== PUBLIC ==============================================
+#region PUBLIC ================================================================
 ## return the position where the boat need to go to pass the checkpoint
 func get_position_to_go() -> Vector3:
 	var to_last_checkpoint: Vector3 = last_checkpoint.get_global_position() - mark.get_global_position() 
-	var angle_mid_checkpoint = self._get_angle_between_checkpoint() / 2
+	var angle_mid_checkpoint = _get_angle_between_checkpoint() / 2
 	if type == GateType.TRIBORD:
 		angle_mid_checkpoint = -angle_mid_checkpoint
 	return mark.get_global_position() + DISTANCE_INDICATION * to_last_checkpoint.normalized().rotated(Vector3.UP, angle_mid_checkpoint)
@@ -32,12 +31,12 @@ func _compute_initial_angle(boat_relative_position: Vector2) -> float:
 func add_player(boat: Boat):
 	super(boat)
 	var boat_relative_position = To2DWorld.to_2d(boat.get_global_position() - mark.get_global_position())
-	var angle = self._compute_initial_angle(boat_relative_position)
+	var angle = _compute_initial_angle(boat_relative_position)
 	
 	if type == GateType.BABORD:
 		angle = -angle
 	
-	var angle_checkpoint = self._get_angle_between_checkpoint()
+	var angle_checkpoint = _get_angle_between_checkpoint()
 	
 	boat_infos[boat] = {
 			"last_relative_position" : boat_relative_position,
@@ -48,11 +47,9 @@ func add_player(boat: Boat):
 func remove_player(boat : Boat):
 	super(boat)
 	boat_infos.erase(boat)
-#============================================================================
-#endregion
+#endregion ====================================================================
 
-#region PROTECTED
-# ===================== PROTECTED ============================================
+#region PROTECTED =============================================================
 var _cache_angle_checkpoint: float = NAN
 func _get_angle_between_checkpoint()-> float:
 	if not is_nan(_cache_angle_checkpoint):
@@ -67,15 +64,13 @@ func _get_angle_between_checkpoint()-> float:
 	
 	_cache_angle_checkpoint = angle_checkpoint
 	return angle_checkpoint
-#============================================================================
-#endregion
+#endregion ====================================================================
 
-#region PROCESS
-# ===================== PROCESS ==============================================
+#region PROCESS ===============================================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta)
-	self._detect_if_player_pass()
+	_detect_if_player_pass()
 
 func _detect_if_player_pass():
 	for boat in _boats_to_cross:
@@ -89,6 +84,4 @@ func _detect_if_player_pass():
 		boat_infos[boat]["last_relative_position"] = boat_relative_position
 		if boat_infos[boat]["angle_todo"]<0:
 			_pass_checkpoint(boat)
-		
-# ============================================================================
-#endregion
+#endregion ====================================================================

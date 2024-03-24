@@ -8,7 +8,7 @@ var collisions_point : Array[Vector3] = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rays = []
-	for ray in  self.get_children() :
+	for ray in  get_children() :
 		rays.append(ray as RayCast3D)
 		ray.add_exception(boat)
 	
@@ -20,6 +20,6 @@ func _process(_delta):
 		collisions_point.clear()
 	for ray in rays:
 		if ray.is_colliding() and ray.get_collider() is Boat:
-			collisions_point.append(self.to_local(ray.get_collision_point()))
+			collisions_point.append(to_local(ray.get_collision_point()))
 	
 		
