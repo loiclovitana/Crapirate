@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://wwbhal8v70ht"]
-
-[ext_resource type="Script" path="res://src/gamemode/parcour/raceMark.gd" id="1_8gu8o"]
-[ext_resource type="PackedScene" uid="uid://b8q0p5qi2obaf" path="res://src/gamemode/parcour/buoy.tscn" id="2_dp2wq"]
-
-[node name="RaceMark" type="Node3D"]
-script = ExtResource("1_8gu8o")
-
-[node name="Buoy" parent="." instance=ExtResource("2_dp2wq")]

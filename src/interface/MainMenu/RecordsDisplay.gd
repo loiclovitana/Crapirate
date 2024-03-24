@@ -1,6 +1,6 @@
 class_name RecordsDisplay extends VBoxContainer
 
-const record_line_scene = preload("res://src/interface/MainMenu/record_line.tscn")
+const record_line_scene = preload("res://src/interface/MainMenu/RecordLine.tscn")
 
 func set_highscores(high_scores : Array[Array]):
 	for c in get_children():

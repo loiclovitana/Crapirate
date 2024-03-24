@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_f13lg"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/DynamicPlayerNameInput.gd" id="2_cvfrw"]
-[ext_resource type="PackedScene" uid="uid://bw1rw6s1mabbo" path="res://src/interface/MainMenu/player_name_input.tscn" id="3_7u260"]
+[ext_resource type="PackedScene" uid="uid://bw1rw6s1mabbo" path="res://src/interface/MainMenu/PlayerNameInput.tscn" id="3_7u260"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/RecordsDisplay.gd" id="4_s7t4w"]
-[ext_resource type="PackedScene" uid="uid://c3i0qqi04ecyw" path="res://src/interface/MainMenu/record_line.tscn" id="5_j8utw"]
+[ext_resource type="PackedScene" uid="uid://c3i0qqi04ecyw" path="res://src/interface/MainMenu/RecordLine.tscn" id="5_j8utw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vyu3n"]
 bg_color = Color(0.054902, 0.054902, 0.054902, 1)

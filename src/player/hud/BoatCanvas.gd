@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-const winLose_hud : PackedScene =preload("res://src/player/hud/finish_race_hud.tscn")
-const player_name_label_scene : PackedScene = preload("res://src/player/hud/player_name_label.tscn")
+const winLose_hud : PackedScene =preload("res://src/player/hud/FinishRaceHud.tscn")
+const player_name_label_scene : PackedScene = preload("res://src/player/hud/PlayerNameLabel.tscn")
 
 @onready var boat : Boat =get_parent()
 

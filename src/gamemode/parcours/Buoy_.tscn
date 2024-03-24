@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8q0p5qi2obaf"]
 
-[ext_resource type="Script" path="res://src/gamemode/parcour/buoy.gd" id="1_bsdin"]
+[ext_resource type="Script" path="res://src/gamemode/parcours/Buoy_.gd" id="1_bsdin"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_muxd8"]
 radius = 0.25

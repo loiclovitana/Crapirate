@@ -1,6 +1,6 @@
 class_name DynamicPlayerNameInput extends Control
 
-const PLAYER_INPUT_NAME_SCENE : PackedScene = preload("res://src/interface/MainMenu/player_name_input.tscn")
+const PLAYER_INPUT_NAME_SCENE : PackedScene = preload("res://src/interface/MainMenu/PlayerNameInput.tscn")
 
 func get_player_name(p_id: int):
 	var p_name = get_child(p_id-1).get_child(1).get_text()
