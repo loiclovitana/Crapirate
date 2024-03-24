@@ -1,13 +1,12 @@
-extends CanvasLayer
+class_name BoatCanvas extends CanvasLayer
 
-const winLose_hud : PackedScene =preload("res://src/player/hud/FinishRaceHud.tscn")
-const player_name_label_scene : PackedScene = preload("res://src/player/hud/PlayerNameLabel.tscn")
+const WIN_LOSE_HUD_SCENE: PackedScene =preload("res://src/player/hud/FinishRaceHud.tscn")
+const PLAYER_NAME_LABEL_SCENE : PackedScene = preload("res://src/player/hud/PlayerNameLabel.tscn")
 
 @onready var boat : Boat =get_parent()
 
 @onready var _player_tags = {}
 @onready var _players_cameras : Array[Camera3D] = []
-
 
 ## display the stats in debug mode
 func debug_set_stats(statsDisplayText):
@@ -16,13 +15,12 @@ func debug_set_stats(statsDisplayText):
 
 ## display the end screen. with time
 func display_finish_screen(time : float,win : bool=true,is_record :bool =false):
-	var win_hud = winLose_hud.instantiate()
+	var win_hud = WIN_LOSE_HUD_SCENE.instantiate()
 	add_child(win_hud)
 	win_hud.set_winning(win)
 	win_hud.set_end_time(time,is_record)
 
-
-
+#region READY ================================================================
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	%PlayerNameHUD.set_text(boat.player_name)
@@ -37,8 +35,21 @@ func _ready():
 	PlayersManagement.player_left.connect(_remove_player_tag)
 	for player in PlayersManagement.get_registered_players():
 		_add_player_tag(player)
+		
+func _remove_player_tag(player):
+	if player in _player_tags:
+		_player_tags[player].queue_free()
+		_player_tags.erase(player)
+		
+func _add_player_tag(player):
+	if boat != player:
+		var label = PLAYER_NAME_LABEL_SCENE.instantiate()
+		label.set_playername(player.player_name)
+		_player_tags[player] = label
+		%OtherPlayersName.add_child(label)
+#endregion ===================================================================
 
-
+#region PROCESS ==============================================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	_update_hud()
@@ -60,14 +71,6 @@ func _update_hud():
 	var speed_in_knot = boat._current_speed*1.5
 	%SpeedDisplay.set_text("%3.1f KTS" % speed_in_knot)
 
-func _find_current_camera() -> Camera3D:
-	if _players_cameras.is_empty():
-		return null
-	for camera in _players_cameras:
-		if camera.is_current():
-			return camera
-	return null
-
 func _update_players_name():
 	var current_camera = _find_current_camera()
 	if not current_camera:
@@ -82,16 +85,12 @@ func _update_players_name():
 			var projected_position =current_camera.unproject_position(player_tag_position)
 			
 			label.set_position(projected_position)
-		
-func _remove_player_tag(player):
-	if player in _player_tags:
-		_player_tags[player].queue_free()
-		_player_tags.erase(player)
 
-	
-func _add_player_tag(player):
-	if boat != player:
-		var label = player_name_label_scene.instantiate()
-		label.set_playername(player.player_name)
-		_player_tags[player] = label
-		%OtherPlayersName.add_child(label)
+func _find_current_camera() -> Camera3D:
+	if _players_cameras.is_empty():
+		return null
+	for camera in _players_cameras:
+		if camera.is_current():
+			return camera
+	return null
+#endregion ===================================================================

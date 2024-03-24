@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://src/gamemode/Race.gd" id="1_kg8se"]
 [ext_resource type="PackedScene" uid="uid://dltsdrq8grbsc" path="res://src/world/map/map_1.tscn" id="2_ndh3e"]
-[ext_resource type="Script" path="res://src/player/view/SplitScreenView_.gd" id="3_gb4n2"]
+[ext_resource type="Script" path="res://src/player/view/SplitScreenView.gd" id="3_gb4n2"]
 [ext_resource type="Script" path="res://src/gamemode/parcours/Parcours.gd" id="6_iee00"]
-[ext_resource type="PackedScene" uid="uid://wwbhal8v70ht" path="res://src/gamemode/parcours/RaceMarkCheck.tscn" id="7_li58y"]
-[ext_resource type="PackedScene" uid="uid://bshx3wv2h387b" path="res://src/gamemode/parcours/RaceLineMark.tscn" id="8_gpvjv"]
+[ext_resource type="PackedScene" uid="uid://wwbhal8v70ht" path="res://src/gamemode/parcours/RaceMark.tscn" id="7_li58y"]
+[ext_resource type="PackedScene" uid="uid://bshx3wv2h387b" path="res://src/gamemode/parcours/RaceLine.tscn" id="8_gpvjv"]
 [ext_resource type="PackedScene" uid="uid://b8q0p5qi2obaf" path="res://src/gamemode/parcours/Buoy.tscn" id="9_w4rdk"]
 [ext_resource type="Texture2D" uid="uid://dxdehrt0e8c1i" path="res://ressources/hud/timer_bg.png" id="11_a8ttv"]
-[ext_resource type="PackedScene" uid="uid://c7s5246dt3dcd" path="res://src/interface/Menu.tscn" id="12_q13uq"]
+[ext_resource type="PackedScene" uid="uid://c7s5246dt3dcd" path="res://src/interface/menu.tscn" id="12_q13uq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_s7bsg"]
 font_size = 30
