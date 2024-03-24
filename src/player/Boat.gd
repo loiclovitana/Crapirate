@@ -12,7 +12,7 @@ var TIME_TO_FULLTURN = 7.5 #Fixme const
 @export_range(1,100) var speed_stat = 5
 @export_range(0,1) var sail_influence = 1 #not used yet
 
-@export var player = 'p1'
+@export var player_id = 'p1'
 var player_name = ""
 #controller FIXME ressource export doesnt work just yet
 var controller: BoatController #= InputBoatController.new("p1")
@@ -66,7 +66,7 @@ func stop_boat():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	renderer.boat = self
-	controller =  InputBoatController.new(player)
+	controller =  InputBoatController.new(player_id)
 	PlayersManagement.register_player(self)
 
 

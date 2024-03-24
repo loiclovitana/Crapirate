@@ -13,9 +13,10 @@ const DISTANCE_WIND_ARROW: float  = 2
 func _ready():
 	arrowDown.set_visible(false)
 	arrowDirection.set_visible(false)
-	
-	var p_id = int(boat.player)
-	assert(0<p_id and p_id <= 10,'The player id is not between 1 and 10')
+
+	var p_id = int(boat.player_id)
+	assert(0<p_id and p_id<=10,'The player id is not between 1 and 10')
+
 	var p_view_id = PlayerView.PLAYER_VIEW_ID_OFFSET +p_id 
 	
 	# set the layer for all visual instance to be the current player only

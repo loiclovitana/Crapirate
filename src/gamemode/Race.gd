@@ -59,7 +59,7 @@ func _record_player_time(boat: Boat) -> void:
 	var won = len(_race_ranking) == 0
 	_race_ranking.append(
 		{
-			"player": boat.player
+			"player": boat.player_id
 			,"time": timer
 			,"rank":len(_race_ranking)+1
 		}

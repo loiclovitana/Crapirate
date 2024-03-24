@@ -5,8 +5,14 @@ const player_scene = preload("res://src/player/Boat.tscn")
 const gps_scene = preload("res://src/player/view/GPS.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	PlayerSettings.get_all_player_presets()
-
+	Settings.load()
+	
+## Handle notification (such as quit)
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		Settings.save()
+		get_tree().quit() # default behavior
+		
 var current_game_preset : Dictionary ={}
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -70,7 +76,7 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	var player = player_scene.instantiate()
 	
 	# attributes
-	player.player = 'p'+str(p_id)
+	player.player_id = 'p'+str(p_id)
 	player.player_name = get_player_name(p_id)
 	
 	#stats
