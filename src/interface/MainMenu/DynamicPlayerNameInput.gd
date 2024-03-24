@@ -6,12 +6,6 @@ func _process(delta):
 	if get_child_count()!=Settings.nb_player:
 		_on_number_player_value_changed(Settings.nb_player)
 
-func get_player_name(p_id: int):
-	var p_name = get_child(p_id-1).get_child(1).get_text()
-	if p_name:
-		return p_name
-	return "Player " + str(p_id)
-
 func _on_number_player_value_changed(value: float) -> void:
 	var children = get_children()
 	

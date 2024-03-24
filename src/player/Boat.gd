@@ -66,7 +66,8 @@ func stop_boat():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	renderer.boat = self
-	controller =  InputBoatController.new(player_id)
+	if not controller:
+		controller =  InputBoatController.new(self)
 	PlayersManagement.register_player(self)
 
 

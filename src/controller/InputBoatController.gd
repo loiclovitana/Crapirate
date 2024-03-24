@@ -18,15 +18,17 @@ const ACTION_NAMES = {
 	"shoot": "Tir (canon)"
 }
 
-@export var _player_name: String = "p1"
+var player_id: String :
+	get: return self.boat.player_id 
 
-func _init(player_name) -> void:
-	_player_name = player_name
+func _init(boat: Boat) -> void:
+	super(boat)
+
 
 #region PUBLIC ================================================================
 ## Get the player name
-func get_player_name() -> String:
-	return _player_name
+func get_player_id() -> String:
+	return player_id
 	
 ## Get actions to be performed by the boat (based on controller inputs)
 func get_actions() -> Array[CONTROL_ACTION]:
@@ -41,5 +43,5 @@ func get_actions() -> Array[CONTROL_ACTION]:
 
 ## Get the action name for the player
 func get_player_action(action):
-	return _player_name + "_" + action
+	return player_id + "_" + action
 #endregion ====================================================================

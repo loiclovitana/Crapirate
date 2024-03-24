@@ -26,8 +26,13 @@ static func get_next_player_id():
 	var all_ids = player_settings.keys()
 	var max_p_id = int(all_ids.max())
 	return "p"+str(max_p_id+1)
+
+static func get_player_index(player_id : String) -> int:
+	var all_ids = player_settings.keys()
+	all_ids.sort()
+	return all_ids.find(player_id)
 	
-static func get_player_id(idx: int):
+static func get_player_id(idx: int) -> String:
 	var all_ids = player_settings.keys()
 	if all_ids.is_empty() or idx >len(all_ids):
 		return ""

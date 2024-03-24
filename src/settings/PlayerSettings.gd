@@ -68,7 +68,11 @@ static func load(saved_preset_name: String, player_id = "") -> PlayerSettings:
 	player_settings.joypad_device_id = loaded_player_settings.get_value(SECTION_INPUT,"joypad_device_id",-1)
 	var action_map = loaded_player_settings.get_value(SECTION_INPUT,"action_map",{})
 	for action in action_map:
-		player_settings.set_action_events(action,action_map[action])
+		var action_events : Array[InputEvent]= []
+		for event in action_map[action]:
+			var e := event as InputEvent
+			action_events.append(e)
+		player_settings.set_action_events(action,action_events)
 	
 	return player_settings
 
@@ -154,6 +158,14 @@ func _update_action_device():
 #region action_map
 var _action_map : Dictionary = {}
 
+func action_get_events(action: String) -> Array[InputEvent]:
+	if action  in _action_map:
+		var action_events : Array[InputEvent]= []
+		for event in _action_map[action]:
+			action_events.append(event as InputEvent)
+		return action_events
+	return [] 
+
 ## remove all event binded to that action
 func clear_action(action :String):
 	
@@ -174,7 +186,7 @@ func add_action_event(action: String, event: InputEvent):
 	var player_action = _get_player_action(action)
 	_bind_action_event(player_action,event)
 
-func _bind_action_event(player_action,event):
+func _bind_action_event(player_action: String, event: InputEvent):
 	# Only assign joypad button if the joypad is assigned
 	if ( event is InputEventJoypadButton
 			or event is InputEventJoypadMotion ) and joypad_device_id<0:

@@ -3,14 +3,18 @@ class_name PlayerInputSettings extends MarginContainer
 const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
 
 var input_controller: InputBoatController 
+
 var remaping_button: Button = null
 var remaping_action: String = ""
 var old_key_label = ""
 
+var _player_settings: PlayerSettings:
+	get: return Settings.player_settings[input_controller.player_id]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if input_controller:
-		set_name(input_controller._player_name)
+		set_name(_player_settings.player_name)
 		_create_input()
 	else:
 		queue_free()
@@ -20,12 +24,11 @@ func _create_input():
 		c.queue_free()
 	
 	for action in input_controller.CONTROL_EVENTS:
-		var player_action: String = input_controller.get_player_action(action)
 		var new_button = SET_INPUT_BUTTON_SCENE.instantiate()
 		new_button.set_action_label(_format_action(action))
-		_refresh_button_info(new_button, player_action)
+		_refresh_button_info(new_button, action)
 		%ListInputButton.add_child(new_button)
-		new_button.pressed.connect(_on_button_pressed.bind(new_button,player_action))
+		new_button.pressed.connect(_on_button_pressed.bind(new_button,action))
 
 func _format_action(action: String) -> String:
 	if action in input_controller.ACTION_NAMES:
@@ -45,7 +48,7 @@ func _format_keys(keys: Array[InputEvent]) -> String:
 
 
 func _refresh_button_info(button, action):
-	var keys = InputMap.action_get_events(action)
+	var keys = _player_settings.action_get_events(action)
 	button.set_key_label(_format_keys(keys))
 
 
@@ -76,10 +79,9 @@ func _input(event):
 			if event is InputEventMouseButton && event.double_click:
 				event.double_click = false
 			
-			if not InputMap.has_action(remaping_action):
-				InputMap.add_action(remaping_action)
-			InputMap.action_erase_events(remaping_action)
-			InputMap.action_add_event(remaping_action,event)
+			_player_settings.set_action_event(remaping_action,event)
+			_player_settings.save()
+			
 			_release_button()
 			accept_event()
 			

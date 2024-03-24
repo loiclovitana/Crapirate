@@ -32,8 +32,6 @@ func _process(_delta: float) -> void:
 			var high_scores = HighScore.load_high_score(str(new_preset))
 			%RecordsDisplay.set_highscores(high_scores)
 
-func get_player_name(pid):
-	return %DynamicPlayerNameInput.get_player_name(pid)
 
 func get_nb_player():
 	return Settings.nb_player
@@ -79,13 +77,14 @@ func get_maniability():
 		,"helm_straight":time_to_helm_straight[m_selected]
 	}
 
-func _create_player(p_id:int ,game_preset) -> Boat:
+func _create_player(player_id:String ,game_preset) -> Boat:
 	var player = player_scene.instantiate()
 	
-	# attributes
-	player.player_id = 'p'+str(p_id)
-	player.player_name = get_player_name(p_id)
 	
+	# attributes
+	player.player_id = player_id
+	player.player_name = Settings.player_settings[player_id].player_name
+	player.controller =  InputBoatController.new(player)
 	#stats
 	player.speed_stat=game_preset['speed_stat']
 	player.TIME_FOR_MAX_SPEED=game_preset['TIME_FOR_MAX_SPEED']
@@ -103,7 +102,7 @@ func _create_player(p_id:int ,game_preset) -> Boat:
 	camera.set_position(Vector3(0,get_camera_hauteur(),get_camera_distance()))
 	for i in range(1,10):
 		camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+i,false)
-	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+p_id,true)
+	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+Settings.get_player_index(player_id),true)
 	
 	
 	#gps
@@ -138,8 +137,8 @@ func _on_start_button_pressed() -> void:
 	var race = race_scene.instantiate()
 	add_child(race)
 	
-	for p_id in range(get_nb_player()):
-		race.add_player(_create_player(p_id+1,game_preset))
+	for p_idx in range(Settings.nb_player):
+		race.add_player(_create_player(Settings.get_player_id(p_idx),game_preset))
 	
 	%MainMenu.set_visible(false)
 	race.send_event.connect(process_event)
