@@ -26,7 +26,9 @@ static func save():
 	config.set_value(SECTION_PLAYERS,"nb_players",nb_player)
 	for p_c in player_configs:
 		p_c.save()
-	var player_preset = player_configs.values().map(func(x) : return x.preset_name)
+	var player_preset ={}
+	for player_id in  player_configs:
+		player_preset[player_id] = player_configs[player_id].preset_name
 	config.set_value(SECTION_PLAYERS,"player_configs",player_preset)
 	
 	config.set_value(SECTION_INPUT,"action_map",action_map)
@@ -48,8 +50,8 @@ static func _load(path):
 		return
 	
 	nb_player = config.get_value(SECTION_PLAYERS,"nb_players",nb_player)
-	var player_configs_to_load = config.get_value(SECTION_PLAYERS,"player_configs",[])
+	var player_configs_to_load = config.get_value(SECTION_PLAYERS,"player_configs",{})
 	if not player_configs_to_load.is_empty():
 		player_configs.clear()
-		for player_config_preset in player_configs_to_load:
-			player_configs[] = PlayerSettings.load(player_config_preset)
+		for player_config_id in player_configs_to_load:
+			player_configs[player_config_id] = PlayerSettings.load(player_configs_to_load[player_config_id])
