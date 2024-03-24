@@ -10,10 +10,9 @@ var added_player = 0
 var _race_ranking: Array[Dictionary] = []
 @onready var parcours: Parcours = %Parcours
 
-#region PUBLIC
-# ===================== PUBLIC ==============================================
+#region PUBLIC ================================================================
 ## add a player to the race to one of the starting position on the race
-func add_player(boat : Boat):
+func add_player(boat: Boat):
 	%SplitscreenView.add_player(boat)
 	
 	var all_position = %StartingPositions.get_children()
@@ -28,11 +27,9 @@ func exit_race():
 	send_event.emit("restart", {})
 	get_tree().paused = false
 	queue_free()
-#============================================================================
-#endregion
+#endregion ====================================================================
 	
-#region READY
-# ===================== READY ==============================================
+#region READY =================================================================
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	%Menu.pressed_event.connect(_process_event)
@@ -50,7 +47,7 @@ func _ready() -> void:
 	if timer < 0:
 		%Timer.get_label_settings().set_font_color(Color(1, 0, 0, 1))
 		
-	self.parcours.player_has_finished.connect(self._record_player_time)
+	parcours.player_has_finished.connect(_record_player_time)
 
 ## process sent event
 func _process_event(event_name, _event_data):
@@ -59,7 +56,7 @@ func _process_event(event_name, _event_data):
 		_: push_warning("event %s is not handled" % event_name)
 		
 func _record_player_time(boat: Boat) -> void:
-	var won = len(self._race_ranking) == 0
+	var won = len(_race_ranking) == 0
 	_race_ranking.append(
 		{
 			"player": boat.player
@@ -70,17 +67,15 @@ func _record_player_time(boat: Boat) -> void:
 	var new_record = HighScore.get_highest_score().is_empty() or timer < HighScore.get_highest_score()[HighScore.TIME_IDX]
 	boat.has_finished(timer, won, new_record)
 	HighScore.save_score(timer, boat.player_name)
-#============================================================================
-#endregion
+#endregion ====================================================================
 
-#region PROCESS
-# ===================== PROCESS ==============================================
+#region PROCESS ===============================================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_timer(delta)
 	if not has_started:
-		if self.timer >= 0:
-			self.parcours.start()
+		if timer >= 0:
+			parcours.start()
 	
 	if Input.is_action_pressed("ui_cancel"):
 		%Menu.open_menu()
@@ -96,5 +91,4 @@ func _update_timer(delta):
 	var cent = int(abs(fmod(timer, 1) * 100))
 	var timer_format: String = "%1s%02d:%02d.%02d " % [sign_, minutes, seconds,cent]
 	%Timer.set_text(timer_format)
-#============================================================================
-#endregion
+#endregion ====================================================================

@@ -1,5 +1,4 @@
-extends ColorRect
-
+class_name RecordLine extends ColorRect
 
 func update_data(idx : int ,player_name : String ,time : float):
 	%Id.set_text(str(idx))

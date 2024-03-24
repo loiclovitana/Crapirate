@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 	# create a node where to instantiate the bullets (make it not 3d so that the transform is not impacted)
 	bullets = Node.new()
-	self.add_child(bullets)
+	add_child(bullets)
 
 
 ##	==================================================================

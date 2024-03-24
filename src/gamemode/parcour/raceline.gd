@@ -10,33 +10,28 @@ class_name RaceLine extends RaceCheckpoint
 
 var _is_enabled = true
 
-#region PUBLIC
-# ===================== PUBLIC ==============================================
+#region PUBLIC ================================================================
 func disable() -> void:
-	self._is_enabled = false
-	self._change_starting_line_color(Color(1, 0, 0, 1))
+	_is_enabled = false
+	_change_starting_line_color(Color(1, 0, 0, 1))
 	
 func enable() -> void:
-	self._is_enabled = true
-	self._change_starting_line_color(Color(0, 1, 0, 1))
+	_is_enabled = true
+	_change_starting_line_color(Color(0, 1, 0, 1))
 	
 ## return the position where the boat need to go to pass the checkpoint
 func get_position_to_go() -> Vector3:
 	return (portMark.get_global_position() + startbordMark.get_global_position()) / 2 
-# ============================================================================
-#endregion
+#endregion ===================================================================
 
-#region PROTECTED
-# ===================== PROTECTED =============================================
+#region PROTECTED ============================================================
 func _change_starting_line_color(color : Color):
-	var material: Material = self.lineMesh.get_active_material(0)
+	var material: Material = lineMesh.get_active_material(0)
 	if material and material is BaseMaterial3D:
 		material.set_albedo(color)
-# ============================================================================
-#endregion
+#endregion ====================================================================
 
-#region READY & PROCESS
-# ===================== READY & PROCESS ======================================
+#region READY & PROCESS =======================================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	super()
@@ -69,11 +64,10 @@ func _detect_if_player_pass():
 		if boat not in _boats_to_cross:
 			return
 		
-		if self._is_enabled:
+		if _is_enabled:
 			_pass_checkpoint(boat)
 			_line.add_exception(boat)
 		else:
 			var displacement: Vector3 = 5 * (portMark.get_global_position() - startbordMark.get_global_position()).normalized().rotated(Vector3.UP, PI / 2.0)
 			boat.project_to(boat.get_global_position() + displacement)
-# ============================================================================
-#endregion
+#endregion ====================================================================
