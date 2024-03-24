@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-const sub_view_player_container : PackedScene = preload("res://src/player/view/sub_viewport_player_container.tscn")
+const sub_view_player_container : PackedScene = preload("res://src/player/view/SubViewportPlayerContainer.tscn")
 
 var _next_child = 0
 

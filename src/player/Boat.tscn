@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://brgh15k8ufvrd"]
 
-[ext_resource type="Script" path="res://src/player/Boat_.gd" id="1_qrajo"]
+[ext_resource type="Script" path="res://src/player/Boat.gd" id="1_qrajo"]
 [ext_resource type="PackedScene" uid="uid://b5vvlt3okj3vw" path="res://src/player/rendering/BoatRendering.tscn" id="2_4qo4p"]
 [ext_resource type="Script" path="res://src/player/BulletShooter.gd" id="4_7413p"]
 [ext_resource type="PackedScene" uid="uid://bdd2vi53oum2w" path="res://src/player/hud/BoatCanvas.tscn" id="4_qqy8j"]
