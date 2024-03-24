@@ -1,8 +1,8 @@
 extends Node
 
-const race_scene = preload("res://src/gamemode/Race_.tscn")
-const player_scene = preload("res://src/player/Boat_.tscn")
-const gps_scene = preload("res://src/player/view/GPS_.tscn")
+const race_scene = preload("res://src/gamemode/Race.tscn")
+const player_scene = preload("res://src/player/Boat.tscn")
+const gps_scene = preload("res://src/player/view/GPS.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerSettings.get_all_player_presets()
