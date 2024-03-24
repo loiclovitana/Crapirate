@@ -6,7 +6,10 @@ const gps_scene = preload("res://src/player/view/gps.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerSettings.get_all_player_presets()
-
+	var settings_p1 = PlayerSettings.load("p1",'p1')
+	var settings_p2 = PlayerSettings.load("p2",'p1')
+	settings_p2.save()
+	settings_p1.save()
 
 
 var current_game_preset : Dictionary ={}
