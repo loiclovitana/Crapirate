@@ -32,7 +32,7 @@ func get_camera_hauteur():
 	return int(%CameraHauteur.get_value())
 
 func get_vitesse():
-	const vitesses = [6,10,16,22,10]
+	const vitesses = [6, 10, 16, 22, 10]
 	
 	var vitesse_selected = -1
 	for idx in  range(%VitesseSelection.get_item_count()):
