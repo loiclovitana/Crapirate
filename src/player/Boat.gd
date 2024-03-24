@@ -8,7 +8,6 @@ var TIME_FOR_MAX_SPEED = 10.0
 const LIMIT_ANGLE_FULL_BACK_WIND = PI*0.9
 var TIME_TO_FULLTURN = 7.5 #Fixme const
 
-
 # stats
 @export_range(1,100) var speed_stat = 5
 @export_range(0,1) var sail_influence = 1 #not used yet
@@ -16,7 +15,7 @@ var TIME_TO_FULLTURN = 7.5 #Fixme const
 @export var player_id = 'p1'
 var player_name = ""
 #controller FIXME ressource export doesnt work just yet
-var controller :BoatController #= InputBoatController.new("p1")
+var controller: BoatController #= InputBoatController.new("p1")
 
 # env state variables
 var wind_direction : Vector2 = Vector2.UP;

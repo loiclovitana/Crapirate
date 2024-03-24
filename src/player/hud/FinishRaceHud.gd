@@ -1,9 +1,4 @@
-extends CenterContainer
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+class_name FinishRaceHud extends CenterContainer
 
 func set_end_time(time,is_record=false):
 	var minutes = int(abs(time/60))

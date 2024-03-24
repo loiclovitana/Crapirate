@@ -1,4 +1,4 @@
-extends MarginContainer
+class_name PlayerInputSettings extends MarginContainer
 
 const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
 
@@ -20,10 +20,10 @@ func _create_input():
 		c.queue_free()
 	
 	for action in input_controller.CONTROL_EVENTS:
-		var player_action : String = input_controller.get_player_action(action)
+		var player_action: String = input_controller.get_player_action(action)
 		var new_button = SET_INPUT_BUTTON_SCENE.instantiate()
 		new_button.set_action_label(_format_action(action))
-		refresh_button_info(new_button, player_action)
+		_refresh_button_info(new_button, player_action)
 		%ListInputButton.add_child(new_button)
 		new_button.pressed.connect(_on_button_pressed.bind(new_button,player_action))
 
@@ -44,13 +44,13 @@ func _format_keys(keys: Array[InputEvent]) -> String:
 	return label.replace('(Physical)','').rstrip(' ')
 
 
-func refresh_button_info(button, action):
+func _refresh_button_info(button, action):
 	var keys = InputMap.action_get_events(action)
 	button.set_key_label(_format_keys(keys))
 
 
 func _release_button():
-	refresh_button_info(remaping_button,remaping_action)
+	_refresh_button_info(remaping_button,remaping_action)
 	remaping_button.set_pressed(false)
 	remaping_button=null
 	remaping_action = ""

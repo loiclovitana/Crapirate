@@ -10,7 +10,7 @@ func open_menu():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_visible(false)
-	for c in find_children("*","EventButton"):
+	for c in find_children("*", "EventButton"):
 		c.pressed_event.connect(_process_event)
 
 func _process_event(event_name: String, event_data: Dictionary):
