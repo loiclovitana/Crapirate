@@ -5,6 +5,8 @@ class_name  PlayerSettings
 const DIR_DEFAULT_PATH: String = "res://settings/player/"
 const DIR_USER_PATH: String = Settings.USER_SETTINGS_DIR+"/player/"
 
+const DEFAULT_JOYPAD_PRESET: String = "XBOX_GAMEPAD_PRESET"
+
 const SECTION_MAIN: String = "main"
 const SECTION_PLAYER_DATA: String = "player_data"
 const SECTION_INPUT: String = "input"
@@ -41,7 +43,7 @@ static func _get_presets_in(directory_path):
 		file_name = dir.get_next()
 
 
-static func load(saved_preset_name: String, pid = "") -> PlayerSettings:
+static func load(saved_preset_name: String, player_id = "") -> PlayerSettings:
 	
 	var player_settings = PlayerSettings.new()
 	var loaded_player_settings = ConfigFile.new()
@@ -59,10 +61,10 @@ static func load(saved_preset_name: String, pid = "") -> PlayerSettings:
 	player_settings.preset_name=saved_preset_name
 	
 	# player_data
-	player_settings.player_name = loaded_player_settings.get_value(SECTION_PLAYER_DATA,"player_name","Player "+str(int(pid)))
+	player_settings.player_name = loaded_player_settings.get_value(SECTION_PLAYER_DATA,"player_name","Player "+str(int(player_id)))
 	
 	# input_data
-	player_settings.pid = pid
+	player_settings.pid = player_id
 	player_settings.joypad_device_id = loaded_player_settings.get_value(SECTION_INPUT,"joypad_device_id",-1)
 	var action_map = loaded_player_settings.get_value(SECTION_INPUT,"action_map",{})
 	for action in action_map:
@@ -138,10 +140,10 @@ var joypad_device_id : int :
 		return _joypad_device_id
 	set(value):
 		_joypad_device_id = value
-		_change_action_device(_joypad_device_id,value)
+		_update_action_device()
 		
 		
-func _change_action_device(old_device: int, new_device: int):
+func _update_action_device():
 	for action in _action_map:
 		if pid!="":
 			InputMap.action_erase_events(_get_player_action(action,pid))
@@ -196,10 +198,10 @@ func set_action_events(action: String, events: Array[InputEvent]):
 		add_action_event(action,event)
 
 ## Get the action name for the player
-func _get_player_action(action: String, pid: String = ""):
-	if pid=="":
-		pid = self.pid
-	return pid + "_" + action
+func _get_player_action(action: String, player_id: String = ""):
+	if player_id=="":
+		player_id = pid
+	return player_id + "_" + action
 #endregion
 
 #endregion

@@ -6,6 +6,13 @@ const gps_scene = preload("res://src/player/view/GPS.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Settings.load()
+	%NumberOfPlayer.set_value(Settings.nb_player)
+	%NumberOfPlayer.value_changed.connect(
+		func(value):
+			Settings.nb_player=value
+			print(value)
+			)
+	
 	
 ## Handle notification (such as quit)
 func _notification(what):
@@ -29,7 +36,7 @@ func get_player_name(pid):
 	return %DynamicPlayerNameInput.get_player_name(pid)
 
 func get_nb_player():
-	return int(%NumberOfPlayer.get_value())
+	return Settings.nb_player
 
 func get_camera_distance():
 	return int(%CameraDistance.get_value())

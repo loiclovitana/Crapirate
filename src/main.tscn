@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq4wyds1k7lgo"]
+[gd_scene load_steps=7 format=3 uid="uid://bq4wyds1k7lgo"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_f13lg"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/DynamicPlayerNameInput.gd" id="2_cvfrw"]
-[ext_resource type="PackedScene" uid="uid://bw1rw6s1mabbo" path="res://src/interface/MainMenu/PlayerNameInput.tscn" id="3_7u260"]
 [ext_resource type="Script" path="res://src/interface/MainMenu/RecordsDisplay.gd" id="4_s7t4w"]
 [ext_resource type="PackedScene" uid="uid://c3i0qqi04ecyw" path="res://src/interface/MainMenu/RecordLine.tscn" id="5_j8utw"]
 
@@ -78,9 +77,6 @@ value = 1.0
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("2_cvfrw")
-
-[node name="PlayerNameInput" parent="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/DynamicPlayerNameInput" instance=ExtResource("3_7u260")]
-layout_mode = 2
 
 [node name="playerStats" type="VBoxContainer" parent="MainMenu/VBoxContainer3/HBoxContainer"]
 custom_minimum_size = Vector2(310, 0)
@@ -212,5 +208,4 @@ size_flags_vertical = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_5a2kh")
 text = "START RACE"
 
-[connection signal="value_changed" from="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/Container/NumberOfPlayer" to="MainMenu/VBoxContainer3/HBoxContainer/NBPlayers/DynamicPlayerNameInput" method="_on_number_player_value_changed"]
 [connection signal="pressed" from="MainMenu/StartButton" to="." method="_on_start_button_pressed"]
