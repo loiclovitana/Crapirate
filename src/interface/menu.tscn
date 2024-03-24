@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/interface/MainPauseMenu.gd" id="2_e11qy"]
 [ext_resource type="Script" path="res://src/interface/button/EventButton.gd" id="3_mivi4"]
 [ext_resource type="Texture2D" uid="uid://bhlhdbe0d2fgm" path="res://ressources/ui/buttonLong_brown_focus.png" id="4_14yj6"]
-[ext_resource type="PackedScene" uid="uid://5spc68prq7t0" path="res://src/interface/Settings.tscn" id="5_243ah"]
+[ext_resource type="PackedScene" uid="uid://5spc68prq7t0" path="res://src/interface/MenuSettings.tscn" id="5_243ah"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_in1xt"]
 font_size = 19
