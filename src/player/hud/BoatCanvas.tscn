@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bdd2vi53oum2w"]
 
-[ext_resource type="Script" path="res://src/player/hud/boat_canvas.gd" id="1_3ssya"]
-[ext_resource type="PackedScene" uid="uid://dvijckab3hmj6" path="res://src/player/hud/player_name_label.tscn" id="2_he606"]
+[ext_resource type="Script" path="res://src/player/hud/BoatCanvas.gd" id="1_3ssya"]
+[ext_resource type="PackedScene" uid="uid://dvijckab3hmj6" path="res://src/player/hud/PlayerNameLabel.tscn" id="2_he606"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hq452"]
 font_size = 20

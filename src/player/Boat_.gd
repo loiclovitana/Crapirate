@@ -91,13 +91,13 @@ func _process(delta):
 	
 	
 	# update position
-	#set_global_position(self.get_global_position() 
-	#				+( self.global_transform.basis.x * _current_speed * delta)*0.5
+	#set_global_position(get_global_position() 
+	#				+( global_transform.basis.x * _current_speed * delta)*0.5
 	#	)
 	rotate_y (
 		rotation_speed*delta
 	)
-	#set_global_position(self.get_global_position() +( self.global_transform.basis.x * new_speed * delta)*0.5 )
+	#set_global_position(get_global_position() +( global_transform.basis.x * new_speed * delta)*0.5 )
 	
 	_current_speed=new_speed
 	
@@ -106,7 +106,7 @@ func _process(delta):
 	if not is_zero_approx(get_global_position().y):
 		altitude_correction += Vector3(0,-get_global_position().y,0)
 	
-	set_velocity(( self.global_transform.basis.x * new_speed ) + altitude_correction)
+	set_velocity(( global_transform.basis.x * new_speed ) + altitude_correction)
 	move_and_slide()
 	
 	# update display 
@@ -178,7 +178,7 @@ func _update_helm(delta,direction):
 # ==========================================================================================
 
 func _compute_max_possible_speed() -> float:
-	var boat_direction3d = self.get_global_transform().basis.x
+	var boat_direction3d = get_global_transform().basis.x
 	
 	
 	var boat_direction = Vector2(boat_direction3d.x,boat_direction3d.z)

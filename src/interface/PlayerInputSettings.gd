@@ -1,22 +1,19 @@
 extends MarginContainer
 
-var input_controller : InputBoatController 
+const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
 
-const setInputButton : PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
-
-
-var remaping_button :Button = null
-var remaping_action : String = ""
+var input_controller: InputBoatController 
+var remaping_button: Button = null
+var remaping_action: String = ""
 var old_key_label = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if input_controller:
-		self.set_name(input_controller._player_name)
+		set_name(input_controller._player_name)
 		_create_input()
 	else:
-		self.queue_free()
-
+		queue_free()
 
 func _create_input():
 	for c in %ListInputButton.get_children():
@@ -24,20 +21,19 @@ func _create_input():
 	
 	for action in input_controller.CONTROL_EVENTS:
 		var player_action : String = input_controller.get_player_action(action)
-		var new_button = setInputButton.instantiate()
+		var new_button = SET_INPUT_BUTTON_SCENE.instantiate()
 		new_button.set_action_label(_format_action(action))
 		refresh_button_info(new_button, player_action)
 		%ListInputButton.add_child(new_button)
 		new_button.pressed.connect(_on_button_pressed.bind(new_button,player_action))
 
-
-func _format_action(action :String) -> String:
+func _format_action(action: String) -> String:
 	if action in input_controller.ACTION_NAMES:
 		return input_controller.ACTION_NAMES[action]
 	return action
 	
 
-func _format_keys(keys : Array[InputEvent]) -> String:
+func _format_keys(keys: Array[InputEvent]) -> String:
 	if keys.is_empty():
 		return "<None>"
 	var label = ""

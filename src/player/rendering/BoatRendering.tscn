@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5vvlt3okj3vw"]
 
-[ext_resource type="Script" path="res://src/player/rendering/boat_rendering.gd" id="1_4ynlb"]
+[ext_resource type="Script" path="res://src/player/rendering/BoatRendering.gd" id="1_4ynlb"]
 [ext_resource type="ArrayMesh" uid="uid://brq2a4xqhdyyg" path="res://ressources/3D/boat/ship.obj" id="1_w5rlr"]
 [ext_resource type="ArrayMesh" uid="uid://dnojyu20br1mh" path="res://ressources/3D/boat/sail_left.obj" id="2_s6s0i"]
-[ext_resource type="Script" path="res://src/player/rendering/sail_render.gd" id="3_bt6k6"]
+[ext_resource type="Script" path="res://src/player/rendering/SailRender.gd" id="3_bt6k6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3xde"]
 albedo_color = Color(1, 0, 0, 1)

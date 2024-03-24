@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cseb8qmyyh3dt"]
 
-[ext_resource type="Script" path="res://src/player/hud/finish_race_hud.gd" id="1_8ys7w"]
+[ext_resource type="Script" path="res://src/player/hud/FinishRaceHud.gd" id="1_8ys7w"]
 [ext_resource type="Script" path="res://src/player/hud/WinLoseLabel.gd" id="1_miw61"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c4aj8"]

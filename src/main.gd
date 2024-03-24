@@ -1,13 +1,11 @@
 extends Node
 
-const race_scene = preload("res://src/gamemode/race.tscn")
-const player_scene = preload("res://src/player/boat.tscn")
-const gps_scene = preload("res://src/player/view/gps.tscn")
+const race_scene = preload("res://src/gamemode/Race_.tscn")
+const player_scene = preload("res://src/player/Boat_.tscn")
+const gps_scene = preload("res://src/player/view/GPS_.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerSettings.get_all_player_presets()
-
-
 
 var current_game_preset : Dictionary ={}
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,11 +18,6 @@ func _process(_delta: float) -> void:
 			current_game_preset=new_preset
 			var high_scores = HighScore.load_high_score(str(new_preset))
 			%RecordsDisplay.set_highscores(high_scores)
-			
-		
-		
-
-
 
 func get_player_name(pid):
 	return %DynamicPlayerNameInput.get_player_name(pid)

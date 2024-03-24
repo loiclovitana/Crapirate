@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://d0pl38nig0mdj"]
 
-[ext_resource type="Script" path="res://src/player/view/gps.gd" id="1_8a38a"]
+[ext_resource type="Script" path="res://src/player/view/GPS_.gd" id="1_8a38a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_off7h"]
 albedo_color = Color(1, 0.615686, 0.133333, 1)

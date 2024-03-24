@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-const winLose_hud : PackedScene =preload("res://src/player/hud/finish_race_hud.tscn")
-const player_name_label_scene : PackedScene = preload("res://src/player/hud/player_name_label.tscn")
+const winLose_hud : PackedScene =preload("res://src/player/hud/FinishRaceHud.tscn")
+const player_name_label_scene : PackedScene = preload("res://src/player/hud/PlayerNameLabel.tscn")
 
 @onready var boat : Boat =get_parent()
 
@@ -17,7 +17,7 @@ func debug_set_stats(statsDisplayText):
 ## display the end screen. with time
 func display_finish_screen(time : float,win : bool=true,is_record :bool =false):
 	var win_hud = winLose_hud.instantiate()
-	self.add_child(win_hud)
+	add_child(win_hud)
 	win_hud.set_winning(win)
 	win_hud.set_end_time(time,is_record)
 

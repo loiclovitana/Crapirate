@@ -12,8 +12,8 @@ func set_winning(win):
 		_scale_down()
 		_rotate_left()
 	else:
-		self.set_text("YOU LOSE!")
-		self.get_label_settings().set_font_color(Color(1,0,0))
+		set_text("YOU LOSE!")
+		get_label_settings().set_font_color(Color(1,0,0))
 		_up()
 
 func _up():

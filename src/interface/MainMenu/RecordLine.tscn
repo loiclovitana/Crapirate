@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c3i0qqi04ecyw"]
 
-[ext_resource type="Script" path="res://src/interface/MainMenu/record_line.gd" id="1_ako6l"]
+[ext_resource type="Script" path="res://src/interface/MainMenu/RecordLine.gd" id="1_ako6l"]
 
 [node name="Record" type="ColorRect"]
 custom_minimum_size = Vector2(0, 35)

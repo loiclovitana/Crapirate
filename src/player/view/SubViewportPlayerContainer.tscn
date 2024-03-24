@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnp55uf33h5w7"]
 
-[ext_resource type="Script" path="res://src/player/view/player_view.gd" id="1_m461a"]
+[ext_resource type="Script" path="res://src/player/view/PlayerView.gd" id="1_m461a"]
 
 [node name="PlayerViewContainer" type="SubViewportContainer"]
 custom_minimum_size = Vector2(100, 100)
