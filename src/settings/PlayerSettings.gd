@@ -3,7 +3,7 @@ class_name  PlayerSettings
 
 
 const DIR_DEFAULT_PATH: String = "res://settings/player/"
-const DIR_USER_PATH: String = "user://settings/player/"
+const DIR_USER_PATH: String = Settings.USER_SETTINGS_DIR+"/player/"
 
 const SECTION_MAIN: String = "main"
 const SECTION_PLAYER_DATA: String = "player_data"
@@ -41,22 +41,22 @@ static func _get_presets_in(directory_path):
 		file_name = dir.get_next()
 
 
-static func load(preset_name : String, pid = "") -> PlayerSettings:
+static func load(saved_preset_name: String, pid = "") -> PlayerSettings:
 	
 	var player_settings = PlayerSettings.new()
 	var loaded_player_settings = ConfigFile.new()
 	#Load and check error
-	if preset_name not in get_all_player_presets():
-		push_warning("Preset %s does not exists" % preset_name)
+	if saved_preset_name not in get_all_player_presets():
+		push_warning("Preset %s does not exists" % saved_preset_name)
 	else:
-		var err = loaded_player_settings.load(all_preset[preset_name])
+		var err = loaded_player_settings.load(all_preset[saved_preset_name])
 		if err != OK:
 			push_warning(
-				"Couldn't load player settings %s : \n%s\nError : %s" % [preset_name,all_preset[preset_name],error_string(err)]
+				"Couldn't load player settings %s : \n%s\nError : %s" % [saved_preset_name,all_preset[saved_preset_name],error_string(err)]
 			)
 	
 	# main
-	player_settings.preset_name =preset_name
+	player_settings.preset_name=saved_preset_name
 	
 	# player_data
 	player_settings.player_name = loaded_player_settings.get_value(SECTION_PLAYER_DATA,"player_name","Player "+str(int(pid)))
