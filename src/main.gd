@@ -10,7 +10,6 @@ func _ready() -> void:
 	%NumberOfPlayer.value_changed.connect(
 		func(value):
 			Settings.nb_player=value
-			print(value)
 			)
 	
 	

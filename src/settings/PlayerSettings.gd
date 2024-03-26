@@ -106,8 +106,6 @@ var player_name : String = ""
 #endregion
 
 #region INPUT DATA ============================================================
-#check that there does not exist 2 settings with the same pid
-static var assigned_pids :Array[String] = []
 
 #region pid
 var _pid = ''
@@ -116,10 +114,6 @@ var pid : String :
 	get:
 		return _pid 
 	set(value):
-		if value in assigned_pids:
-			value = assigned_pids.max()+"_copy"
-		assigned_pids.append(value)
-		assigned_pids.erase(_pid)
 		_pid = value
 		_change_action_pid(_pid,value)
 		
@@ -172,7 +166,9 @@ func clear_action(action :String):
 	if pid =="":
 		_action_map[action] = []
 		return
-	InputMap.action_erase_events(_get_player_action(action))
+	var player_action = _get_player_action(action)
+	if InputMap.has_action(player_action):
+		InputMap.action_erase_events(_get_player_action(action))
 
 ## Bind an event to the action
 ## Does not clear already binded event
