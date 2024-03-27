@@ -14,10 +14,7 @@ func _ready():
 	arrowDown.set_visible(false)
 	arrowDirection.set_visible(false)
 
-	var p_id = int(boat.player_id)
-	assert(0<p_id and p_id<=10,'The player id is not between 1 and 10')
-
-	var p_view_id = PlayerView.PLAYER_VIEW_ID_OFFSET +p_id 
+	var p_view_id = PlayerView.PLAYER_VIEW_ID_OFFSET +Settings.get_player_index(boat.player_id)
 	
 	# set the layer for all visual instance to be the current player only
 	for arrow_child in arrowDown.get_children()+arrowDirection.get_children()+windArrow.get_children():
