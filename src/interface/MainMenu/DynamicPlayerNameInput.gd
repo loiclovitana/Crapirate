@@ -2,7 +2,7 @@ class_name DynamicPlayerNameInput extends Control
 
 const PLAYER_INPUT_NAME_SCENE : PackedScene = preload("res://src/interface/MainMenu/PlayerNameInput.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if get_child_count()!=Settings.nb_player:
 		_on_number_player_value_changed(Settings.nb_player)
 

@@ -4,9 +4,9 @@ const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/
 
 var input_controller: InputBoatController 
 
-var remaping_button: Button = null
+var remaping_button: SetInputButton = null
 var remaping_action: String = ""
-var old_key_label = ""
+var remaping_append: bool = false
 
 var _player_settings: PlayerSettings:
 	get: return Settings.player_settings[input_controller.player_id]
@@ -24,18 +24,24 @@ func _create_input():
 		c.queue_free()
 	
 	for action in input_controller.CONTROL_EVENTS:
-		var new_button = SET_INPUT_BUTTON_SCENE.instantiate()
+		var new_button: SetInputButton = SET_INPUT_BUTTON_SCENE.instantiate()
 		new_button.set_action_label(_format_action(action))
 		_refresh_button_info(new_button, action)
 		%ListInputButton.add_child(new_button)
-		new_button.pressed.connect(_on_button_pressed.bind(new_button,action))
+		new_button.set_event.connect(_wait_for_event.bind(new_button,action))
+		new_button.add_event.connect(_wait_for_event.bind(new_button,action,true))
+		new_button.clear_event.connect(_clear_event.bind(new_button,action))
+
+
+func _clear_event(button : SetInputButton, action: String):
+	_player_settings.clear_action(action)
+	_refresh_button_info(button,action)
 
 func _format_action(action: String) -> String:
 	if action in input_controller.ACTION_NAMES:
 		return input_controller.ACTION_NAMES[action]
 	return action
 	
-
 func _format_keys(keys: Array[InputEvent]) -> String:
 	if keys.is_empty():
 		return "<None>"
@@ -58,13 +64,14 @@ func _release_button():
 	remaping_button=null
 	remaping_action = ""
 	
-func _on_button_pressed(button : Button, action :String):
+func _wait_for_event(button : SetInputButton, action :String, append: bool= false):
 	if remaping_button:
 		_release_button()
-	
-	if button.is_pressed():
+	else:
+		
 		remaping_button=button
 		remaping_action=action
+		remaping_append=append
 		button.set_key_label("Press Key to assign ...")
 		button.release_focus()
 
@@ -78,8 +85,10 @@ func _input(event):
 			remaping_button.grab_focus()
 			if event is InputEventMouseButton && event.double_click:
 				event.double_click = false
-			
-			_player_settings.set_action_event(remaping_action,event)
+			if remaping_append:
+				_player_settings.add_action_event(remaping_action,event)
+			else:
+				_player_settings.set_action_event(remaping_action,event)
 			_player_settings.save()
 			
 			_release_button()

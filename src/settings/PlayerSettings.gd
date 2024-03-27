@@ -174,6 +174,9 @@ func clear_action(action :String):
 func add_action_event(action: String, event: InputEvent):
 	if action not in _action_map:
 		_action_map[action]=[]
+	for existing_event in  _action_map[action]:
+		if existing_event.is_match(event):
+			return
 	_action_map[action].append(event)
 	if pid =="":
 		return

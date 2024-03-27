@@ -26,3 +26,4 @@ size_flags_horizontal = 3
 
 [node name="SetInputButton_test" parent="ScrollContainer/ListInputButton" instance=ExtResource("1_34vkq")]
 layout_mode = 2
+size_flags_horizontal = 1

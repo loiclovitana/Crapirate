@@ -12,8 +12,8 @@ enum CONTROL_ACTION {
 
 var boat : Boat
 
-func _init(boat: Boat) -> void:
-	self.boat = boat
+func _init(boat_: Boat) -> void:
+	self.boat = boat_
 
 # Get actions - to be overwritten
 func get_actions() -> Array[CONTROL_ACTION]:

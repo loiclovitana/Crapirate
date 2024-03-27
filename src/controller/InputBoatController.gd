@@ -21,8 +21,8 @@ const ACTION_NAMES = {
 var player_id: String :
 	get: return self.boat.player_id 
 
-func _init(boat: Boat) -> void:
-	super(boat)
+func _init(boat_: Boat) -> void:
+	super(boat_)
 
 
 #region PUBLIC ================================================================
