@@ -16,5 +16,5 @@ func _on_number_player_value_changed(value: float) -> void:
 		var p_input = PLAYER_INPUT_NAME_SCENE.instantiate()
 		p_input.get_child(0).set_text("Nom joueur %d" % [i+1])
 		p_input.get_child(1).set_text(Settings.get_player_settings(i).player_name)
-		p_input.get_child(1).text_changed.connect(func(): Settings.get_player_settings(i).player_name = p_input.get_child(1).get_text() )
+		p_input.get_child(1).text_changed.connect(func(new_name): Settings.get_player_settings(i).player_name = new_name )
 		add_child(p_input)

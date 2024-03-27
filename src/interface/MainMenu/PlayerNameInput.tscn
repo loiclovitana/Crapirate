@@ -7,7 +7,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "Nom joueur 1"
 
-[node name="PlayerName" type="TextEdit" parent="."]
+[node name="PlayerName" type="LineEdit" parent="."]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Player"
