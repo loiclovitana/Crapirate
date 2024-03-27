@@ -31,6 +31,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="KeyBoardButton" type="Button" parent="ScrollContainer/ListInputButton/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -39,27 +40,21 @@ icon = ExtResource("2_0q0yy")
 icon_alignment = 1
 expand_icon = true
 
-[node name="GamePadButton" type="Button" parent="ScrollContainer/ListInputButton/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("2_6g3lt")
-icon = ExtResource("2_ekiqh")
-icon_alignment = 1
-expand_icon = true
-
 [node name="GamepadSelection" type="ItemList" parent="ScrollContainer/ListInputButton/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_6g3lt")
 allow_reselect = true
 auto_height = true
 item_count = 2
-max_columns = 8
+max_columns = 4
 same_column_width = true
 fixed_icon_size = Vector2i(32, 32)
 item_0/text = "1"
+item_0/icon = ExtResource("2_ekiqh")
 item_1/text = "2"
+item_1/icon = ExtResource("2_ekiqh")
 
 [node name="SetInputButton_test" parent="ScrollContainer/ListInputButton" instance=ExtResource("1_34vkq")]
 layout_mode = 2

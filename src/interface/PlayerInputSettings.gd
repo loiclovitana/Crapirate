@@ -1,6 +1,7 @@
 class_name PlayerInputSettings extends MarginContainer
 
 const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
+const GAMEPAD_ICON: Resource = preload("res://ressources/ui/icon-gamepad.png")
 
 var input_controller: InputBoatController 
 
@@ -13,11 +14,15 @@ var _player_settings: PlayerSettings:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if input_controller:
-		set_name(_player_settings.player_name)
-		_create_input()
-	else:
+	if not input_controller:
+		# erase any settings that is not associated to an inputcontroller
 		queue_free()
+		return
+		
+	set_name(_player_settings.player_name)
+	_create_input()
+	%GamepadSelection.item_selected.connect(set_device)
+	%KeyBoardButton.pressed.connect(clear_devices)
 
 func _create_input():
 	for c in %ListInputButton.get_children():
@@ -32,6 +37,15 @@ func _create_input():
 		new_button.set_event.connect(_wait_for_event.bind(new_button,action))
 		new_button.add_event.connect(_wait_for_event.bind(new_button,action,true))
 		new_button.clear_event.connect(_clear_event.bind(new_button,action))
+
+
+func _process(_delta):
+	var joypads = Input.get_connected_joypads()
+	if len(joypads) != %GamepadSelection.item_count:
+		%GamepadSelection.clear()
+		for i in joypads:
+			%GamepadSelection.add_item(str(i+1),GAMEPAD_ICON)
+			
 
 
 func _clear_event(button : SetInputButton, action: String):
@@ -94,4 +108,10 @@ func _input(event):
 			
 			_release_button()
 			accept_event()
-			
+
+func set_device(idx :int):
+	_player_settings.joypad_device_id = Input.get_connected_joypads()[idx]
+
+func clear_devices():
+	_player_settings.joypad_device_id = -1
+	%GamepadSelection.deselect_all()
