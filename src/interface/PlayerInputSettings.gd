@@ -21,7 +21,8 @@ func _ready() -> void:
 
 func _create_input():
 	for c in %ListInputButton.get_children():
-		c.queue_free()
+		if c is SetInputButton:
+			c.queue_free()
 	
 	for action in input_controller.CONTROL_EVENTS:
 		var new_button: SetInputButton = SET_INPUT_BUTTON_SCENE.instantiate()

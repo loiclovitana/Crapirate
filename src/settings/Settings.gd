@@ -89,5 +89,4 @@ static func _load(path):
 		player_settings.clear()
 		for player_config_id in player_configs_to_load:
 			player_settings[player_config_id] = PlayerSettings.load(player_configs_to_load[player_config_id],player_config_id)
-			print(player_settings[player_config_id].pid)
 	nb_player = config.get_value(SECTION_PLAYERS,"nb_players",nb_player)

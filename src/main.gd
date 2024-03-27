@@ -5,6 +5,11 @@ const player_scene = preload("res://src/player/Boat.tscn")
 const gps_scene = preload("res://src/player/view/GPS.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(Input.get_connected_joypads())
+	for joy_id in Input.get_connected_joypads():
+		print(Input.get_joy_info(joy_id))
+		print(Input.get_joy_name(joy_id))
+		print(Input.get_joy_vibration_duration(joy_id))
 	Settings.load()
 	%NumberOfPlayer.set_value(Settings.nb_player)
 	%NumberOfPlayer.value_changed.connect(
