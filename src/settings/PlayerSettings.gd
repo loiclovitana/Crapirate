@@ -162,13 +162,12 @@ func action_get_events(action: String) -> Array[InputEvent]:
 
 ## remove all event binded to that action
 func clear_action(action :String):
-	
+	_action_map[action] = []
 	if pid =="":
-		_action_map[action] = []
 		return
 	var player_action = _get_player_action(action)
 	if InputMap.has_action(player_action):
-		InputMap.action_erase_events(_get_player_action(action))
+		InputMap.action_erase_events(player_action)
 
 ## Bind an event to the action
 ## Does not clear already binded event
