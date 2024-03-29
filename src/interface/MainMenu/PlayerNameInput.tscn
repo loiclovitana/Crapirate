@@ -1,13 +1,25 @@
-[gd_scene format=3 uid="uid://bw1rw6s1mabbo"]
+[gd_scene load_steps=3 format=3 uid="uid://bw1rw6s1mabbo"]
+
+[ext_resource type="Script" path="res://src/interface/MainMenu/PlayerNameInput.gd" id="1_h6c1x"]
+[ext_resource type="Script" path="res://src/interface/MainMenu/GamepadOptions.gd" id="2_ntyqx"]
 
 [node name="PlayerNameInput" type="HBoxContainer"]
+script = ExtResource("1_h6c1x")
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Nom joueur 1"
 
-[node name="PlayerName" type="TextEdit" parent="."]
+[node name="PlayerName" type="LineEdit" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 placeholder_text = "Player"
+
+[node name="GamepadOption" type="OptionButton" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+expand_icon = true
+script = ExtResource("2_ntyqx")

@@ -3,53 +3,56 @@
 [ext_resource type="Script" path="res://src/interface/button/SetInputButton.gd" id="1_1qx12"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnhcu"]
-bg_color = Color(0.658824, 0.592157, 0.462745, 0.396078)
+bg_color = Color(0.760784, 0.698039, 0.572549, 0.396078)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+border_color = Color(0.901961, 0.901961, 0.901961, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbgnn"]
-bg_color = Color(1, 0, 0, 0.294118)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybrb7"]
+bg_color = Color(0.815686, 0.309804, 0.219608, 0.592157)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ri5a5"]
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+bg_color = Color(0.6, 0.6, 0.6, 0.415686)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="SetInputButton" type="Button"]
-custom_minimum_size = Vector2(0, 30)
+[node name="SetInputButtonContainer" type="HBoxContainer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 4.0
+offset_bottom = 31.0
 grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_1qx12")
+
+[node name="SetInputButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_tnhcu")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wbgnn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ybrb7")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ri5a5")
 toggle_mode = true
 keep_pressed_outside = true
-script = ExtResource("1_1qx12")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="SetInputButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,20 +64,32 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SetInputButton/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ActionLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="ActionLabel" type="Label" parent="SetInputButton/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Action"
 
-[node name="KeyLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="KeyLabel" type="Label" parent="SetInputButton/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Input key"
 horizontal_alignment = 2
-text_overrun_behavior = 4
+text_overrun_behavior = 3
+
+[node name="AddButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 2
+text = "+"
+
+[node name="ClearButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clear"

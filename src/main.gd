@@ -10,7 +10,6 @@ func _ready() -> void:
 	%NumberOfPlayer.value_changed.connect(
 		func(value):
 			Settings.nb_player=value
-			print(value)
 			)
 	
 	
@@ -100,9 +99,10 @@ func _create_player(player_id:String ,game_preset) -> Boat:
 	var camera = OrientedCamera.new()
 	player.add_child(camera)
 	camera.set_position(Vector3(0,get_camera_hauteur(),get_camera_distance()))
-	for i in range(1,10):
-		camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+i,false)
-	camera.set_cull_mask_value(PlayerView.PLAYER_VIEW_ID_OFFSET+Settings.get_player_index(player_id),true)
+	
+	var p_view_id = PlayerView.PLAYER_VIEW_ID_OFFSET +Settings.get_player_index(player_id)
+	for layer_id in range(PlayerView.PLAYER_VIEW_ID_OFFSET, PlayerView.PLAYER_VIEW_ID_OFFSET_END):
+		camera.set_cull_mask_value(layer_id,layer_id==p_view_id)
 	
 	
 	#gps
