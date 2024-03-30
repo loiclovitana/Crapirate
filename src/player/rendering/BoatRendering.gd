@@ -13,9 +13,11 @@ func get_name_tag_position():
 
 ## animate being hit by a canon
 func animate_hit(bullet: Bullet):
+	
 	var hit_left: bool = to_local(bullet.global_position).z < 0
 	var init_direction_rotation : Vector3 = Vector3.RIGHT if hit_left else Vector3.LEFT
-
+	%HitParticles.set_global_position(bullet.global_position)
+	%HitParticles.set_emitting(true)
 	#Tween that oscillates
 	var tween: Tween = create_tween()
 	tween.tween_property( %Body, "rotation_degrees", %Body.rotation_degrees + init_direction_rotation*20, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
