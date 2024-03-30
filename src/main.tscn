@@ -185,12 +185,18 @@ max_value = 30.0
 step = 0.5
 value = 10.0
 
-[node name="RecordsDisplay" type="VBoxContainer" parent="MainMenu/VBoxContainer3"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="RecordsDisplay" type="VBoxContainer" parent="MainMenu/VBoxContainer3/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("4_s7t4w")
 
-[node name="Record" parent="MainMenu/VBoxContainer3/RecordsDisplay" instance=ExtResource("5_j8utw")]
+[node name="Record" parent="MainMenu/VBoxContainer3/ScrollContainer/RecordsDisplay" instance=ExtResource("5_j8utw")]
 layout_mode = 2
 
 [node name="StartButton" type="Button" parent="MainMenu"]
