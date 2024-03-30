@@ -35,6 +35,10 @@ folder_colors={
 "res://src/": "teal"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_accept={

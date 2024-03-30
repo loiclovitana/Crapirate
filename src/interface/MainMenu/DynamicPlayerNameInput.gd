@@ -18,6 +18,7 @@ func _on_number_player_value_changed(value: float) -> void:
 		p_input.label.set_text("Nom joueur %d" % [i+1])
 		p_input.player_name_line_edit.set_text(Settings.get_player_settings(i).player_name)
 		p_input.player_name_line_edit.text_changed.connect(func(new_name): Settings.get_player_settings(i).player_name = new_name )
-		
+		p_input.joypad_option.item_selected.connect(func(joypad_device_id): Settings.get_player_settings(i).joypad_device_id=joypad_device_id)
+
 		add_child(p_input)
 		
