@@ -1,12 +1,12 @@
 extends Node
 
-const HIGH_SCORE_FILE ="user://records.csv"
+const HIGH_SCORE_FILE = "user://records.csv"
 const TIME_IDX = 0
 const NAME_IDX = 1
 const FILTER_IDX = 2
 const NB_COL = 3
 
-var _sort_score = func(a,b): return a[TIME_IDX]<b[TIME_IDX]
+var _sort_score = func(a, b): return a[TIME_IDX] < b[TIME_IDX]
 var _current_filter = ""
 var _high_scores: Array[Array] = []
 
@@ -18,7 +18,7 @@ func get_highest_score() -> Array:
 
 #region LOAD ==================================================================
 ## Load the high score for a given filter
-func load_high_score(filter : String) -> Array:
+func load_high_score(filter: String) -> Array:
 	var hash_filter = filter.sha256_text()
 	if hash_filter == _current_filter:
 		return _high_scores
@@ -54,7 +54,7 @@ func _update_score_from_file():
 func save_score(score: float, player_name: String) -> bool:
 	_high_scores.append([score, player_name])
 	_high_scores.sort_custom(_sort_score)
-	return _append_score_to_file([str(score), player_name.replace(';',''), _current_filter])
+	return _append_score_to_file([str(score), player_name.replace(';', ''), _current_filter])
 	
 func _append_score_to_file(score_data: Array):
 	var high_score_file: FileAccess

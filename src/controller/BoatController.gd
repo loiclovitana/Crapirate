@@ -10,7 +10,7 @@ enum CONTROL_ACTION {
 	LOOSE
 }
 
-var boat : Boat
+var boat: Boat
 
 func _init(boat_: Boat) -> void:
 	self.boat = boat_

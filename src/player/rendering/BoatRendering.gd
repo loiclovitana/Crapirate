@@ -9,7 +9,7 @@ var sails: Array[SailRendering]
 
 ## get the global position of name tag
 func get_name_tag_position():
-	return %NameTagPosition.get_global_position() 
+	return %NameTagPosition.get_global_position()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +31,7 @@ func _process(_delta):
 func _render_heel(wind_angle):
 	var heel_ratio = sin(wind_angle) * boat._sail_haul
 	var heel_angle = MAX_HEEL_ANGLE_PER_KNOT * boat.wind_knot * heel_ratio
-	if heel_angle < -MAX_HEEL_ANGLE:
+	if heel_angle < - MAX_HEEL_ANGLE:
 		heel_angle = -MAX_HEEL_ANGLE
 	if MAX_HEEL_ANGLE < heel_angle:
 		heel_angle = MAX_HEEL_ANGLE
@@ -42,7 +42,7 @@ func _render_weathercock(wind_angle):
 	
 func _render_sails(wind_angle):
 	var perfect_angle = wind_angle * 0.5
-	var sail_angle = lerp(wind_angle,perfect_angle, boat._sail_haul)
+	var sail_angle = lerp(wind_angle, perfect_angle, boat._sail_haul)
 	for sail in sails:
 		sail.render_sail(sail_angle)
 #endregion ====================================================================

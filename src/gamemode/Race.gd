@@ -39,7 +39,7 @@ func _ready() -> void:
 		%RecordDisplay.set_text("")
 	else:
 		highscore = highscore[HighScore.TIME_IDX]
-		var minutes = int(abs(highscore/60))
+		var minutes = int(abs(highscore / 60))
 		var seconds = int(abs(fmod(highscore, 60)))
 		var cent = int(abs(fmod(highscore, 1) * 100))
 		var record_format: String = "Record: %02d:%02d.%02d " % [minutes, seconds, cent]
@@ -60,8 +60,8 @@ func _record_player_time(boat: Boat) -> void:
 	_race_ranking.append(
 		{
 			"player": boat.player_id
-			,"time": timer
-			,"rank":len(_race_ranking)+1
+			, "time": timer
+			, "rank": len(_race_ranking) + 1
 		}
 	)
 	var new_record = HighScore.get_highest_score().is_empty() or timer < HighScore.get_highest_score()[HighScore.TIME_IDX]
@@ -83,12 +83,12 @@ func _process(delta: float) -> void:
 	
 func _update_timer(delta):
 	if timer <= 0 and 0 < timer + delta:
-		%Timer.get_label_settings().set_font_color(Color(1,1,1,1))
+		%Timer.get_label_settings().set_font_color(Color(1, 1, 1, 1))
 	timer += delta
 	var sign_ = "-" if sign(timer) < 0 else ""
 	var minutes = int(abs(timer / 60))
 	var seconds = int(abs(fmod(timer, 60)))
 	var cent = int(abs(fmod(timer, 1) * 100))
-	var timer_format: String = "%1s%02d:%02d.%02d " % [sign_, minutes, seconds,cent]
+	var timer_format: String = "%1s%02d:%02d.%02d " % [sign_, minutes, seconds, cent]
 	%Timer.set_text(timer_format)
 #endregion ====================================================================

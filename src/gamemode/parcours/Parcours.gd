@@ -37,14 +37,14 @@ func _setup_checkpoints():
 				checkpoint.last_checkpoint = last_checkpoint
 			last_checkpoint = checkpoint
 	
-	assert(len(_checkpoints) != 0,"No checkpoint are defined for the parcour")
+	assert(len(_checkpoints) != 0, "No checkpoint are defined for the parcour")
 	
 func _setup_racelines():
 	assert(_checkpoints[0] is RaceLine, "First checkpoint need to be a line")
-	assert(_checkpoints[-1] is RaceLine, "Last checkpoint need to be a line")
+	assert(_checkpoints[- 1] is RaceLine, "Last checkpoint need to be a line")
 	
 	_starting_line = _checkpoints[0] as RaceLine
-	_finish_line = _checkpoints[-1] as RaceLine
+	_finish_line = _checkpoints[- 1] as RaceLine
 	_starting_line.disable()
 
 func _add_player(boat: Boat):

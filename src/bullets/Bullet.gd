@@ -9,7 +9,7 @@ class_name Bullet extends Area3D
 
 var _shooter: BulletShooter = null
 var _keep_when_inactive = true
-var _velocity: Vector3 = Vector3(0,0,0)
+var _velocity: Vector3 = Vector3(0, 0, 0)
 var _starting_range: float = 0.0
 var _starting_height: float = 0.0
 var _remaining_range: float = 0.0
@@ -20,8 +20,8 @@ func set_origin_shooter(shooter: BulletShooter):
 	_shooter = shooter
 	
 ## Launch the bullet
-func launch(shot_position: Vector3, direction: Vector3, shoot_speed: float = 1,
-			additionnal_range: float = 0, relative_speed: Vector3 = Vector3(0,0,0)):
+func launch(shot_position: Vector3, direction: Vector3, shoot_speed: float=1,
+			additionnal_range: float=0, relative_speed: Vector3=Vector3(0, 0, 0)):
 	set_global_position(shot_position)
 	_velocity = shoot_speed * base_speed * direction.normalized() + relative_speed
 	_starting_height = shot_position.y

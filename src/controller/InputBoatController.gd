@@ -18,12 +18,11 @@ const ACTION_NAMES = {
 	"shoot": "Tir (canon)"
 }
 
-var player_id: String :
-	get: return self.boat.player_id 
+var player_id: String:
+	get: return self.boat.player_id
 
 func _init(boat_: Boat) -> void:
 	super(boat_)
-
 
 #region PUBLIC ================================================================
 ## Get the player name
@@ -32,7 +31,7 @@ func get_player_id() -> String:
 	
 ## Get actions to be performed by the boat (based on controller inputs)
 func get_actions() -> Array[CONTROL_ACTION]:
-	var actions:  Array[CONTROL_ACTION]  = []
+	var actions: Array[CONTROL_ACTION] = []
 	for event in CONTROL_EVENTS:
 		var player_action = get_player_action(event)
 		if InputMap.has_action(player_action) and Input.is_action_pressed(player_action):

@@ -1,6 +1,6 @@
 extends Node
 
-var registered_players: Array[Boat] = []: 
+var registered_players: Array[Boat] = []:
 	get = get_registered_players
 
 signal new_player(player: Boat)
@@ -17,10 +17,9 @@ func unregister_player(player: Boat):
 		player_left.emit(player)
 
 func clear_players():
-	for player in  registered_players:
+	for player in registered_players:
 		player_left.emit(player)
 	registered_players.clear()
-
 
 func get_registered_players():
 	return registered_players

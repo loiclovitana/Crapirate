@@ -9,11 +9,11 @@ var _boats_to_cross: Array[Boat] = []
 
 #region PUBLIC ================================================================
 ## add player as the next mark in the race
-func add_player(boat : Boat):
+func add_player(boat: Boat):
 	_boats_to_cross.append(boat)
 
 ## remove player from tracking this mark
-func remove_player(boat : Boat):
+func remove_player(boat: Boat):
 	_boats_to_cross.erase(boat)
 
 ## return the position where the boat need to go to pass the checkpoint
