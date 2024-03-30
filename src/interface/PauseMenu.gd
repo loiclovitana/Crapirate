@@ -16,9 +16,9 @@ func _ready():
 func _process_event(event_name: String, event_data: Dictionary):
 	match event_name:
 		"exit": get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
-		"continue":  _continue()
-		"goto_settings": _go_to_menu(%Settings)
-		"return": _go_to_menu(%PauseMenu)
+		"continue": _continue()
+		"goto_settings": _go_to_menu( %Settings)
+		"return": _go_to_menu( %PauseMenu)
 		_: pressed_event.emit(event_name, event_data)
 
 func _go_to_menu(menu: Node):

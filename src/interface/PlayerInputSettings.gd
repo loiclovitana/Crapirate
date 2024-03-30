@@ -1,9 +1,9 @@
 class_name PlayerInputSettings extends MarginContainer
 
-const SET_INPUT_BUTTON_SCENE: PackedScene = preload("res://src/interface/button/SetInputButton.tscn")
-const GAMEPAD_ICON: Resource = preload("res://ressources/ui/icon-gamepad.png")
+const SET_INPUT_BUTTON_SCENE: PackedScene = preload ("res://src/interface/button/SetInputButton.tscn")
+const GAMEPAD_ICON: Resource = preload ("res://ressources/ui/icon-gamepad.png")
 
-var input_controller: InputBoatController 
+var input_controller: InputBoatController
 
 var remaping_button: SetInputButton = null
 var remaping_action: String = ""
@@ -34,23 +34,20 @@ func _create_input():
 		new_button.set_action_label(_format_action(action))
 		_refresh_button_info(new_button, action)
 		%ListInputButton.add_child(new_button)
-		new_button.set_event.connect(_wait_for_event.bind(new_button,action))
-		new_button.add_event.connect(_wait_for_event.bind(new_button,action,true))
-		new_button.clear_event.connect(_clear_event.bind(new_button,action))
-
+		new_button.set_event.connect(_wait_for_event.bind(new_button, action))
+		new_button.add_event.connect(_wait_for_event.bind(new_button, action, true))
+		new_button.clear_event.connect(_clear_event.bind(new_button, action))
 
 func _process(_delta):
 	var joypads = Input.get_connected_joypads()
 	if len(joypads) != %GamepadSelection.item_count:
 		%GamepadSelection.clear()
 		for i in joypads:
-			%GamepadSelection.add_item(str(i+1),GAMEPAD_ICON)
-			
+			%GamepadSelection.add_item(str(i + 1), GAMEPAD_ICON)
 
-
-func _clear_event(button : SetInputButton, action: String):
+func _clear_event(button: SetInputButton, action: String):
 	_player_settings.clear_action(action)
-	_refresh_button_info(button,action)
+	_refresh_button_info(button, action)
 
 func _format_action(action: String) -> String:
 	if action in input_controller.ACTION_NAMES:
@@ -62,31 +59,29 @@ func _format_keys(keys: Array[InputEvent]) -> String:
 		return "<None>"
 	var label = ""
 	for k in keys:
-		if label!="":
+		if label != "":
 			label += ","
-		label+= k.as_text()
-	return label.replace('(Physical)','').rstrip(' ')
-
+		label += k.as_text()
+	return label.replace('(Physical)', '').rstrip(' ')
 
 func _refresh_button_info(button, action):
 	var keys = _player_settings.action_get_events(action)
 	button.set_key_label(_format_keys(keys))
 
-
 func _release_button():
-	_refresh_button_info(remaping_button,remaping_action)
+	_refresh_button_info(remaping_button, remaping_action)
 	remaping_button.set_pressed(false)
-	remaping_button=null
+	remaping_button = null
 	remaping_action = ""
 	
-func _wait_for_event(button : SetInputButton, action :String, append: bool= false):
+func _wait_for_event(button: SetInputButton, action: String, append: bool=false):
 	if remaping_button:
 		_release_button()
 	else:
 		
-		remaping_button=button
-		remaping_action=action
-		remaping_append=append
+		remaping_button = button
+		remaping_action = action
+		remaping_append = append
 		button.set_key_label("Press Key to assign ...")
 		button.release_focus()
 
@@ -98,18 +93,18 @@ func _input(event):
 			or event is InputEventJoypadMotion
 		):
 			remaping_button.grab_focus()
-			if event is InputEventMouseButton && event.double_click:
+			if event is InputEventMouseButton&&event.double_click:
 				event.double_click = false
 			if remaping_append:
-				_player_settings.add_action_event(remaping_action,event)
+				_player_settings.add_action_event(remaping_action, event)
 			else:
-				_player_settings.set_action_event(remaping_action,event)
+				_player_settings.set_action_event(remaping_action, event)
 			_player_settings.save()
 			
 			_release_button()
 			accept_event()
 
-func set_device(idx :int):
+func set_device(idx: int):
 	_player_settings.joypad_device_id = Input.get_connected_joypads()[idx]
 
 func clear_devices():

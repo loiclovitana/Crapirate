@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-const SUBVIEW_PLAYER_SCENE: PackedScene = preload("res://src/player/view/SubViewportPlayerContainer.tscn")
+const SUBVIEW_PLAYER_SCENE: PackedScene = preload ("res://src/player/view/SubViewportPlayerContainer.tscn")
 
 var _next_child = 0
 
@@ -12,7 +12,7 @@ func _ready():
 
 func add_player(player: Boat):
 	var playerView = SUBVIEW_PLAYER_SCENE.instantiate()
-	var vertical_split: Node = get_child(_next_child%2)
+	var vertical_split: Node = get_child(_next_child % 2)
 	_next_child += 1
 	
 	vertical_split.set_visible(true)

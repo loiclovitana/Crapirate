@@ -1,8 +1,8 @@
 class_name InputsSettings extends PanelContainer
 
-const PLAYER_INPUT_SETTINGS_SCENE: PackedScene = preload("res://src/interface/PlayerInputSettings.tscn")
+const PLAYER_INPUT_SETTINGS_SCENE: PackedScene = preload ("res://src/interface/PlayerInputSettings.tscn")
 
-var player_input_tab : Dictionary= {}
+var player_input_tab: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,6 +1,6 @@
 class_name RecordsDisplay extends VBoxContainer
 
-const RECORD_LINE_SCENE = preload("res://src/interface/MainMenu/RecordLine.tscn")
+const RECORD_LINE_SCENE = preload ("res://src/interface/MainMenu/RecordLine.tscn")
 
 func set_highscores(high_scores: Array[Array]):
 	for c in get_children():
@@ -11,5 +11,5 @@ func set_highscores(high_scores: Array[Array]):
 		var player_name = high_scores[idx][HighScore.NAME_IDX]
 		
 		var record_line = RECORD_LINE_SCENE.instantiate()
-		record_line.update_data(idx+1, player_name, time)
+		record_line.update_data(idx + 1, player_name, time)
 		add_child(record_line)

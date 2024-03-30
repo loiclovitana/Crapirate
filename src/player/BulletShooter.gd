@@ -2,8 +2,8 @@ class_name BulletShooter extends Node3D
 
 # Stats
 @export var bullet_type: PackedScene
-@export_range(0.1,10) var fire_delay = 1
-@export_range(0.3,4) var shot_speed = 1
+@export_range(0.1, 10) var fire_delay = 1
+@export_range(0.3, 4) var shot_speed = 1
 @export var shot_range: float = 0
 
 # Attributes
@@ -35,16 +35,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_update_next_shoot(delta)
-	if _is_shooting and _delay_next_shoot<=0:
+	if _is_shooting and _delay_next_shoot <= 0:
 		_delay_next_shoot += fire_delay
 		_shoot()
 	_is_shooting = false
 
 func _update_next_shoot(delta):
-	if 0<=_delay_next_shoot:
-		_delay_next_shoot-=delta
+	if 0 <= _delay_next_shoot:
+		_delay_next_shoot -= delta
 	else:
-		_delay_next_shoot=0
+		_delay_next_shoot = 0
 
 func _shoot():
 	for canon in shooters:
@@ -55,7 +55,7 @@ func _shoot():
 			canon.get_global_transform().basis.x,
 			shot_speed,
 			shot_range,
-			relative_speed *0.5
+			relative_speed * 0.5
 		)
 
 func _get_bullet() -> Bullet:
