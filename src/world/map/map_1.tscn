@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dltsdrq8grbsc"]
+[gd_scene load_steps=32 format=3 uid="uid://dltsdrq8grbsc"]
 
 [ext_resource type="PackedScene" uid="uid://bb7tva3djhjvu" path="res://src/world/rocks/rock_1.tscn" id="1_1jnq6"]
 [ext_resource type="PackedScene" uid="uid://cm1ldtjt4cg73" path="res://src/world/sea.tscn" id="1_f28cp"]
@@ -30,12 +30,14 @@
 [ext_resource type="ArrayMesh" uid="uid://cx7krnp0n5qs8" path="res://ressources/3D/terrain/misc/fence.obj" id="27_48am2"]
 [ext_resource type="ArrayMesh" uid="uid://c8l5merdh30do" path="res://ressources/3D/terrain/tree/tree.obj" id="28_5id55"]
 [ext_resource type="ArrayMesh" uid="uid://dlheknlvvd5vo" path="res://ressources/3D/terrain/tree/treeLarge.obj" id="29_fn7dy"]
+[ext_resource type="PackedScene" uid="uid://d2g0g4ijc00ks" path="res://src/world/fishs/fishes.tscn" id="31_gqsf6"]
 
 [node name="Map1" type="Node3D"]
 
 [node name="Sea" parent="." instance=ExtResource("1_f28cp")]
 collision_layer = 8
 collision_mask = 0
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.736407, -0.341931, 0.58377, -0.669611, -0.491543, 0.556782, 0.096567, -0.800917, -0.590937, 11.1936, 3.51283, -1.70156)
@@ -992,3 +994,6 @@ transform = Transform3D(-97.303, 0, 23.0677, 0, 20, 0, -23.0677, 0, -97.303, -8.
 mesh = ExtResource("20_sbwjt")
 skeleton = NodePath("../../..")
 metadata/_edit_lock_ = true
+
+[node name="SchoolFish" parent="Objects" instance=ExtResource("31_gqsf6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -4, -33)

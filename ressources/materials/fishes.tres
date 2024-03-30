@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dkqsumgglfn8y"]
+
+[ext_resource type="Shader" path="res://src/world/fishs/fish_animation.gdshader" id="1_prrdx"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_prrdx")
