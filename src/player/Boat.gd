@@ -44,7 +44,11 @@ var spinning = 0
 ## determine the next checkpoint in the race
 var next_checkpoint: RaceCheckpoint = null
 
-## signal to the player that he finished the race
+# ==========================================================================================
+#		Public methods
+# ==========================================================================================
+
+## Signal to the player that he finished the race
 func has_finished(player_time: float, won: bool, is_record: bool):
 	canvas.display_finish_screen(player_time, won, is_record)
 
@@ -57,6 +61,11 @@ func project_to(target_position: Vector3):
 
 func stop_boat():
 	_current_speed = 0
+
+func hit_by(bullet: Bullet):
+	var tween = create_tween()
+	tween.tween_property(self, "_current_speed", _current_speed / 2.0, 1)
+	renderer.animate_hit(bullet)
 
 # ==========================================================================================
 #		Processing method

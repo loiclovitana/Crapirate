@@ -93,7 +93,7 @@ func _input(event):
 			or event is InputEventJoypadMotion
 		):
 			remaping_button.grab_focus()
-			if event is InputEventMouseButton&&event.double_click:
+			if event is InputEventMouseButton and event.double_click:
 				event.double_click = false
 			if remaping_append:
 				_player_settings.add_action_event(remaping_action, event)

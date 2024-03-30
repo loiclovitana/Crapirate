@@ -33,6 +33,26 @@ func launch(shot_position: Vector3, direction: Vector3, shoot_speed: float=1,
 	_active = true
 #endregion ====================================================================
 
+func _ready() -> void:
+	body_entered.connect(func(body): call_deferred("_hit_something", body))
+
+#region HIT ===================================================================
+func _hit_player(boat: Boat):
+	boat.hit_by(self)
+	
+
+func _hit_something(body: Node3D):
+	
+	# Hit with the shotter doesn't count
+	if body == _shooter.boat:
+		return
+
+	if body is Boat:
+		_hit_player(body as Boat)
+	_set_inactive()
+
+#endregion ===================================================================
+
 #region PROCESS ===============================================================
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
